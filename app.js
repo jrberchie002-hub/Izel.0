@@ -48,7 +48,7 @@ module.exports = function makeApp(E, store, smsImpl, fetchImpl) {
     if (!DEV) {
       const msg = 'Your Izel code is ' + code + '. It expires in 5 minutes. Never share it.';
       if (phone.startsWith('e:')) { if (!mailer.ready()) return err(503, 'Email sign-in is not set up yet. Use your phone number.'); try { await mailer.send(phone.slice(2), 'Your Izel code', msg); } catch (e) { return err(502, 'Could not send the code: ' + e.message); } }
-      else { if (!sms.ready()) return err(503, 'SMS is not set up yet'); try { await sms.send(phone, msg); } catch (e) { return err(502, 'Could not send the code: ' + e.message); } }
+      else { if (!sms.ready()) return err(503, 'Phone codes are not switched on yet. Please use your email.'); try { await sms.send(phone, msg); } catch (e) { return err(502, 'Could not send the code: ' + e.message); } }
     }
     await store.put('otps', phone, rec);
     const exists = await store.get('phones', phone);
@@ -77,7 +77,7 @@ module.exports = function makeApp(E, store, smsImpl, fetchImpl) {
       const name = str(body.name, 60).trim() || 'Izel user'; isNew = true;
       const isAd = ADMINS.includes(phone), id = isAd && !(await store.get('users', 'u_admin')) ? 'u_admin' : 'u_' + sha(phone).slice(0, 10);
       u = { id, name: isAd ? 'Izel Team' : name, roles: isAd ? ['admin'] : [], createdAt: now(), adult: true };
-      if (phone.startsWith('e:')) u.email = phone.slice(2);
+      if (phone.startsWith('e:')) u.email = phone.slice(2); else u.phone = phone;
       { const c = String(body.contact || '').replace(/\D/g, ''); if (c.length >= 9 && c.length <= 15) u.phone = c; }
       await store.put('users', id, u, id); await store.put('phones', phone, { uid: id });
       if (!isAd) await starterChats(u);
@@ -451,6 +451,19 @@ module.exports = function makeApp(E, store, smsImpl, fetchImpl) {
     return out(200, { ok: true });
   }
   async function payoutRecipient(me, b) {
+    if (b.kind === 'bank') {
+      const num = String(b.number || '').replace(/\D/g, ''), bn = str(b.bank, 60);
+      if (!bn || num.length < 8) return err(400, 'Pick your bank and enter the account number');
+      const rec = { user: me.id, network: 'BANK', bankName: bn, last4: num.slice(-4), name: str(b.name, 60) };
+      if (E.PAYSTACK_SECRET_KEY) {
+        const H = { Authorization: 'Bearer ' + E.PAYSTACK_SECRET_KEY, 'Content-Type': 'application/json' }, A = E.PAYSTACK_API || 'https://api.paystack.co';
+        const bl = await (await doFetch(A + '/bank?country=ghana&perPage=100', { headers: H })).json().catch(() => ({})), hit = ((bl.data) || []).filter(x => String(x.name).toLowerCase().indexOf(bn.toLowerCase().split(' ')[0]) > -1)[0];
+        if (!hit) return err(400, 'We could not match that bank. Check the name.');
+        const r = await doFetch(A + '/transferrecipient', { method: 'POST', headers: H, body: JSON.stringify({ type: 'ghipss', name: rec.name || me.name, account_number: num, bank_code: hit.code, currency: 'GHS' }) }); const j = await r.json().catch(() => ({}));
+        if (!r.ok || !j.status) return err(502, 'Could not save payout details: ' + (j.message || r.status)); rec.code = j.data.recipient_code;
+      }
+      await store.put('payouts', me.id, rec); return out(200, { ok: true, last4: rec.last4, network: 'BANK', bank: bn });
+    }
     const net = { MTN: 'MTN', VODAFONE: 'VOD', TELECEL: 'VOD', AIRTELTIGO: 'ATL' }[String(b.network || '').toUpperCase()], num = String(b.number || '').replace(/\D/g, '');
     if (!net || num.length < 9) return err(400, 'Pick a network and enter the MoMo number');
     const rec = { user: me.id, network: net, last4: num.slice(-4), name: str(b.name, 60), number: num };
@@ -463,7 +476,7 @@ module.exports = function makeApp(E, store, smsImpl, fetchImpl) {
       const po = await store.get('payouts', d.owner); if (!po || !po.code) { res.push({ id: d.id, skipped: 'owner has no payout details' }); continue; }
       if (!E.PAYSTACK_SECRET_KEY) { res.push({ id: d.id, skipped: 'Paystack is not connected' }); continue; }
       const r = await doFetch((E.PAYSTACK_API || 'https://api.paystack.co') + '/transfer', { method: 'POST', headers: { Authorization: 'Bearer ' + E.PAYSTACK_SECRET_KEY, 'Content-Type': 'application/json' }, body: JSON.stringify({ source: 'balance', amount: Math.round(d.payout * 100), recipient: po.code, reason: 'Izel payout ' + d.id, reference: 'PO' + d.id.replace(/[^a-z0-9]/gi, '').slice(0, 30).padEnd(16, '0') }) }); const j = await r.json().catch(() => ({}));
-      if (r.ok && j.status) { d.payoutStatus = 'sent'; d.payoutAt = now(); const c_ = d._c; delete d._c; await store.put(c_, d.id, d, d.seeker || d.owner); await notify(d.owner, 'GH₵' + d.payout + ' was sent to your mobile money.'); res.push({ id: d.id, sent: true }); } else res.push({ id: d.id, error: j.message || r.status });
+      if (r.ok && j.status) { d.payoutStatus = 'sent'; d.payoutAt = now(); const c_ = d._c; delete d._c; await store.put(c_, d.id, d, d.seeker || d.owner); await notify(d.owner, 'GH₵' + d.payout + ' was sent to your payout account.'); res.push({ id: d.id, sent: true }); } else res.push({ id: d.id, error: j.message || r.status });
     }
     return res;
   }

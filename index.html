@@ -809,6 +809,54 @@ html[data-theme=dark] .note.ok{background:#241517;border-color:#3a2226}
 .hc::after,.wm,.pvm::after{content:'';position:absolute;top:14px;right:14px;width:24px;height:30px;background:#fff;-webkit-mask:url(swan.png) center/contain no-repeat;mask:url(swan.png) center/contain no-repeat;opacity:.88;filter:drop-shadow(0 1px 3px rgba(0,0,0,.55));pointer-events:none;z-index:3}
 .wmw{position:relative}.wm{display:block}
 .pvm{position:relative}
+/* v38 */
+.splw{font-size:20px}.spg{height:46px!important;font-size:38px!important;font-weight:300;margin-top:18px!important}.spg.pop{animation:izfade 1.1s ease both!important}
+.sx{position:absolute;top:10px;right:12px;width:30px;height:30px;border-radius:50%;border:0;background:var(--soft);color:var(--ink);display:grid;place-items:center;z-index:3}
+.sheet{position:relative}
+.hrt{display:none!important}
+.hfx{display:flex;gap:10px;flex-wrap:wrap;margin:4px 0 6px;font-size:11.5px;color:#fff;opacity:.92}.fx{display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
+.rp2{padding:0}.rph{padding:calc(22px + env(safe-area-inset-top)) 20px 8px}.rph h1{font-size:24px;margin:16px 0 4px}
+.rgp{display:grid;gap:12px;padding:10px 16px}
+.rkp{position:relative;height:118px;border-radius:22px;overflow:hidden;border:0;padding:0;color:#fff;text-align:left;animation:rkin .6s cubic-bezier(.2,.8,.2,1) both;transition:transform .2s}
+.rkp:active{transform:scale(.98)}.rkp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}.rkp:hover img,.rkp.sel img{transform:scale(1.06)}
+.rks{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.25) 70%,rgba(200,16,46,.25))}
+.rkt{position:absolute;left:18px;right:60px;bottom:14px;display:grid;gap:3px}.rkt b{font-size:17px}.rkt small{font-size:12px;opacity:.85;line-height:1.35}.rki{width:30px;height:30px;border-radius:10px;background:rgba(255,255,255,.16);display:grid;place-items:center;margin-bottom:4px;backdrop-filter:blur(6px)}
+.rkp .ck{position:absolute;right:14px;top:14px;width:26px;height:26px;border-radius:50%;background:#c8102e;display:grid;place-items:center;opacity:0;transform:scale(.6);transition:.25s}.rkp.sel .ck{opacity:1;transform:scale(1)}.rkp.sel{outline:2px solid #c8102e}
+@keyframes rkin{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.svh{display:flex;gap:12px;align-items:center;margin-bottom:6px}.svh b{font-size:16px}.svb{width:40px;height:40px;border-radius:14px;background:var(--btn,#c8102e);color:#fff;display:grid;place-items:center}
+.svc{display:flex;gap:12px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:18px;margin-bottom:10px;background:var(--soft)}.svc b{font-size:14px;display:block}.svi{width:42px;height:42px;border-radius:14px;background:rgba(200,16,46,.14);color:var(--btn,#c8102e);display:grid;place-items:center;flex:none}
+/* v39 */
+.sgc{height:150px!important}
+.rlz{margin:10px 0;border:1px solid var(--line,#ffffff22);border-radius:12px;padding:0 12px}
+.rlz summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;padding:10px 0;font-size:14px;font-weight:600}
+.rlz summary::-webkit-details-marker{display:none}
+.rlz summary i{font-style:normal;font-size:12px;background:var(--soft);border-radius:9px;padding:1px 7px}
+.rlz summary span{margin-left:auto;font-size:12px;font-weight:400;opacity:.6}
+.rlz .cls{padding-bottom:10px;font-size:13px}
+.dch .dcm{display:flex;flex-direction:column;gap:6px}
+.dch .bub{max-width:85%;font-size:14px}
+.dch .bub.me{align-self:flex-end}
+#app .pad .fld>span,#app .sec .fld>span{text-align:left;display:block}
+.spg{font-weight:700!important;letter-spacing:.01em}
+.sheet .fld input,.sheet .fld select{font-size:15px}
+/* v39 grouped settings look: profile, money, payment sheets */
+.gh{font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.55;margin:18px 20px 8px}
+.gc{background:var(--card,#1d1d1d);border-radius:16px;margin:0 16px;overflow:hidden}
+.gc .gr{padding:14px 16px;border-bottom:1px solid #ffffff12;font-size:14px}
+.gc .gr:last-child{border-bottom:0}
+.gt{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:14px}
+.gs{font-size:13px;opacity:.65;margin-top:3px}
+.gk{display:flex;justify-content:space-between;font-size:13px;margin-top:6px}
+.gbig{font-size:26px;font-weight:700;margin:4px 0}
+.pfc{border-radius:16px!important}
+.pfc h3{font-size:11px!important;letter-spacing:.08em;text-transform:uppercase;opacity:.55;font-weight:500}
+.sheet .kv{font-size:14px;padding:9px 0}
+.sheet h2{font-size:18px}
+/* v39 plain facts instead of pills; coloured pills only for status */
+.pill:not(.ok):not(.r):not(.g){background:none!important;border:0!important;padding:0!important;color:var(--mut);font-size:13px;box-shadow:none}
+.pill:not(.ok):not(.r):not(.g) svg{display:none}
+.row.wrap>.pill:not(.ok):not(.r):not(.g)+.pill:not(.ok):not(.r):not(.g)::before{content:'\00B7';margin:0 8px 0 2px}
+.row.wrap:has(>.pill:not(.ok):not(.r):not(.g)){gap:2px 0}
 
 </style></head><body><div id="app"></div><div id="ov"></div><div id="toast"></div>
 <script src="config.js"></script><script type="text/javascript">try{localStorage.removeItem("iz_demo")}catch(e){}</script>
@@ -2238,7 +2286,7 @@ SC.listing=function(){var l=DB.listings.filter(function(x){return x.id===S.p.id}
   h+='<div class="slider" onscroll="var i=Math.round(this.scrollLeft/this.clientWidth);var d=this.nextSibling.children;for(var k=0;k<d.length;k++)d[k].className=k===i?\'on\':\'\'">'+(l.video&&MEDIA[l.video.mid]?'<video src="'+MEDIA[l.video.mid]+'" controls controlsList="nofullscreen nodownload noremoteplayback" disablePictureInPicture playsinline preload="auto" style="flex:0 0 100%;scroll-snap-align:center;height:260px;object-fit:cover;background:#000"></video>':'')+l.imgs.map(function(im){return '<img src="'+imgSrc(im)+'" alt="">'}).join('')+'</div><div class="dots">'+(l.video&&MEDIA[l.video.mid]?[0]:[]).concat(l.imgs).map(function(x,i){return '<i class="'+(i?'':'on')+'"></i>'}).join('')+'</div>';
   h+='<div class="sec"><div class="row wrap" style="margin-bottom:8px">'+(l.verified.owner||l.verified.visited?'<span class="pill ok">'+ico('shield',13)+'Verified</span>':'')+(l.video?'<span class="pill k">'+ico('check',12)+'Video tour'+(l.video.h&&Math.min(l.video.w||0,l.video.h)>=720?' · HD':'')+'</span>':'')+(l.docs?'<span class="pill">'+esc(l.docs)+'</span>':'')+'</div><div class="lx" style="font-size:24px;font-weight:700;line-height:1.2">'+money(l.price)+perTxt(l)+'</div><h2 style="margin:6px 0 2px;font-size:18px">'+esc(l.title)+'</h2><div class="sm">'+esc(l.area)+', '+esc(l.city)+'</div>'+(mine?'':'<div class="row wrap" style="margin-top:10px"><span class="pill g">'+ico('users',12)+interestTxt(l)+'</span><span class="pill">Replies within '+respTxt(l.owner)+'</span></div>')+'</div>';
   h+='<div class="sec" style="padding-top:0">'+factsLine(l)+'</div>';
-  h+='<div class="sec"><h2>Features</h2>'+(l.type==='land'?'':'<div class="feat"><span>'+ico('map',18)+'</span><div><b>Parking</b><div class="sm">'+(l.cars?'Space for '+l.cars+' car'+(l.cars>1?'s':'')+' inside the compound':'No parking on the property. Street parking only.')+'</div></div></div><div class="feat"><span>'+ico('shield',18)+'</span><div><b>Compound type</b><div class="sm">'+(l.gated?'Closed compound: walled, with a gate. Visitors are let in at the gate.':'Open compound: no wall or gate. Anyone can walk in.')+'</div></div></div><div class="feat"><span>'+ico('heart',18)+'</span><div><b>Pets</b><div class="sm">'+(l.pets?'Pets are allowed.':'No pets.')+'</div></div></div><div class="feat"><span>'+ico('home',18)+'</span><div><b>Furnishing</b><div class="sm">'+(l.furnished?'Comes furnished.':'Unfurnished.')+'</div></div></div>')+'<div class="feat"><span>'+ico('chart',18)+'</span><div><b>Water and power</b><div class="sm">'+esc(l.water||'Not stated')+' \u00B7 '+esc(l.power||'Not stated')+'</div></div></div>'+(l.rooms&&!l.hostel?'<div class="feat"><span>'+ico('users',18)+'</span><div><b>Rooms left</b><div class="sm">'+l.rooms+'</div></div></div>':'')+((l.amen||[]).length?'<h2 style="margin:14px 0 8px">Amenities</h2><div class="row wrap">'+l.amen.map(function(a){return '<span class="pill">'+ico('check',12)+esc(a)+'</span>'}).join('')+'</div>':'')+'</div>';
+  h+='<div class="sec"><h2>The place</h2><div class="row wrap" style="gap:6px">'+(l.type==='land'?'':[(l.cars?l.cars+' car'+(l.cars>1?'s':'')+' parking':'Street parking'),(l.gated?'Gated':'Open compound'),(l.pets?'Pets ok':'No pets'),(l.furnished?'Furnished':'Unfurnished')].map(function(a){return '<span class="pill">'+a+'</span>'}).join(''))+'<span class="pill">'+esc(l.water||'Water not stated')+'</span><span class="pill">'+esc(l.power||'Power not stated')+'</span>'+(l.rooms&&!l.hostel?'<span class="pill">'+l.rooms+' left</span>':'')+((l.amen||[]).map(function(a){return '<span class="pill">'+esc(a)+'</span>'}).join(''))+'</div></div>';
   h+=listExtras(l);h+='<div class="sec"><h2>About this place</h2><p style="margin:0">'+esc(l.desc)+'</p>'+(l.type==='hostel'&&!l.hasSystem?'':'')+(l.type==='hostel'&&l.hasSystem?'<div class="note" style="margin-top:10px">This hostel’s own booking system is connected. Rooms update live.</div>':'')+(l.surveyed===false?'<div class="note" style="margin-top:10px">Not surveyed yet. You can ask an Izel partner surveyor to mark and measure it before you pay.<br><button class="btn sm2 gd" style="margin-top:8px" onclick="needAcct(function(){reqService(\'Survey\',\''+l.id+'\')})">Request a surveyor</button></div>':'')+'</div>';
   var vis=v&&['confirmed','arrived','visited','deal'].indexOf(v.status)>-1;
   h+='<div class="sec"><h2>Location</h2><div class="sm">'+esc(l.area)+', '+esc(l.city)+'. '+(vis?'Your viewing is confirmed, so the exact pin is unlocked.':'The exact pin unlocks once your viewing is confirmed.')+'</div>'+(vis&&l.dig?'<div class="feat"><span>'+ico('map',18)+'</span><div><b>Digital address</b><div class="sm">'+esc(l.dig)+'</div></div></div>':'')+(vis?'<a class="btn dk blk" style="margin-top:10px" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination='+l.lat+','+l.lng+'">'+ico('map',18)+' Open in Maps</a>'+(l.note?'<div class="note" style="margin-top:10px"><b>Access:</b> '+esc(l.note)+'</div>':''):'')+'</div>';
@@ -2637,7 +2685,7 @@ function interestN(l){var sv=Object.keys(DB.saved).filter(function(u){return (DB
 function interestTxt(l){var n=interestN(l);return n>=8?'Very popular':n+' people interested'}
 function bedState(h){var r=h.free/Math.max(1,h.beds);return r<.1?'Almost full':r<.3?'Filling fast':'Beds available'}
 function trusted(h){var s=h.stays||0;return s>=100?'Trusted by '+Math.floor(s/100)*100+'+ students':s>0?'Trusted by students':'New on Izel'}
-function factsLine(l){var a=[];if(l.type==='land'){if(l.plot)a.push(esc(l.plot));if(l.size)a.push(Number(l.size).toLocaleString()+' m\u00B2');a.push(l.surveyed?'Surveyed':'Not surveyed')}else{if(l.type!=='hostel'){a.push(l.beds+(l.beds===1?' bedroom':' bedrooms'));a.push(l.baths+(l.baths===1?' bathroom':' bathrooms'))}if(l.size)a.push(l.size+' m\u00B2')}return '<div class="lx" style="font-size:16px;color:var(--mut)">'+a.join(' <span style="color:var(--olive)">\u2022</span> ')+'</div>'}
+function factsLine(l){var a=[];if(l.type==='land'){(window.landFmt?landFmt(l):[l.plot||'']).forEach(function(x){if(x)a.push(esc(x))});a.push(l.surveyed?'Surveyed':'Not surveyed')}else{if(l.type!=='hostel'){a.push(l.beds+(l.beds===1?' bedroom':' bedrooms'));a.push(l.baths+(l.baths===1?' bathroom':' bathrooms'))}if(l.size)a.push(l.size+' m\u00B2')}return '<div class="lx" style="font-size:16px;color:var(--mut)">'+a.join(' <span style="color:var(--olive)">\u2022</span> ')+'</div>'}
 /* ops: hidden, five taps on your name in Me */
 var _ot=0,_otT=0;function opsTap(){var n=Date.now();if(n-_otT>2500)_ot=0;_otT=n;if(++_ot>=5){_ot=0;demoMenu()}}
 var _me2=SC.me;SC.me=function(){var s=_me2(),u=me()||{};s=s.replace(/<div class="av">[^<]*<\/div>/,'<label style="cursor:pointer;position:relative;display:block">'+avt(DB.me)+'<input type="file" accept="image/*" hidden onchange="setPhoto(this.files[0])"></label>');
@@ -2856,7 +2904,7 @@ payGo=async function(){var b=document.getElementById('paybtn');if(window._payBus
     closeSheet();var f=window._payDone;window._payDone=null;if(f)f();tagNew(i.ref);save();flush();toast('Payment received')}
   catch(e){toast(e.message);if(b){b.disabled=false;b.textContent='Pay '+money(window._payAmt)}}finally{window._payBusy=0}};
 /* ---------- owner payout details ---------- */
-var _om=SC.o_money;SC.o_money=function(){var h=_om(),u=me()||{};return h.replace(/<\/div>\s*$/,'')+'<div class="pad"><div class="sec"><h2>Where we send your money</h2><div class="sm" style="margin-bottom:10px">'+(u.payout?'Mobile money ending '+esc(u.payout)+' is saved.':'Add your mobile money number. We send each payment within 24 hours.')+'</div><label class="fld"><span>Network</span><select id="po_n"><option>MTN</option><option>Telecel</option><option>AirtelTigo</option></select></label><label class="fld"><span>Mobile money number</span><input id="po_p" type="tel" placeholder="024 000 0000"></label><label class="fld"><span>Name on the account</span><input id="po_a" placeholder="Same as your ID"></label><button class="btn blk ol" onclick="savePayout()">Save payout details</button></div></div></div>'};
+var _om=SC.o_money;SC.o_money=function(){var h=_om(),u=me()||{};return h.replace(/<\/div>\s*$/,'')+'<div class="sec" style="text-align:left"><h2 style="font-size:16px">Where we send your money</h2><div class="sm" style="margin-bottom:10px">'+(u.payout?'Mobile money ending '+esc(u.payout)+' is saved.':'Add your mobile money number. We send each payment within 24 hours.')+'</div><label class="fld"><span>Network</span><select id="po_n"><option>MTN</option><option>Telecel</option><option>AirtelTigo</option></select></label><label class="fld"><span>Mobile money number</span><input id="po_p" type="tel" placeholder="024 000 0000"></label><label class="fld"><span>Name on the account</span><input id="po_a" placeholder="Same as your ID"></label><button class="btn blk ol" onclick="savePayout()">Save payout details</button></div></div>'};
 window.savePayout=async function(){try{var r=await api('POST','/api/payout/recipient',{network:$('po_n').value,number:$('po_p').value,name:$('po_a').value});me().payout=r.last4;ls('izel_po'+DB.me,r.last4);toast('Saved');render()}catch(e){toast(e.message)}};
 window.__login=async function(r){TOK=r.token;ls('izel_tok',TOK);ls('izel_me',r.user.id);resetAll();DB.me=r.user.id;DB.users[r.user.id]=r.user;await pull();var u=me()||r.user;DB.role=(u.roles&&u.roles[0])||null;ls('izel_role',DB.role||null);S.au={};S.stack=[];var f=window._after;window._after=null;if(DB.role){tab(defaultTab())}else tab('role');if(f&&DB.role)setTimeout(f,300);schedule()};window.__OL=OL;window.__CFG=function(){return CFG};
 })();
@@ -3398,9 +3446,8 @@ SC.welcome=function(){var s=SL[0],first=!window._splDone;
   if(first)h+='<div class="spl" id="spl"><div class="spl1">'+swan(64,'#fff')+'<div class="splw">IZEL</div><div class="spg" id="splg"></div></div></div>';
   h+='</div>';if(first)setTimeout(runSplash,30);return h};
 function runSplash(){var o=document.getElementById('spl');if(!o||o._r)return;o._r=1;var g=document.getElementById('splg');
-  GREET.forEach(function(w,i){setTimeout(function(){g.textContent=w;g.classList.remove('pop');void g.offsetWidth;g.classList.add('pop')},1700+i*850)});
-  setTimeout(function(){o.classList.add('out');window._splDone=1},1700+GREET.length*850+300);
-  setTimeout(function(){if(o.parentNode)o.parentNode.removeChild(o)},1700+GREET.length*850+1300)}
+  GREET.forEach(function(w,i){setTimeout(function(){g.textContent=w;g.classList.remove('pop');void g.offsetWidth;g.classList.add('pop')},1600+i*2600)});
+  var fin=function(){if(o._f)return;o._f=1;o.classList.add('out');window._splDone=1;setTimeout(function(){if(o.parentNode)o.parentNode.removeChild(o)},900)};o.onclick=fin;setTimeout(fin,1500+GREET.length*2100+300)}
 
 /* auth: phone or email, 18+ */
 function seg(v){return '<div class="seg sgv"><button class="'+(v==='p'?'on':'')+'" onclick="auVia(\'p\')">Phone</button><button class="'+(v==='e'?'on':'')+'" onclick="auVia(\'e\')">Email</button></div>'}
@@ -3410,11 +3457,11 @@ window.auMode=function(m){auKeep();S.au.mode=m;render()};
 SC.auth=function(){var a=S.au,m=a.mode||'up',v='e',st=a.step||1,up=m==='up';
   v='e';var h=topbar(up?'Create your account':'Sign in')+'<div class="pad"><div class="auhero"><div class="aulg">'+swan(84,'#fff')+'</div><b>IZEL</b><span>'+(st===1?(up?'Create your account to see verified homes near you.':'Welcome back.'):'Check your email for your code.')+'</span></div>';
   if(st===1){h+=soc()+(up?'<label class="fld"><span>Your name</span><input id="au_n" value="'+esc(a.au_n||'')+'" placeholder="e.g. Ama Mensah" autocomplete="name"></label>':'')+
-   (v==='p'?'<label class="fld"><span>Phone number</span><input id="au_p" type="tel" value="'+esc(a.au_p||'')+'" placeholder="024 000 0000" autocomplete="tel"></label>':'<label class="fld"><span>Email address</span><input id="au_e" type="email" value="'+esc(a.au_e||'')+'" placeholder="you@example.com" autocomplete="email"></label>')+
+   (v==='p'?'<label class="fld"><span>Phone number</span><input id="au_p" type="tel" value="'+esc(a.au_p||'')+'" placeholder="024 000 0000" autocomplete="tel"></label>':'<label class="fld"><span>Email or phone number</span><input id="au_e" type="text" inputmode="email" value="'+esc(a.au_e||'')+'" placeholder="you@example.com or 024 000 0000" autocomplete="username"></label>')+
    (up?'<label class="adult"><input type="checkbox" id="au_a" '+(a.adult?'checked':'')+'><span>I am 18 or older and agree to the Izel terms.</span></label>':'')+
-   (up?'<label class="fld"><span>Phone number <i style="font-weight:400;opacity:.7">(optional, kept private)</i></span><input id="au_p" type="tel" value="'+esc(a.au_p||'')+'" placeholder="024 000 0000" autocomplete="tel"></label>':'')+'<div class="sm" style="margin:-4px 0 12px"><a class="why" onclick="mailGuide()">I don\'t have an email</a></div>'+'<div class="note" style="margin:0 0 14px">Your email and phone stay private. Izel never shows it to anyone. <a onclick="whySheet(\'email\')" class="why">Why?</a></div><button class="btn blk" onclick="authNext()">Send code</button>'+
+   '<div class="note" style="margin:0 0 14px">We send the code to your email or phone when you ask for it. Izel never shows either to anyone. <a onclick="whySheet(\'email\')" class="why">Why?</a></div><button class="btn blk" onclick="authNext()">Send code</button>'+
    '<div class="sm" style="text-align:center;margin-top:16px">'+(up?'Already have an account? <a onclick="auMode(\'in\')" style="color:var(--acc);font-weight:700">Sign in</a>':'New to Izel? <a onclick="auMode(\'up\')" style="color:var(--acc);font-weight:700">Create account</a>')+'</div>'}
-  else{h+='<p class="sm">We sent a code to your '+(v==='p'?'phone':'email')+'.</p>'+(a.dev?'<div class="note" style="margin-bottom:12px">Sending is not switched on yet, so your code is <b>'+a.dev+'</b>.</div>':'')+'<label class="fld"><span>Code</span><input id="au_c" inputmode="numeric" maxlength="'+(a.ov?24:OL())+'" placeholder="'+(a.ov?'Code':OL()+'-digit code')+'"></label><button class="btn blk" onclick="authVerify()">Verify</button><button class="btn gh blk" style="margin-top:8px" onclick="S.au.step=1;render()">Change '+(v==='p'?'number':'email')+'</button>'}
+  else{h+='<p class="sm">We sent a code to your '+(a.via==='p'?'phone':'email')+'.</p>'+(a.dev?'<div class="note" style="margin-bottom:12px">Sending is not switched on yet, so your code is <b>'+a.dev+'</b>.</div>':'')+'<label class="fld"><span>Code</span><input id="au_c" inputmode="numeric" maxlength="'+(a.ov?24:OL())+'" placeholder="'+(a.ov?'Code':OL()+'-digit code')+'"></label><button class="btn blk" onclick="authVerify()">Verify</button><button class="btn gh blk" style="margin-top:8px" onclick="S.au.step=1;render()">Change '+(a.via==='p'?'number':'email')+'</button>'}
   return h+'</div>'};
 function soc(){return '<button class="btn blk soc2" onclick="socialGo(\'apple\')"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M16.400 12.600c0-2.300 1.900-3.400 2-3.500-1.100-1.600-2.800-1.800-3.400-1.800-1.400-.1-2.800.9-3.500.9s-1.800-.8-3-.8c-1.500 0-3 .9-3.800 2.300-1.600 2.800-.4 7 1.200 9.300.8 1.100 1.700 2.400 2.900 2.300 1.200 0 1.600-.7 3-.7s1.800.7 3 .7c1.200 0 2-1.100 2.800-2.200.9-1.300 1.200-2.500 1.300-2.600-.1 0-2.500-1-2.500-3.900zM14.200 5.800c.6-.8 1.100-1.800.9-2.800-.9 0-2 .6-2.600 1.400-.6.700-1.100 1.700-.9 2.700 1 .1 2-.5 2.600-1.300z"/></svg>Continue with Apple</button><button class="btn blk soc2 g" onclick="socialGo(\'google\')"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="#4285F4" d="M22 12.200c0-.7-.1-1.300-.2-1.900H12v3.700h5.600a4.800 4.800 0 01-2.100 3.100v2.600h3.400c2-1.800 3.100-4.500 3.100-7.500z"/><path fill="#34A853" d="M12 22.500c2.800 0 5.200-.9 6.900-2.500l-3.400-2.600c-.9.600-2.100 1-3.500 1-2.700 0-5-1.800-5.800-4.300H2.700v2.700A10.500 10.500 0 0012 22.500z"/><path fill="#FBBC05" d="M6.200 14.100a6.300 6.300 0 010-4.100V7.300H2.700a10.500 10.500 0 000 9.500z"/><path fill="#EA4335" d="M12 5.900c1.500 0 2.900.5 4 1.600l3-3C17.200 2.800 14.800 1.800 12 1.800c-4.100 0-7.700 2.400-9.300 5.500l3.500 2.700C7 7.700 9.300 5.900 12 5.900z"/></svg>Continue with Google</button><div class="orl"><span>or use your email</span></div>'}
 function lsrc(src,cb){if(document.querySelector('script[data-s="'+src+'"]'))return cb();var s=document.createElement('script');s.src=src;s.dataset.s=src;s.onload=cb;s.onerror=function(){toast('Could not reach the sign-in service. Check your connection.')};document.head.appendChild(s)}
@@ -3427,11 +3474,11 @@ function ident(){var a=S.au;return a.via==='e'?{email:a.au_e}:{phone:a.p}}
 authNext=async function(){auKeep();var a=S.au,v='e',up=a.mode==='up',n=(a.au_n||'').trim(),body={};
   if(up&&n.length<2)return toast('Enter your name');
   if(v==='p'){var p=(a.au_p||'').replace(/\D/g,'');if(p.length<9)return toast('Enter a valid phone number');body.phone=p;a.p=p}
-  else{var raw=(a.au_e||'').trim();if(raw&&raw.indexOf('@')<0&&/^[A-Za-z0-9]{3,16}$/.test(raw)){body.email=raw;a.em=raw;a.ov=1}else{var e=raw.toLowerCase();if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e))return toast('Enter a valid email');body.email=e;a.em=e;a.ov=0}}
+  else{var raw=(a.au_e||'').trim(),dg=raw.replace(/\D/g,'');a.ov=0;a.via='e';if(raw.indexOf('@')>-1){var e=raw.toLowerCase();if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e))return toast('Enter a valid email');body.email=e;a.em=e}else if(/^[\d\s+()-]+$/.test(raw)&&dg.length>=9){body.phone=dg;a.p=dg;a.via='p'}else if(raw&&/^[A-Za-z0-9]{3,16}$/.test(raw)){body.email=raw;a.em=raw;a.ov=1}else return toast('Enter your email or phone number')}
   if(up){if(!a.adult)return toast('You must be 18 or older to join');body.adult=true;body.mode='up'}
   try{var r=await api('POST','/api/auth/otp',body);if(a.mode==='in'&&!r.exists)return toast('No account found. Create one first.');a.n=n;a.dev=r.devCode;a.step=2;render()}catch(x){toast(x.message)}};
 authVerify=async function(){var c=($('au_c').value||'').trim();if(!(S.au&&S.au.ov)&&c.length<OL())return toast('Enter the full '+OL()+'-digit code');
-  var a=S.au,body={code:c,name:a.n,mode:a.mode};if(a.via==='e')body.email=a.em;else body.phone=a.p;if(a.mode==='up'){body.adult=true;var pc=(a.au_p||'').replace(/\D/g,'');if(pc.length>=9)body.contact=pc}
+  var a=S.au,body={code:c,name:a.n,mode:a.mode};if(a.via==='p')body.phone=a.p;else body.email=a.em;if(a.mode==='up'){body.adult=true;var pc=(a.au_p||'').replace(/\D/g,'');if(pc.length>=9)body.contact=pc}
   try{var r=await api('POST','/api/auth/verify',body);await window.__login(r)}catch(e){toast(e.message)}};
 
 /* roles: line icons, no emoji; tap goes straight in */
@@ -3556,7 +3603,7 @@ function I(d,s){return '<svg viewBox="0 0 24 24" width="'+(s||16)+'" height="'+(
 var LLd=0,MAP=null,ME=null,WID=null,TGT=null,MK={},SEL=null,TL=null,CITY={Accra:[5.6037,-0.1870],Kumasi:[6.6885,-1.6244]};
 function load(cb){if(window.L&&L.map)return cb();if(LLd===1)return setTimeout(function(){load(cb)},150);LLd=1;var c=document.createElement('link');c.rel='stylesheet';c.href='leaflet.css';document.head.appendChild(c);var s=document.createElement('script');s.src='leaflet.js';s.onload=function(){LLd=2;cb()};s.onerror=function(){LLd=0;var m=document.getElementById('lmap');if(m)m.innerHTML='<div class="empty">The map could not load. Check your connection.</div>'};document.head.appendChild(s)}
 function mstyle(){try{return localStorage.getItem('iz_mapstyle')||'std'}catch(e){return 'std'}}
-function tiles(){var s=mstyle();if(s==='sat')return L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'Imagery © Esri'});return L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'})}
+function tiles(){var s=mstyle();if(s==='sat')return L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'Imagery © Esri'});var dk=(document.documentElement.getAttribute('data-theme')==='dark'),ly=L.tileLayer('https://{s}.basemaps.cartocdn.com/'+(dk?'dark_all':'rastertiles/voyager')+'/{z}/{x}/{y}{r}.png',{maxZoom:19,subdomains:'abcd',attribution:'© OpenStreetMap © CARTO'}),fb=0;ly.on('tileerror',function(){if(fb)return;fb=1;ly.setUrl('https://tile.openstreetmap.org/{z}/{x}/{y}.png')});return ly}
 window.mapStyle=function(s){try{localStorage.setItem('iz_mapstyle',s)}catch(e){}var el=document.getElementById('lmap');if(el)el.setAttribute('data-ms',s);if(MAP&&TL){MAP.removeLayer(TL);TL=tiles();TL.addTo(MAP);TL.bringToBack()}mapSettings()};
 window.mapSettings=function(){var s=mstyle();function c(k,t,d){return '<button class="msc '+(s===k?'on':'')+'" onclick="mapStyle(\''+k+'\')"><i class="msp ms-'+k+'"></i><b>'+t+'</b><span>'+d+'</span></button>'}sheet('<h2 class="lx" style="font-size:20px">Map settings</h2><div class="sm" style="margin:10px 0 8px">Map style</div><div class="msg">'+c('std','Standard','Streets and names')+c('mute','Soft','Calm, fewer colours')+c('sat','Satellite','See the real roofs')+'</div><div class="sm" style="margin:16px 0 8px">How to read it</div><div class="note">Black dots are verified homes. Tap one to see it. The big seal is the home you picked. A home’s exact pin unlocks once your viewing is confirmed.</div><button class="btn blk" style="margin-top:14px" onclick="closeSheet()">Done</button>')};
 function dotI(){return L.divIcon({className:'izd',iconSize:[16,16],iconAnchor:[8,8],html:'<i></i>'})}
@@ -3839,15 +3886,21 @@ function sigPanel(key){SG[key]=SG[key]||{m:'t',t:'',img:''};var g=SG[key];
  '<div id="sgd_'+key+'" style="'+(g.m==='d'?'':'display:none')+'"><canvas class="sgc" id="sgc_'+key+'" width="600" height="180"></canvas><button class="btn sm2 ol" style="margin-top:6px" onclick="sgClear(\''+key+'\')">Clear</button></div></div>'}
 window.sgTab=function(k,m){var g=SG[k];g.m=m;['t','d'].forEach(function(x){var b=document.getElementById('sgb_'+k+'_'+x);if(b)b.className=x===m?'on':'';var p=document.getElementById('sg'+x+'_'+k);if(p)p.style.display=x===m?'':'none'});if(m==='d')sgInit(k)};
 window.sgType=function(k,v){SG[k].t=v.slice(0,60);var e=document.getElementById('sgv_'+k);if(e)e.innerHTML=v?esc2(v):'<span>Your signature</span>'};
-window.sgClear=function(k){var c=document.getElementById('sgc_'+k);if(c)c.getContext('2d').clearRect(0,0,c.width,c.height);SG[k].img=''};
-function sgInit(k){var c=document.getElementById('sgc_'+k);if(!c||c._i)return;c._i=1;var x=c.getContext('2d'),dn=false,lx=0,ly=0;x.lineWidth=5;x.lineCap='round';x.lineJoin='round';x.strokeStyle='#111';
- if(SG[k].img){var im=new Image();im.onload=function(){x.drawImage(im,0,0)};im.src=SG[k].img}
+window.sgClear=function(k){var c=document.getElementById('sgc_'+k);if(c){var x=c.getContext('2d');x.setTransform(1,0,0,1,0,0);x.clearRect(0,0,c.width,c.height);if(c._s){c._s.dn=false;c._s.n=0}}if(SG[k])SG[k].img=''};
+function sgInit(k){var c=document.getElementById('sgc_'+k);if(!c||c._i)return;c._i=1;var x=c.getContext('2d'),st=c._s={dn:false,lx:0,ly:0,n:0};
+ function style(){x.lineWidth=6;x.lineCap='round';x.lineJoin='round';x.strokeStyle='#111';x.fillStyle='#111'}
+ if(SG[k]&&SG[k].img){var im=new Image();im.onload=function(){x.drawImage(im,0,0)};im.src=SG[k].img}
  function pt(e){var r=c.getBoundingClientRect();return [(e.clientX-r.left)*c.width/r.width,(e.clientY-r.top)*c.height/r.height]}
- c.addEventListener('pointerdown',function(e){dn=true;var p=pt(e);lx=p[0];ly=p[1];x.beginPath();x.arc(lx,ly,2.5,0,6.3);x.fillStyle='#111';x.fill();try{c.setPointerCapture(e.pointerId)}catch(_){}e.preventDefault()});
- c.addEventListener('pointermove',function(e){if(!dn)return;var p=pt(e);x.beginPath();x.moveTo(lx,ly);x.lineTo(p[0],p[1]);x.stroke();lx=p[0];ly=p[1];e.preventDefault()});
- var up=function(){if(!dn)return;dn=false;try{SG[k].img=c.toDataURL('image/png')}catch(_){}};c.addEventListener('pointerup',up);c.addEventListener('pointercancel',up);c.addEventListener('pointerleave',up)}
-window.sgGet=function(k){var g=SG[k];if(!g)return null;if(g.m==='t')return g.t.trim().length>=2?{type:'typed',text:g.t.trim()}:null;var c=document.getElementById('sgc_'+k);if(c&&!g.img){try{g.img=c.toDataURL('image/png')}catch(_){}}
- if(!g.img)return null;var c2=document.createElement('canvas');c2.width=c.width;c2.height=c.height;var d=c.getContext('2d').getImageData(0,0,c.width,c.height).data,has=false;for(var i=3;i<d.length;i+=4)if(d[i]>20){has=true;break}return has?{type:'drawn',img:g.img}:null};
+ function end(){if(!st.dn)return;st.dn=false;try{SG[k].img=c.toDataURL('image/png')}catch(_){}}
+ c.addEventListener('pointerdown',function(e){e.preventDefault();style();st.dn=true;var p=pt(e);st.lx=p[0];st.ly=p[1];st.n=1;x.beginPath();x.arc(p[0],p[1],3,0,6.3);x.fill();try{c.setPointerCapture(e.pointerId)}catch(_){}});
+ c.addEventListener('pointermove',function(e){if(!st.dn)return;e.preventDefault();var ev=e.getCoalescedEvents?e.getCoalescedEvents():[e];if(!ev.length)ev=[e];style();ev.forEach(function(q){var p=pt(q);x.beginPath();x.moveTo(st.lx,st.ly);x.lineTo(p[0],p[1]);x.stroke();st.lx=p[0];st.ly=p[1];st.n++})});
+ ['pointerup','pointercancel','lostpointercapture'].forEach(function(n){c.addEventListener(n,end)});
+ c.addEventListener('touchmove',function(e){e.preventDefault()},{passive:false})}
+window.sgInit=sgInit;
+window.sgGet=function(k){var g=SG[k];if(!g)return null;if(g.m==='t')return g.t.trim().length>=2?{type:'typed',text:g.t.trim()}:null;var c=document.getElementById('sgc_'+k);if(!c)return g.img?{type:'drawn',img:g.img}:null;
+ var d=c.getContext('2d').getImageData(0,0,c.width,c.height).data,has=false;for(var i=3;i<d.length;i+=4)if(d[i]>20){has=true;break}if(!has)return null;g.img=c.toDataURL('image/png');return {type:'drawn',img:g.img}};
+
+
 function sigHtml(s,nm){if(!s)return '<div class="sgn">Awaiting signature</div>';return (s.type==='typed'?'<div class="sgty">'+esc2(s.text)+'</div>':'<img class="sgim" src="'+s.img+'" alt="">')+'<div class="sgn">'+esc2(nm||'')+(s.t?' · '+new Date(s.t).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}):'')+'</div>'}
 /* ---------- sign block (with agree tick) ---------- */
 window.signBlock=function(key,fn,label){return '<div class="sgb"><div class="sm lbl">Sign to agree</div>'+sigPanel(key)+'<label class="cb dcb" style="margin-top:10px"><input type="checkbox" id="sga_'+key+'"><span>I have read the agreement and I agree to it</span></label><button class="btn blk" style="margin-top:10px" onclick="'+fn+'">'+label+'</button><div class="sm" style="margin-top:8px;text-align:center">You get a copy of the signed agreement automatically.</div></div>'};
@@ -3937,7 +3990,8 @@ var _c3=SC.chat;SC.chat=function(){var s=_c3(),c=DB.chats[S.p.id];if(!c||!c.list
 var RULES={stay:['Check-in from 2pm and check-out by 11am.','Be in your room by 9pm, and no later than 12 midnight.','No smoking or open flames inside.','No extra guests unless the host knows first.','Keep noise down after 10pm.','Damage to the property is charged to the guest.'],
  hostel:['Be in by 10pm. After that the gate is locked.','Visitors leave by 8pm.','No cooking in the rooms.','Keep shared spaces clean after use.','Pay each term on time.','No loud music or parties.']};
 function rulesFor(l){var o=U(l.owner);return (l.rules&&l.rules.length)?l.rules:RULES[l.type]||[]}
-function rulesBox(l,key,fn,label){return '<div class="dcd" style="margin-top:12px"><h3>House rules</h3><div class="cls" style="margin-bottom:8px">'+rulesFor(l).map(function(x){return '<span>✓ '+esc2(x)+'</span>'}).join('')+'</div>'+window.signBlock(key,fn,label)+'</div>'}
+function rulesBox(l,key,fn,label){var R=rulesFor(l);return '<details class="rlz"><summary>House rules <i>'+R.length+'</i><span>Tap to read</span></summary><div class="cls">'+R.map(function(x){return '<span>\u2713 '+esc2(x)+'</span>'}).join('')+'</div></details>'+window.signBlock(key,fn,label)}
+window.rulesBox=rulesBox;
 var _sb=window.stayBook;window.stayBook=function(lid){_sb(lid);var l=listing_(lid),box=document.querySelector('.sheet')||document.getElementById('sheet');var btn=[].filter.call(document.querySelectorAll('button'),function(b){return /stayGo\(\)/.test(b.getAttribute('onclick')||'')})[0];if(btn){btn.insertAdjacentHTML('beforebegin',rulesBox(l,'st_'+lid,'stayGoS(\''+lid+'\')','Sign and continue to payment'));btn.remove();setTimeout(function(){sgInit('st_'+lid)},50)}};
 window.stayGoS=function(lid){var key='st_'+lid,sig=needSig(key);if(!sig)return;var n=DB.dealRooms.length;window.stayGo();if(DB.dealRooms.length>n){var r=DB.dealRooms[DB.dealRooms.length-1],l=listing_(lid);agMake('stay',l,sig,r.id,'House rules agreement',[['Check-in',r.in||''],['Check-out',r.out||''],['Nights',String(r.n||1)]],rulesFor(l));save()}};
 var _rb=window.reserveBed;window.reserveBed=reserveBed=function(lid,i){_rb(lid,i);var l=listing_(lid),btn=[].filter.call(document.querySelectorAll('button'),function(b){return /payUI\(.*Bed reservation/.test(b.getAttribute('onclick')||'')})[0];if(btn){var oc=btn.getAttribute('onclick'),label=btn.textContent;btn.insertAdjacentHTML('beforebegin',rulesBox(l,'hb_'+lid,'bedGoS(\''+lid+'\','+i+')',label.replace('and reserve','· sign and reserve')));btn.remove();setTimeout(function(){sgInit('hb_'+lid)},50)}};
@@ -3960,6 +4014,88 @@ window.pvGo=function(n){var N=listing_(_pv.l).imgs.length;_pv.i=(_pv.i+n+N)%N;pv
 document.addEventListener('click',function(e){var t=e.target;if(t&&t.tagName==='IMG'&&t.parentElement&&t.parentElement.classList&&t.parentElement.classList.contains('slider')&&S.scr==='listing'){var k=[].indexOf.call(t.parentElement.children,t);izView(S.p.id,k)}});
 })();
 (function(){var _p=SC.privacy;SC.privacy=function(){var s=_p();var t='<div class="pfc" style="margin:14px 16px"><h3>Terms in short</h3><div class="cls" style="gap:8px"><span>✓ What happens at your end stays at your end. Chats, agreements and payments are only visible to you, the other person and the Izel team if there is a report.</span><span>✓ Your email, phone number and ID are never shown to other people and never sold or passed to third parties.</span><span>✓ Signed agreements are kept in both accounts as proof. Neither side can edit them afterwards.</span><span>✓ All payments are made inside Izel. Anyone who asks you to pay elsewhere can be reported.</span><span>✓ You must be 18 or older to use Izel.</span></div></div>';var i=s.lastIndexOf('</div>');return i>-1?s.slice(0,i)+t+s.slice(i):s+t}})();
+
+/* ======== v38: navigation, roles, card facts, land sizes, services ======== */
+(function(){
+/* ---- back from everywhere ---- */
+var _tab=tab;
+tab=function(t){var cur=S.scr;if(cur&&cur!==t&&!S._tb){S.th=S.th||[];if(S.th[S.th.length-1]!==cur)S.th.push(cur);if(S.th.length>12)S.th.shift()}_tab(t);if(!S._tb)try{history.pushState({iz:1},'')}catch(e){}};
+window.tabBack=function(){var p=S.th&&S.th.pop();S._tb=1;try{if(p)_tab(p);else _tab(defaultTab())}finally{S._tb=0}};
+var _go=go;go=function(s,p){_go(s,p);try{history.pushState({iz:1},'')}catch(e){}};
+var _tbar=topbar;topbar=function(t,opt){opt=opt||{};var fix=opt.noback&&!opt.logo&&S.th&&S.th.length>0;if(fix){var o2={};for(var k in opt)o2[k]=opt[k];o2.noback=0;return _tbar(t,o2).replace('onclick="back()"','onclick="tabBack()"')}return _tbar(t,opt)};
+function closeLayers(){var o=document.getElementById('ov');if(o&&o.innerHTML.trim()){closeSheet();return true}var a=document.getElementById('agov');if(a){a.remove();return true}var v=document.getElementById('pvw');if(v){v.remove();return true}return false}
+window.addEventListener('popstate',function(){if(/review|dev|ops|iz=/.test(location.hash))return;if(closeLayers())return;if(S.stack&&S.stack.length)return back();if(S.th&&S.th.length)return tabBack()});
+var _sh=sheet;sheet=function(h){_sh(h);var s=document.querySelector('#ov .sheet');if(s&&!s.querySelector('.sx'))s.insertAdjacentHTML('afterbegin','<button class="sx" onclick="closeSheet()" aria-label="Close">'+ico('x',18)+'</button>')};
+/* ---- role page ---- */
+var PH={seeker:'ph_ext_c.jpg',owner:'ph_ext_a.jpg',owner2:'ph_ext_b.jpg',host:'ph_int_liv2.jpg',agent:'ph_int_liv1.jpg',pro:'ph_int_kit1.jpg'};
+SC.role=function(){var R=ROLES.map(function(r,i){var ph=PH[r[0]]||'ph_ext_c.jpg';return '<button class="rkp" style="animation-delay:'+(i*90)+'ms" onclick="rolePick(this,\''+r[0]+'\')"><img src="'+ph+'" alt=""><span class="rks"></span><span class="rkt"><span class="rki">'+r[1]+'</span><b>'+r[2]+'</b><small>'+r[3]+'</small></span><i class="ck">'+ico('check',16)+'</i></button>'}).join('');
+ return '<div class="rolepg rp2"><div class="rph"><div class="logo">'+swan(30)+'IZEL</div><h1>What brings you here?</h1><p class="sm">Pick one. Each account has one purpose, so choose the one that fits you.</p></div><div class="rgp">'+R+'</div><button class="lnk" onclick="go(\'pitch\')">Owner? See why list on Izel</button><div class="sm" style="text-align:center;margin:6px 0 30px">Izel is powered by Berchy.</div></div>'};
+SC.role.__v=2;
+window.rolePick=function(el,r){[].forEach.call(document.querySelectorAll('.rkp,.rk'),function(x){x.classList.remove('sel')});el.classList.add('sel');setTimeout(function(){pickRole(r)},380)};
+/* ---- card facts ---- */
+var SV={bed:'<path d="M3 18V7M3 13h18v5M21 13a3 3 0 00-3-3h-6v3"/><circle cx="7.500" cy="10" r="1.500"/>',bath:'<path d="M4 12h16v2a5 5 0 01-5 5H9a5 5 0 01-5-5zM7 12V6a2 2 0 014 0M6 19l-1 2M18 19l1 2"/>',car:'<path d="M5 16l1.500-6h11L19 16M3 16h18v3H3zM7 19v1.500M17 19v1.500"/>',area:'<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>',plot:'<path d="M4 8l8-4 8 4v8l-8 4-8-4z"/>'};
+function fx(k,t){return '<span class="fx"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+SV[k]+'</svg>'+t+'</span>'}
+function nf(n){return Number(n).toLocaleString('en-GB',{maximumFractionDigits:0})}
+window.landFmt=function(l){var out=[],m=/(\d+)\s*plots?/i.exec(l.plot||''),d=/(\d+)\s*(?:ft|feet)?\s*[x×]\s*(\d+)\s*(?:ft|feet)?/i.exec(l.plot||''),ac=/(\d+(?:\.\d+)?)\s*acres?/i.exec(l.plot||'');
+ if(m)out.push(m[1]+(m[1]==='1'?' plot':' plots'));if(d)out.push(d[1]+' × '+d[2]+' ft'+(m&&+m[1]>1?' each':''));
+ if(l.size){var a=l.size/4046.86;out.push(nf(l.size)+' m²');out.push((a>=1?a.toFixed(a%1<.05?0:2):a.toFixed(2))+' ac')}else if(ac)out.push(ac[1]+' ac');return out};
+var _lc=lcard;lcard=function(l){var s=_lc(l),f=[];
+ if(l.type==='land')landFmt(l).forEach(function(x,i){f.push('<span class="fx">'+(i===0?'<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round">'+SV.plot+'</svg>':'')+x+'</span>')});
+ else{if(l.type!=='hostel'||l.beds)f.push(fx('bed',l.beds+' bed'));if(l.baths)f.push(fx('bath',l.baths+' bath'));if(l.cars)f.push(fx('car',l.cars+' car'+(l.cars>1?'s':'')));if(l.size)f.push(fx('area',l.size+' m²'))}
+ s=s.replace(/<div class="hrt">[\s\S]*?<\/div>(?=<div class="hcb">)/,'');
+ return s.replace(/(<div class="hl">[\s\S]*?<\/div>)/,'$1<div class="hfx">'+f.join('')+'</div>')};
+/* land size on the detail page */
+var _l5=SC.listing;SC.listing=function(){var s=_l5(),l=listing_(S.p.id);if(l&&l.type==='land'){var f=landFmt(l).join(' · ');if(f)s=s.replace(/(<div class="[^"]*"[^>]*>)\s*0 bedrooms[^<]*/,'$1'+f)}return s};
+/* ---- services ---- */
+var SI={Mover:'<path d="M3 7h11v9H3zM14 10h4l3 3v3h-7zM7 19.500a1.500 1.500 0 100-3 1.500 1.500 0 000 3zM17 19.500a1.500 1.500 0 100-3 1.500 1.500 0 000 3z"/>',Engineer:'<path d="M4 18h16M6 18v-4a6 6 0 0112 0v4M12 8V5M9 5h6"/>',Surveyor:'<path d="M4 20L20 4M7 17l2 2M10 14l2 2M13 11l2 2M16 8l2 2"/>',Lawyer:'<path d="M12 4v16M6 20h12M5 8h14M5 8l-2 6a3 3 0 006 0zM19 8l-2 6a3 3 0 006 0z"/>',Photographer:'<rect x="3" y="7" width="18" height="12" rx="3"/><circle cx="12" cy="13" r="3.200"/><path d="M8 7l1.500-2h5L16 7"/>'};
+SC.services=function(){ensurePartners();var K=[['all','All'],['Mover','Movers'],['Engineer','Engineers'],['Surveyor','Surveyors'],['Lawyer','Lawyers'],['Photographer','Photographers']],f=S.svc||'all',
+ P=DB.partners.filter(function(p){return p.active&&p.kind!=='Pickup driver'&&(f==='all'||p.kind===f)}),my=(DB.services||[]).filter(function(x){return x.by===DB.me}).reverse();
+ return topbar('Services',{noback:1})+'<div class="pad" style="padding-bottom:2px"><div class="svh"><span class="svb">'+'<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">'+IC.izsvc+'</svg>'+'</span><div><b>Hire a verified pro</b><div class="sm">Checked by Izel. You pay inside Izel.</div></div></div></div>'+
+ '<div class="chips" style="padding:6px 16px 10px">'+K.map(function(k){return '<button class="chip '+(f===k[0]?'on':'')+'" onclick="S.svc=\''+k[0]+'\';render()">'+k[1]+'</button>'}).join('')+'</div><div class="pad" style="padding-top:0">'+
+ (P.length?P.map(function(p){return '<div class="svc"><span class="svi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">'+(SI[p.kind]||SI.Engineer)+'</svg></span><div style="flex:1;min-width:0"><b>'+esc(p.name)+'</b><div class="sm">'+esc(p.kind)+' · '+esc(p.city)+' · '+(p.jobs||0)+' jobs</div><div class="sm" style="opacity:.7">'+esc(p.licence)+'</div></div><button class="btn sm2 blk2" onclick="quoteSheet(\''+p.id+'\')">Quote</button></div>'}).join(''):'<div class="empty">No professionals here yet.</div>')+
+ (my.length?'<h3 class="dsh">My requests</h3>'+my.map(function(x){var p=DB.partners.filter(function(q){return q.id===x.partner})[0];return '<div class="kv"><span>'+esc(x.kind)+(p?' · '+esc(p.name):'')+'</span><b>'+esc(x.status)+'</b></div>'}).join(''):'')+
+ '<div class="dcd" style="margin-top:14px"><b style="font-size:14px">Do you move, build or survey for a living?</b><p class="sm" style="margin:6px 0 10px">Join Izel and get jobs from people who are buying, renting and building.</p><button class="btn blk" onclick="proApply()">Join as a professional</button></div></div>'};
+})();
+
+/* ======== v39: signature, stay booking, deal-room chat, swipe back, money ======== */
+(function(){
+/* ---- signature pad: rock solid ---- */
+/* ---- short stay booking: just dates ---- */
+window.stayBook=function(lid){var l=listing_(lid),t=isoD(new Date(Date.now()+864e5)),t2=isoD(new Date(Date.now()+2*864e5));window._st={lid:lid};
+ sheet('<h2 class="lx" style="font-size:18px;margin:0 0 2px">Reserve your stay</h2><div class="sm" style="margin-bottom:10px">'+esc(l.title)+'</div>'+
+ '<div class="two"><label class="fld"><span>Check-in</span><input id="st_d" type="date" min="'+isoD(new Date())+'" value="'+t+'" onchange="stayDates()"></label><label class="fld"><span>Check-out</span><input id="st_o" type="date" min="'+t2+'" value="'+t2+'" onchange="stayDates()"></label></div>'+
+ '<div class="two"><label class="fld"><span>Guests</span><select id="st_g">'+[1,2,3,4,5,6].map(function(n){return '<option>'+n+'</option>'}).join('')+'</select></label><label class="fld"><span>Pickup</span><select id="st_p" onchange="stayCalc()"><option value="none">None</option><option value="airport">Airport</option><option value="place">Other place</option></select></label></div>'+
+ '<input type="hidden" id="st_n" value="1"><input type="hidden" id="st_a" value="0"><label class="fld" id="st_pl" style="display:none"><span>Pickup from</span><input id="st_pw" placeholder="e.g. Circle bus station"></label>'+
+ '<div class="note" id="st_pn" style="margin-bottom:8px;display:none"></div><div class="kv t"><span id="st_sum"></span><b id="st_tot"></b></div>'+
+ window.rulesBox(l,'st_'+lid,'stayGoS(\''+lid+'\')','Sign and continue to payment'));stayDates();setTimeout(function(){sgInit('st_'+lid)},50)};
+window.stayDates=function(){var d=$('st_d'),o=$('st_o');if(!d||!o)return;var a=new Date(d.value+'T12:00:00'),mn=new Date(a.getTime()+864e5);o.min=isoD(mn);if(!o.value||new Date(o.value+'T12:00:00')<=a)o.value=isoD(mn);var n=Math.max(1,Math.round((new Date(o.value+'T12:00:00')-a)/864e5));$('st_n').value=n;stayCalc()};
+
+/* ---- money screen: grouped cards like the profile ---- */
+SC.o_money=function(){var ds=DB.deals.filter(function(d){return d.owner===DB.me}).reverse(),tot=ds.reduce(function(a,d){return a+d.payout},0),u=me()||{};
+ var rows=ds.length?ds.map(function(d){var l=listing_(d.listing);return '<div class="gr"><div class="gt"><b>'+esc(l.title)+'</b><span class="pill ok">Paid out</span></div><div class="gs">'+esc(U(d.seeker).name)+' \u00B7 '+ago(d.t)+' ago</div><div class="gk"><span>Payment</span><span>'+money(d.amount)+'</span></div><div class="gk"><span>Izel fee ('+FEE[l.type]+'%)</span><span>\u2212'+money(d.fee)+'</span></div><div class="gk"><span>Paid to you</span><b>'+money(d.payout)+'</b></div></div>'}).join(''):'<div class="gr"><div class="gs">No payments yet. When someone pays for your place, it shows here.</div></div>';
+ return topbar('Money',{noback:1,right:bell()})+'<div class="gh">Balance</div><div class="gc"><div class="gr"><div class="gs">Paid to you through Izel</div><div class="gbig">'+money(tot)+'</div><div class="gs">Sent within 24 hours of each payment, minus the Izel fee and the payment processor fee.</div></div></div>'+
+ '<div class="gh">Payments</div><div class="gc">'+rows+'</div>'+
+ '<div class="gh">Where should we pay you?</div><div class="gc"><div class="gr"><div class="chs" style="margin-bottom:10px"><button id="pk_m" class="on" onclick="pkWay(\'m\')">Mobile money</button><button id="pk_b" onclick="pkWay(\'b\')">Bank account</button></div><div class="gs" style="margin-bottom:8px">'+(u.payout?'Account ending '+esc(u.payout)+' is saved. Saving again replaces it.':'Add where you want your money sent.')+'</div><div id="pk_mm"><label class="fld"><span>Network</span><select id="po_n"><option>MTN</option><option>Telecel</option><option>AirtelTigo</option></select></label></div><div id="pk_bb" style="display:none"><label class="fld"><span>Bank</span><select id="po_b">'+['GCB Bank','Ecobank','Stanbic Bank','Absa Bank','Fidelity Bank','Zenith Bank','CalBank','Access Bank','Republic Bank','Standard Chartered','Prudential Bank','First National Bank','Consolidated Bank'].map(function(x){return '<option>'+x+'</option>'}).join('')+'</select></label></div><label class="fld"><span id="pk_l">Mobile money number</span><input id="po_p" type="tel" placeholder="024 000 0000"></label><label class="fld"><span>Name on the account</span><input id="po_a" placeholder="Same as your ID"></label><button class="btn blk" onclick="savePayout()">Save</button></div></div>'};
+window.pkWay=function(w){window._pw=w;$('pk_m').className=w==='m'?'on':'';$('pk_b').className=w==='b'?'on':'';$('pk_mm').style.display=w==='m'?'':'none';$('pk_bb').style.display=w==='b'?'':'none';$('pk_l').textContent=w==='m'?'Mobile money number':'Account number';$('po_p').placeholder=w==='m'?'024 000 0000':'Account number'};
+window.savePayout=async function(){try{var bank=window._pw==='b',r=await api('POST','/api/payout/recipient',bank?{kind:'bank',bank:$('po_b').value,number:$('po_p').value,name:$('po_a').value}:{network:$('po_n').value,number:$('po_p').value,name:$('po_a').value});me().payout=r.last4;ls('izel_po'+DB.me,r.last4);toast('Saved');render()}catch(e){toast(e.message)}};
+
+/* ---- chat inside the deal room ---- */
+var _dl=SC.deal;SC.deal=function(){var s=_dl(),r=null;try{r=R_(S.p.id)}catch(e){}if(!r||!r.chat||!DB.chats[r.chat])return s;var c=DB.chats[r.chat],id=DB.me,M=c.msgs.filter(function(m){return m.from!=='sys'}).slice(-6);
+ var Q=['Can we adjust the move-in date?','Is the place still available?','Can I come and see it again?'];
+ return s+'<div class="sec dch"><h2>Messages</h2><div class="dcm">'+(M.length?M.map(function(m){return '<div class="bub '+(m.from===id?'me':'th')+'">'+esc(m.x)+'</div>'}).join(''):'<div class="sm">Say hello. Ask anything about the place.</div>')+'</div><div class="row wrap" style="gap:6px;margin:8px 0">'+Q.map(function(q){return '<button class="chip" onclick="var i=document.getElementById(\'cm\');i.value=this.textContent;i.focus()">'+q+'</button>'}).join('')+'</div><div class="row" style="gap:8px"><input id="cm" class="sgi" style="flex:1;margin:0" placeholder="Write a message" onkeydown="if(event.key===\'Enter\')sendMsg(\''+esc(c.id)+'\')"><button class="btn sm2" onclick="sendMsg(\''+esc(c.id)+'\')">Send</button></div></div>'};
+
+/* ---- swipe right to go back ---- */
+window.izBack=function(){if(closeLayers2())return;if(S.stack&&S.stack.length)return back();if(S.th&&S.th.length)return tabBack()};
+function closeLayers2(){var o=document.getElementById('ov');if(o&&o.innerHTML.trim()){closeSheet();return true}var a=document.getElementById('agov');if(a){a.remove();return true}var v=document.getElementById('pvw');if(v){v.remove();return true}return false}
+var sx=0,sy=0,st=0,ok=false;
+document.addEventListener('touchstart',function(e){var t=e.touches[0];sx=t.clientX;sy=t.clientY;st=Date.now();ok=!(e.target.closest&&e.target.closest('.slider,.phs,canvas,input,textarea,select,.hs,.map,#map,.leaflet-container,[data-noswipe]'))&&sx<window.innerWidth*0.4},{passive:true});
+document.addEventListener('touchend',function(e){if(!ok)return;ok=false;var t=e.changedTouches[0],dx=t.clientX-sx,dy=t.clientY-sy;if(dx>90&&Math.abs(dy)<60&&dx>Math.abs(dy)*2&&Date.now()-st<700)izBack()},{passive:true});
+
+/* avatar fallback */
+var _avt=avt;avt=function(id,cls){var u=U(id)||{};if(u.photo&&MEDIA[u.photo])return _avt(id,cls);var n=(u.name||'').trim();return '<div class="av '+(cls||'')+'">'+(n?initials(n):ico('user',18))+'</div>'};
+/* keep open sections open when the page refreshes itself */
+var _rn=render;render=function(){var a=document.getElementById('app'),key=S.scr+'|'+(S.p&&S.p.id||''),op=null,sc=window.scrollY;if(a&&render._k===key)op=[].map.call(a.querySelectorAll('details'),function(d){return d.open});_rn();if(op){var ds=a.querySelectorAll('details');if(ds.length===op.length)op.forEach(function(o,i){ds[i].open=o})}if(render._k===key&&sc)window.scrollTo(0,sc);render._k=key};
+})();
 /* ===== boot ===== */
 function start(){if(DB)return;load();if(window.ONLINE){bootOnline();return}if(DB.me&&DB.role&&DB.users[DB.me]){S.scr=defaultTab()}else{DB.me=null;DB.role=null;S.scr='welcome'}render()}
 idbOpen(function(){mLoadAll(function(){start()})});

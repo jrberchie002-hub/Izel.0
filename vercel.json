@@ -23,7 +23,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://accounts.google.com https://appleid.cdn-apple.com https://js.paystack.co; style-src 'self' 'unsafe-inline' https://accounts.google.com; img-src 'self' data: blob: https://tile.openstreetmap.org https://*.tile.openstreetmap.org https://server.arcgisonline.com https://*.supabase.co; media-src 'self' blob: data:; connect-src 'self' https://accounts.google.com https://appleid.apple.com https://api.paystack.co; frame-src https://accounts.google.com https://js.paystack.co https://checkout.paystack.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://appleid.apple.com"
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://accounts.google.com https://appleid.cdn-apple.com https://js.paystack.co; style-src 'self' 'unsafe-inline' https://accounts.google.com; img-src 'self' data: blob: https://*.basemaps.cartocdn.com https://tile.openstreetmap.org https://*.tile.openstreetmap.org https://server.arcgisonline.com https://*.supabase.co; media-src 'self' blob: data:; connect-src 'self' https://accounts.google.com https://appleid.apple.com https://api.paystack.co; frame-src https://accounts.google.com https://js.paystack.co https://checkout.paystack.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://appleid.apple.com"
         },
         {
           "key": "X-Frame-Options",
