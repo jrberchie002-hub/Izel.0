@@ -43,16 +43,16 @@ module.exports = function makeApp(E, store, smsImpl, fetchImpl) {
     const phone = ident(body); if (!phone) return err(400, body.email ? 'Enter a valid email address' : 'Enter a valid phone number');
     const rec = (await store.get('otps', phone)) || { sent: [] }; rec.sent = (rec.sent || []).filter(t => t > now() - 600000);
     if (rec.sent.length >= 3) return err(429, 'Too many codes. Wait a few minutes and try again.');
-    const code = DEV ? devCode() : String(crypto.randomInt(0, 10 ** OTPN)).padStart(OTPN, '0');
+    const useDev = DEV && (E.OTP_DEV_ALL === '1' || !ADMINS.includes(phone)), code = useDev ? devCode() : String(crypto.randomInt(0, 10 ** OTPN)).padStart(OTPN, '0');
     rec.h = sha(code + SECRET + phone); rec.exp = now() + 300000; rec.tries = 0; rec.sent.push(now());
-    if (!DEV) {
+    if (!useDev) {
       const msg = 'Your Izel code is ' + code + '. It expires in 5 minutes. Never share it.';
-      if (phone.startsWith('e:')) { if (!mailer.ready()) return err(503, 'Email sign-in is not set up yet. Use your phone number.'); try { await mailer.send(phone.slice(2), 'Your Izel code', msg); } catch (e) { return err(502, 'Could not send the code: ' + e.message); } }
+      if (phone.startsWith('e:')) { if (!mailer.ready()) return err(503, 'Email codes are not switched on yet. Please use Continue with Google.'); try { await mailer.send(phone.slice(2), 'Your Izel code', msg); } catch (e) { return err(502, /domain|testing emails|own email/i.test(e.message) ? 'Email codes only reach the Izel team until a sending domain is verified. Please use Continue with Google for now.' : 'Could not send the code: ' + e.message); } }
       else { if (!sms.ready()) return err(503, 'Phone codes are not switched on yet. Please use your email.'); try { await sms.send(phone, msg); } catch (e) { return err(502, 'Could not send the code: ' + e.message); } }
     }
     await store.put('otps', phone, rec);
     const exists = await store.get('phones', phone);
-    return out(200, { ok: true, exists: !!exists, devCode: DEV ? code : undefined });
+    return out(200, { ok: true, exists: !!exists, devCode: useDev ? code : undefined });
   }
   async function verifyOtp(body) {
     if (isOv(body)) {
@@ -570,7 +570,7 @@ module.exports = function makeApp(E, store, smsImpl, fetchImpl) {
     if (m === 'OPTIONS') return { status: 204, headers: cors(), body: '' };
     let body = {}; if (req.body && !/^\/api\/(_up|pay\/webhook)/.test(p)) { try { body = JSON.parse(Buffer.isBuffer(req.body) ? req.body.toString() : req.body); } catch (e) { return err(400, 'Bad JSON'); } }
     try {
-      if (p === '/api/health') return out(200, { ok: true, store: store.kind, sms: sms.ready() || DEV, otpDev: DEV, paystack: !!E.PAYSTACK_SECRET_KEY, admins: ADMINS.length });
+      if (p === '/api/health') return out(200, { ok: true, v: '48', store: store.kind, sms: sms.ready() || DEV, otpDev: DEV, paystack: !!E.PAYSTACK_SECRET_KEY, admins: ADMINS.length });
       if (p === '/api/config') return out(200, { ok: true, otpLen: OTPN, ownerPct: R.OWNER_PCT, google: E.GOOGLE_CLIENT_ID || undefined, maps: E.GOOGLE_MAPS_KEY || undefined, maptiler: E.MAPTILER_KEY || undefined, apple: E.APPLE_CLIENT_ID || undefined, paystack: !!E.PAYSTACK_SECRET_KEY, test: !E.PAYSTACK_SECRET_KEY, usdRate: +E.USD_RATE || undefined });
       if (p === '/api/auth/otp' && m === 'POST') return await sendOtp(body);
       if (p === '/api/auth/google' && m === 'POST') return await socialLogin('google', body);

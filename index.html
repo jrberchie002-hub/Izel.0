@@ -3487,6 +3487,13 @@ window.socialGo=function(p){var C=window.__CFG?__CFG():{};auKeep();var a=S.au;if
   function done(cred,name){api('POST','/api/auth/'+p,{credential:cred,name:name||a.au_n||'',mode:a.mode,adult:a.mode==='up'?true:undefined}).then(function(r){return window.__login(r)}).catch(function(e){toast(e.message)})}
   if(p==='google'){lsrc('https://accounts.google.com/gsi/client',function(){google.accounts.id.initialize({client_id:C.google,callback:function(r){done(r.credential)}});google.accounts.id.prompt(function(n){if(n.isNotDisplayed&&n.isNotDisplayed()||n.isSkippedMoment&&n.isSkippedMoment())toast('Google sign-in was closed. Try again or use your email.')})})}
   else{lsrc('https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js',function(){AppleID.auth.init({clientId:C.apple,scope:'name email',redirectURI:location.origin,usePopup:true});AppleID.auth.signIn().then(function(r){var nm=r.user&&r.user.name?((r.user.name.firstName||'')+' '+(r.user.name.lastName||'')).trim():'';done(r.authorization.id_token,nm)}).catch(function(){toast('Apple sign-in was cancelled')})})}};
+/* ---- sign-in buttons: reliable Google button, Apple only when configured ---- */
+var _soc=soc;soc=function(){var h=_soc(),C=window.CFG||{};h=h.replace('or use your email','or use email or phone');return h};
+var _sg=window.socialGo;window.socialGo=function(p){if(p!=='google')return _sg(p);var C=window.CFG||{},a=S.au||{};try{auKeep()}catch(e){}if(a.mode==='up'&&!a.adult)return toast('Please confirm you are 18 or older first');if(!C.google)return toast('Google sign-in is not switched on yet.');
+ sheet('<h2 class="lx" style="font-size:18px;margin:0 0 6px">Continue with Google</h2><div class="sm" style="margin-bottom:12px">Choose your Google account.</div><div id="gbtn" style="display:flex;justify-content:center;min-height:48px"><span class="sm">Loading…</span></div>');
+ function go2(){google.accounts.id.initialize({client_id:C.google,callback:function(r){closeSheet();api('POST','/api/auth/google',{credential:r.credential,name:a.au_n||'',mode:a.mode,adult:a.mode==='up'?true:undefined}).then(function(x){return window.__login(x)}).catch(function(e){toast(e.message)})}});var g=document.getElementById('gbtn');g.innerHTML='';google.accounts.id.renderButton(g,{theme:'filled_black',size:'large',text:'continue_with',shape:'pill',width:280})}
+ if(window.google&&google.accounts&&google.accounts.id)return go2();var s=document.createElement('script');s.src='https://accounts.google.com/gsi/client';s.async=1;s.onload=go2;s.onerror=function(){var g=document.getElementById('gbtn');if(g)g.innerHTML='<span class="sm">Could not reach Google. Check your connection.</span>'};document.head.appendChild(s)};
+
 function ident(){var a=S.au;return a.via==='e'?{email:a.au_e}:{phone:a.p}}
 authNext=async function(){auKeep();var a=S.au,v='e',up=a.mode==='up',n=(a.au_n||'').trim(),body={};
   if(up&&n.length<2)return toast('Enter your name');
@@ -4124,7 +4131,7 @@ calSum=function(){var b=window._bk,e=document.getElementById('cal_sum');if(!e)re
 var _cp=calPick;calPick=function(k){window._bk.sug=0;var q=document.getElementById('cal_sg');if(q)q.value='';_cp(k)};
 window.calSuggest=function(){var w=document.getElementById('cal_sgw');w.style.display=w.style.display==='none'?'':'none'};
 window.calSuggestSet=function(v){var b=window._bk;if(!v)return;b.date=v;b.sug=1;document.getElementById('cal_w').innerHTML=calGrid();calSum()};
-calSheet=function(lid,vid){var l=listing_(lid),g=l.group||{ok:false,max:1},d=new Date(),fee=vid?0:(l.viewFee||PLEDGE),mn=isoD(new Date(Date.now()+864e5));
+calSheet=function(lid,vid){var l=listing_(lid);if(!vid&&gate(l))return;var g=l.group||{ok:false,max:1},d=new Date(),fee=vid?0:(l.viewFee||PLEDGE),mn=isoD(new Date(Date.now()+864e5));
  window._bk={lid:lid,vid:vid||'',date:'',slot:SLOTS[0],party:1,agent:'',ag:false,sug:0,y:d.getFullYear(),m:d.getMonth()};
  sheet('<h2 class="lx" style="font-size:18px;margin:0 0 2px">Book a viewing</h2><div class="sm" style="margin-bottom:8px">'+esc(l.title)+'</div><div id="cal_w"></div>'+
  '<div class="row sm" style="gap:14px;margin:8px 0"><span class="row" style="gap:6px"><i class="lg free"></i>Open</span><span class="row" style="gap:6px"><i class="lg off"></i>Not open</span></div>'+
@@ -4134,9 +4141,14 @@ calSheet=function(lid,vid){var l=listing_(lid),g=l.group||{ok:false,max:1},d=new
  '<div id="cal_ag" style="margin-bottom:10px"></div>'+(fee?'<div class="note" style="margin-bottom:10px;font-size:13px">'+(l.viewFee?'Viewing fee '+money(fee)+', set by the owner.':'<b>Refundable pledge '+money(fee)+'.</b> Returned once the owner confirms you came.')+'</div>':'')+
  '<button class="btn blk" onclick="calGo()">'+(fee?'Pay '+money(fee)+' and request':'Request this date')+'</button>');
  document.getElementById('cal_w').innerHTML=calGrid();calSlots();calSum();calAgents()};
-var _cg=calGo;calGo=function(){var b=window._bk;if(b.sug&&b.date){var l=listing_(b.lid);push(l.owner,U(DB.me).name+' suggested '+dlabel(b.date)+' for viewing '+l.title+'. It is outside your open days. Please confirm or decline.')}return _cg()};
+bookSheet=calSheet;var _cg=calGo;calGo=function(){var b=window._bk;if(b.sug&&b.date){var l=listing_(b.lid);push(l.owner,U(DB.me).name+' suggested '+dlabel(b.date)+' for viewing '+l.title+'. It is outside your open days. Please confirm or decline.')}return _cg()};
 /* the quick-look drawer on cards stays open until you close it or leave the screen */
 var _hx=window.hxTog;window.hxTog=function(id,b){_hx(id,b);S.hxo=S.hxo||{};var e=document.getElementById('hx_'+id);if(e&&e.classList.contains('open'))S.hxo[id]=1;else delete S.hxo[id]};
+/* quick-look drawers: re-open instantly after ANY redraw of the page */
+(function(){function fix(){if(!S.hxo)return;Object.keys(S.hxo).forEach(function(id){var e=document.getElementById('hx_'+id);if(e&&!e.classList.contains('open')){e.style.transition='none';e.classList.add('open');var b=e.previousElementSibling&&e.previousElementSibling.querySelector('.hxb');if(b)b.classList.add('open');requestAnimationFrame(function(){requestAnimationFrame(function(){e.style.transition=''})})}})}
+ var t=document.getElementById('app');if(t&&window.MutationObserver)new MutationObserver(fix).observe(t,{childList:true,subtree:true})})();
+window.IZ_V='48';
+var _me48=SC.me;SC.me=function(){return _me48()+'<div class="sm" style="text-align:center;opacity:.45;padding:18px 0 90px">Izel v'+IZ_V+'</div>'};
 })();
 /* ===== boot ===== */
 function start(){if(DB)return;load();if(window.ONLINE){bootOnline();return}if(DB.me&&DB.role&&DB.users[DB.me]){S.scr=defaultTab()}else{DB.me=null;DB.role=null;S.scr='welcome'}render()}

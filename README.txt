@@ -5,4 +5,6 @@ SMS (one of): ARKESEL_API_KEY | HUBTEL_SMS_CLIENT_ID + HUBTEL_SMS_CLIENT_SECRET 
 Optional: MAIL_FROM (needs verified domain).
 TESTING ONLY (remove before launch): OTP_DEV=1, OVERRIDE_CODE=JAY
 Check /api/health after deploy.
-Optional: MAPTILER_KEY, GOOGLE_MAPS_KEY, GOOGLE_CLIENT_ID
+Optional: MAPTILER_KEY, GOOGLE_MAPS_KEY, GOOGLE_CLIENT_ID, APPLE_CLIENT_ID
+Email without a domain: BREVO_API_KEY + BREVO_SENDER
+Testing: OTP_DEV=1 shows code 123456 on screen for everyone except admin emails.
