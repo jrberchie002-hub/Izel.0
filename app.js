@@ -93,7 +93,9 @@ module.exports = function makeApp(E, store, smsImpl, fetchImpl) {
     if (provider === 'google') {
       if (!E.GOOGLE_CLIENT_ID) return { error: 'Google sign-in is not switched on yet.' };
       const r = await fetch('https://oauth2.googleapis.com/tokeninfo?id_token=' + encodeURIComponent(tok)); const j = await r.json().catch(() => ({}));
-      if (!r.ok || j.aud !== E.GOOGLE_CLIENT_ID || !(j.email_verified === 'true' || j.email_verified === true) || !j.email) return { error: 'Google sign-in failed. Try again.' };
+      if (!r.ok) return { error: 'Google could not confirm that sign-in (' + (j.error_description || j.error || r.status) + '). Try again.' };
+      if (j.aud !== E.GOOGLE_CLIENT_ID) return { error: 'Google sign-in is set up with a different Client ID than the one in Vercel. Check GOOGLE_CLIENT_ID.' };
+      if (!(j.email_verified === 'true' || j.email_verified === true) || !j.email) return { error: 'That Google account has no verified email.' };
       return { email: String(j.email).toLowerCase(), name: j.name };
     }
     if (!E.APPLE_CLIENT_ID) return { error: 'Apple sign-in is not switched on yet.' };
@@ -570,7 +572,7 @@ module.exports = function makeApp(E, store, smsImpl, fetchImpl) {
     if (m === 'OPTIONS') return { status: 204, headers: cors(), body: '' };
     let body = {}; if (req.body && !/^\/api\/(_up|pay\/webhook)/.test(p)) { try { body = JSON.parse(Buffer.isBuffer(req.body) ? req.body.toString() : req.body); } catch (e) { return err(400, 'Bad JSON'); } }
     try {
-      if (p === '/api/health') return out(200, { ok: true, v: '48', store: store.kind, sms: sms.ready() || DEV, otpDev: DEV, paystack: !!E.PAYSTACK_SECRET_KEY, admins: ADMINS.length });
+      if (p === '/api/health') return out(200, { ok: true, v: '50', store: store.kind, sms: sms.ready() || DEV, otpDev: DEV, paystack: !!E.PAYSTACK_SECRET_KEY, admins: ADMINS.length });
       if (p === '/api/config') return out(200, { ok: true, otpLen: OTPN, ownerPct: R.OWNER_PCT, google: E.GOOGLE_CLIENT_ID || undefined, maps: E.GOOGLE_MAPS_KEY || undefined, maptiler: E.MAPTILER_KEY || undefined, apple: E.APPLE_CLIENT_ID || undefined, paystack: !!E.PAYSTACK_SECRET_KEY, test: !E.PAYSTACK_SECRET_KEY, usdRate: +E.USD_RATE || undefined });
       if (p === '/api/auth/otp' && m === 'POST') return await sendOtp(body);
       if (p === '/api/auth/google' && m === 'POST') return await socialLogin('google', body);
