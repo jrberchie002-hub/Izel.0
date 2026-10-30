@@ -872,6 +872,7 @@ html[data-theme=dark] .note.ok{background:#241517;border-color:#3a2226}
 .dch .bub{font-size:15px;padding:10px 13px;max-width:88%}
 .dch .sgi,.dch input#cm{height:48px;font-size:15px}
 .dch h2{font-size:16px}
+.phs{display:none!important}
 
 </style></head><body><div id="app"></div><div id="ov"></div><div id="toast"></div>
 <script src="config.js"></script><script type="text/javascript">try{localStorage.removeItem("iz_demo")}catch(e){}</script>
@@ -4114,7 +4115,7 @@ document.addEventListener('touchend',function(e){if(!ok)return;ok=false;var t=e.
 /* avatar fallback */
 var _avt=avt;avt=function(id,cls){var u=U(id)||{};if(u.photo&&MEDIA[u.photo])return _avt(id,cls);var n=(u.name||'').trim();return '<div class="av '+(cls||'')+'">'+(n?initials(n):ico('user',18))+'</div>'};
 /* keep open sections open when the page refreshes itself */
-var _rn=render;render=function(){var a=document.getElementById('app'),key=S.scr+'|'+(S.p&&S.p.id||''),op=null,sc=window.scrollY;if(a&&render._k===key)op=[].map.call(a.querySelectorAll('details'),function(d){return d.open});_rn();if(op){var ds=a.querySelectorAll('details');if(ds.length===op.length)op.forEach(function(o,i){ds[i].open=o})}if(render._k===key&&sc)window.scrollTo(0,sc);render._k=key};
+var _rn=render;render=function(){var a=document.getElementById('app'),key=S.scr+'|'+(S.p&&S.p.id||''),op=null,sc=window.scrollY;if(a&&render._k===key)op=[].map.call(a.querySelectorAll('details'),function(d){return d.open});_rn();if(render._k!==key)S.hxo={};if(S.hxo){Object.keys(S.hxo).forEach(function(id){var e=document.getElementById('hx_'+id);if(e){e.classList.add('open');var b=e.previousElementSibling&&e.previousElementSibling.querySelector('.hxb');if(b)b.classList.add('open')}})}if(op){var ds=a.querySelectorAll('details');if(ds.length===op.length)op.forEach(function(o,i){ds[i].open=o})}if(render._k===key&&sc)window.scrollTo(0,sc);render._k=key};
 /* ---- who owns the place ---- */
 window.ownerPeek=function(id){var u=U(id)||{};sheet('<div style="text-align:center;padding:6px 0 4px">'+avt(id,'lg')+'<h2 class="lx" style="font-size:18px;margin:10px 0 2px">'+esc(u.name||'Owner')+'</h2><div class="sm">Property owner'+(u.org?' \u00B7 Company':'')+'</div><div class="sm" style="margin-top:8px">Usually replies within '+respTxt(id)+'</div><div class="sm" style="margin-top:10px;opacity:.7">Phone numbers and contact details are never shown. Chat with them through Izel.</div></div>')};
 var _sl3=submitListing;submitListing=function(){var u=me()||{};if(!u.photo){toast('Add a profile photo first so renters know who owns the place');setTimeout(editProfile,400);return}return _sl3.apply(this,arguments)};
@@ -4134,6 +4135,8 @@ calSheet=function(lid,vid){var l=listing_(lid),g=l.group||{ok:false,max:1},d=new
  '<button class="btn blk" onclick="calGo()">'+(fee?'Pay '+money(fee)+' and request':'Request this date')+'</button>');
  document.getElementById('cal_w').innerHTML=calGrid();calSlots();calSum();calAgents()};
 var _cg=calGo;calGo=function(){var b=window._bk;if(b.sug&&b.date){var l=listing_(b.lid);push(l.owner,U(DB.me).name+' suggested '+dlabel(b.date)+' for viewing '+l.title+'. It is outside your open days. Please confirm or decline.')}return _cg()};
+/* the quick-look drawer on cards stays open until you close it or leave the screen */
+var _hx=window.hxTog;window.hxTog=function(id,b){_hx(id,b);S.hxo=S.hxo||{};var e=document.getElementById('hx_'+id);if(e&&e.classList.contains('open'))S.hxo[id]=1;else delete S.hxo[id]};
 })();
 /* ===== boot ===== */
 function start(){if(DB)return;load();if(window.ONLINE){bootOnline();return}if(DB.me&&DB.role&&DB.users[DB.me]){S.scr=defaultTab()}else{DB.me=null;DB.role=null;S.scr='welcome'}render()}
