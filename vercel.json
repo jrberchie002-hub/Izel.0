@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "functions": { "api/index.js": { "maxDuration": 30 } },
+  "rewrites": [{ "source": "/api/(.*)", "destination": "/api/index.js" }],
+  "crons": [{ "path": "/api/cron/payouts", "schedule": "0 9 * * *" }]
+}

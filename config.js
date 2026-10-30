@@ -1,0 +1,1 @@
+window.IZEL_API='';
