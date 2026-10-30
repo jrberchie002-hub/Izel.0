@@ -720,6 +720,95 @@ html[data-glass=solid]{--gl-blur:0px;--gl-bg:1;--gl-line:.15}
 .hero.st .wlogo{position:absolute;left:0;right:0;top:36%;transform:translateY(-50%);display:grid;justify-items:center;gap:14px;color:#fff;z-index:2}
 .hero.st .wlogo b{font-size:22px;letter-spacing:.42em;margin-right:-.42em;font-weight:700}
 .hero.st .tx{background:none!important;border:0!important;box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+/* v33 calmer type scale */
+html{font-size:15px}
+body{font-size:14px}
+h1,.hero h1{font-size:24px!important}
+h2{font-size:17px}
+.topbar .t,.tb .t{font-size:15px!important}
+.btn{font-size:14px;min-height:46px}
+.btn.sm2{font-size:13px;min-height:36px}
+.fld input,.fld select,.fld textarea{font-size:14px}
+.tabbar button,.tabs button,nav button{font-size:10.5px}
+.prw{font-size:14px;padding:12px 14px}
+.pfc h3{font-size:13px;letter-spacing:.04em;text-transform:uppercase;opacity:.7}
+.lcard b,.li b{font-size:14px}.li .sm,.sm{font-size:12.5px}
+.pf h2{font-size:18px}
+.cin input{font-size:14px}.msg,.bub{font-size:13.5px}
+.dmcard .lx,.lx{font-size:inherit}
+.ht{font-size:16px!important;line-height:1.25!important}
+h1.xt{font-size:20px!important}
+.tabbar button span,.tabbar .lb{font-size:10px!important}
+/* v34 deal room */
+.dhd{display:flex;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line)}
+.dhd img{width:60px;height:60px;border-radius:14px;object-fit:cover}
+.dtl{display:block;font-size:14.5px;line-height:1.25}
+.dch{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}.dch span{font-size:11px;padding:3px 9px;border-radius:99px;border:1px solid var(--line);color:var(--mut)}
+.dpr{text-align:right}.dpr b{display:block;font-size:15px}.dpr small{font-size:10px;color:var(--mut);display:block}
+.dr{padding-top:12px}
+.dst{display:flex;justify-content:space-between;margin-bottom:12px}.dst span{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:10.5px;color:var(--mut);flex:1}
+.dst i{font-style:normal;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:11px;background:var(--soft);border:1px solid var(--line)}
+.dst .on i{background:var(--btn,#c8102e);color:#fff;border-color:transparent}.dst .on{color:var(--ink);font-weight:600}.dst .dn i{background:var(--ok,#1f8a4c);color:#fff;border-color:transparent}
+.dlv{display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:14px;background:var(--soft);border:1px solid var(--line);margin-bottom:12px;font-size:12px}
+.dlv i{width:8px;height:8px;border-radius:50%;background:#e0314c;animation:dlp 1.2s infinite}@keyframes dlp{50%{opacity:.25}}
+.dlv b{font-variant-numeric:tabular-nums;font-size:14px;margin-left:auto}.dlv small{color:var(--mut)}
+.dcd{border:1px solid var(--line);border-radius:18px;padding:14px;margin-bottom:14px;background:var(--soft)}
+.dcd h3,.dsh{font-size:13px;margin:0 0 10px;text-transform:uppercase;letter-spacing:.05em;opacity:.75}.dsh{margin:18px 0 8px}
+.lbl{margin:10px 0 6px}
+.chs{display:flex;gap:6px;flex-wrap:wrap}.chs button{padding:7px 13px;border-radius:99px;border:1px solid var(--line);background:transparent;color:var(--ink);font-size:12.5px}.chs button.on{background:var(--btn,#c8102e);color:#fff;border-color:transparent}
+.mb{border:1px solid var(--line);border-radius:14px;padding:4px 12px;background:rgba(255,255,255,.03)}
+.dk{display:flex;justify-content:space-between;gap:12px;padding:7px 0;font-size:12.5px;border-bottom:1px dashed var(--line)}.dk:last-child{border:0}.dk span{color:var(--mut)}.dk.t{font-size:14px;border-bottom:0;border-top:1px solid var(--line);margin-top:2px}.dk.t span{color:var(--ink);font-weight:700}
+.dn{font-size:11.5px;color:var(--mut);padding:6px 0 8px}
+.dcb{font-size:12.5px;padding:6px 0}
+.pcd{border:1px solid var(--line);border-radius:16px;padding:12px;margin-bottom:10px}.pch{display:flex;justify-content:space-between;align-items:center;font-size:13px}
+.bd{font-size:10.5px;padding:3px 9px;border-radius:99px;background:var(--soft);color:var(--mut)}.bd.ok{background:rgba(31,138,76,.18);color:#58d68d}.bd.op{background:rgba(200,16,46,.18);color:#ff7088}
+.cls{display:grid;gap:3px;margin-top:8px}.cls span{font-size:11.5px;color:var(--mut)}
+.dev{display:flex;gap:10px;align-items:center;font-size:12px;color:var(--mut);padding:6px 4px}.dev i{width:6px;height:6px;border-radius:50%;background:var(--mut)}.dev small{margin-left:auto;font-size:10.5px}
+/* v35: no green anywhere */
+html:root{--ok:#222;--okbg:#ececec;--accbg:#f3e6e8;--olivebg:#f3e6e8}
+html[data-theme=dark]{--ok:#f3f0e6;--okbg:#2a2a26;--accbg:#2a1519}
+html[data-theme=dark][data-acc=olive]{--acc:#c8102e;--acc2:#a30d26;--accbg:#2a1519}
+html[data-theme=dark] .note.ok{background:#241517;border-color:#3a2226}
+.bd.ok{background:rgba(255,255,255,.12)!important;color:var(--ink)!important}
+.dst,.dlv{display:none!important}
+.gcard .gb{background:#111!important;box-shadow:none!important}
+#fscan.ok .fs-box i{border-color:#fff}
+.dst .dn i{background:var(--ink)}
+.ms-std{background:linear-gradient(135deg,#e8e0d0 0 40%,#fff 40% 55%,#d9d9de 55%)!important}
+.ckc{width:52px;height:52px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;margin:0 auto 10px}
+/* v35 deal room extras */
+.dq{font-size:12px;color:var(--mut);margin-bottom:10px}
+.lnk{display:block;width:100%;background:none;border:0;color:var(--mut);font-size:12.5px;text-decoration:underline;padding:10px;text-underline-offset:3px}
+.sgp{margin-bottom:6px}.sgi{width:100%;padding:11px 12px;border-radius:12px;border:1px solid var(--line);background:transparent;color:var(--ink);font-size:14px;margin-top:8px}
+.sgv{margin-top:8px;border-radius:12px;background:#fff;color:#111;min-height:62px;display:grid;place-items:center;font:italic 30px/1.2 "Snell Roundhand","Brush Script MT","Segoe Script","Lucida Handwriting",cursive;padding:8px}.sgv span{font:13px system-ui;color:#999;font-style:normal}
+.sgc{width:100%;height:120px;background:#fff;border-radius:12px;touch-action:none;margin-top:8px;display:block}
+.sgb{margin-top:6px}
+.sgty{font:italic 26px/1.2 "Snell Roundhand","Brush Script MT","Segoe Script","Lucida Handwriting",cursive;color:#111}.sgim{height:54px;display:block}.sgn{font-size:11px;color:#666;border-top:1px solid #ccc;margin-top:4px;padding-top:4px}
+#agov{position:fixed;inset:0;z-index:2000;background:#e9e9e9;overflow:auto;padding:12px}
+.agb{display:flex;justify-content:space-between;align-items:center;max-width:560px;margin:0 auto 10px}.agb .ib{color:#111}
+.agd{max-width:560px;margin:0 auto;background:#fff;color:#111;border-radius:6px;padding:24px 22px;box-shadow:0 6px 30px rgba(0,0,0,.15);font-size:13px}
+.agh{display:flex;align-items:center;gap:8px;border-bottom:2px solid #111;padding-bottom:10px}.agh b{letter-spacing:.3em}.agh span{margin-left:auto;font-size:11px;color:#666;text-transform:uppercase;letter-spacing:.1em}
+.agm{font-size:11px;color:#666;margin:8px 0}.agd h2{font-size:18px;margin:6px 0 12px}.agd h3{font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin:16px 0 6px;color:#444}
+.agrow{display:flex;justify-content:space-between;gap:14px;padding:6px 0;border-bottom:1px solid #eee}.agrow span{color:#666}.agrow b{text-align:right}
+.agd ul{margin:0;padding-left:18px;display:grid;gap:5px}.sgs{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}.sgs small{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:#888;margin-bottom:6px}
+.fine{font-size:10.5px;color:#777;margin-top:18px}
+@media print{body>*:not(#agov){display:none!important}#agov{position:static;background:#fff;padding:0}.agb{display:none}.agd{box-shadow:none}}
+#pvw{position:fixed;inset:0;z-index:2000;background:#000;display:flex;flex-direction:column;color:#fff}
+.pvt{display:flex;align-items:center;gap:12px;padding:14px 16px;font-size:13px}.pvt b{flex:1;text-align:center;font-weight:600}.pvt .ib{color:#fff}
+.pvm{flex:1;display:grid;place-items:center;min-height:0}.pvm img{max-width:100%;max-height:100%;object-fit:contain}
+.pvn{display:flex;align-items:center;gap:6px;padding:12px}.pvn .ib{color:#fff;font-size:26px;width:36px}
+.pvs{display:flex;gap:6px;overflow-x:auto;flex:1}.pvs img{height:52px;width:52px;object-fit:cover;border-radius:8px;opacity:.5;flex:none}.pvs img.on{opacity:1;outline:2px solid #fff}
+.slider img{cursor:zoom-in}
+/* v36 agreement + photo strip */
+.agd.off{font-family:Georgia,"Times New Roman",serif;font-size:13px;line-height:1.5}
+.agd.off .ago{text-align:center;font-size:17px;letter-spacing:.12em;margin:16px 0 4px}.agd.off .agm{text-align:center}
+.agd.off h3{font-family:system-ui,sans-serif;border-bottom:1px solid #ddd;padding-bottom:4px}
+.agt,.agcl{margin:0;padding-left:20px;display:grid;gap:6px}.agt li span{color:#555}.agt li b{float:right;text-align:right;max-width:55%}.agt li{overflow:hidden}
+.phs{display:flex;gap:8px;overflow-x:auto;padding:10px 16px 2px}.phs button{flex:none;width:76px;background:none;border:0;padding:0;color:inherit;text-align:center}.phs img{width:76px;height:58px;object-fit:cover;border-radius:10px;display:block}.phs span{display:block;font-size:10px;margin-top:3px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* v37 logo on photos */
+.hc::after,.wm,.pvm::after{content:'';position:absolute;top:14px;right:14px;width:24px;height:30px;background:#fff;-webkit-mask:url(swan.png) center/contain no-repeat;mask:url(swan.png) center/contain no-repeat;opacity:.88;filter:drop-shadow(0 1px 3px rgba(0,0,0,.55));pointer-events:none;z-index:3}
+.wmw{position:relative}.wm{display:block}
+.pvm{position:relative}
 
 </style></head><body><div id="app"></div><div id="ov"></div><div id="toast"></div>
 <script src="config.js"></script><script type="text/javascript">try{localStorage.removeItem("iz_demo")}catch(e){}</script>
@@ -2320,7 +2409,7 @@ SC.deal=function(){var r=R_(S.p.id);if(!r)return topbar('')+'<div class="empty">
     else h+='<div class="sec"><div class="note">Waiting for '+esc(U(r.seeker).name)+' to respond to your counter.</div></div>'}
   if(r.stage==='agreed'||r.stage==='paid'){var amt=roomAmt(r),fee=Math.round(amt*FEE[l.type])/100,pf=Math.round(amt*PROC)/100;
     h+='<div class="sec"><h2>'+(r.stage==='paid'?'Receipt':'Terms')+'</h2><div class="kv"><span>Agreed amount</span><b>'+money(amt)+'</b></div><div class="kv"><span>'+(l.type==='sale'||l.type==='land'?'What this covers':'Duration')+'</span><b>'+(opts.filter(function(o){return o[0]===r.n})[0]||[0,''])[1]+'</b></div>'+(isO?'<div class="kv"><span>Izel fee ('+FEE[l.type]+'%)</span><b>−'+money(fee)+'</b></div><div class="kv"><span>Processor ('+PROC+'%)</span><b>−'+money(pf)+'</b></div><div class="kv t"><span>You receive</span><span>'+money(amt-fee-pf)+'</span></div>':'')+'<div class="sm" style="margin-top:6px">'+(r.pre?'Reserve now, view later. Your deposit counts towards your first payment and is refunded if you decline after the viewing. ':'')+'Izel passes the money to the owner within 24 hours. The fee is paid by the owner, not you.</div></div>';
-    if(r.stage==='agreed'&&!isO){var ck=r.check;h+='<div class="sec">'+(r.mode==='room'&&!r.pre?'<label class="cb"><input type="checkbox" '+(ck.docs?'checked':'')+' onchange="R_(\''+r.id+'\').check.docs=this.checked;save();render()"><span>I have seen the owner’s documents (title, site plan or tenancy)</span></label>':'')+'<label class="cb"><input type="checkbox" '+(ck.terms?'checked':'')+' onchange="R_(\''+r.id+'\').check.terms=this.checked;save();render()"><span>I have read and agree these terms</span></label><button class="btn blk" style="margin-top:10px" '+((ck.terms&&(r.mode!=='room'||r.pre||ck.docs))?'':'disabled')+' onclick="roomPay(\''+r.id+'\')">Pay '+money(amt)+' through Izel</button></div>'}
+    if(r.stage==='agreed'&&!isO){var ck=r.check;h+='<div class="sec">'+(r.mode==='room'&&!r.pre?'<label class="cb"><input type="checkbox" '+(ck.docs?'checked':'')+' onchange="R_(\''+r.id+'\').check.docs=this.checked;save();render()"><span>I have seen the owner’s documents (title, site plan or tenancy)</span></label>':'')+'<label class="cb"><input type="checkbox" '+(ck.terms?'checked':'')+' onchange="R_(\''+r.id+'\').check.terms=this.checked;save();render()"><span>I have read and agree these terms</span></label><button class="btn blk" style="margin-top:10px" '+((ck.terms&&(r.mode!=='room'||r.pre||ck.docs))?'':'disabled')+' onclick="roomPay(\''+r.id+'\')">Pay '+money(amt)+'</button></div>'}
     if(r.stage==='agreed'&&isO)h+='<div class="sec"><div class="note">Agreed. Waiting for '+esc(U(r.seeker).name)+' to pay.</div></div>';
     if(r.stage==='paid')h+='<div class="sec"><div style="text-align:center"><div style="width:56px;height:56px;border-radius:50%;background:var(--okbg);color:var(--ok);display:grid;place-items:center;margin:0 auto 8px">'+ico('check',30)+'</div><b>Paid through Izel</b><div class="sm">Receipt '+r.id.toUpperCase().slice(0,8)+' · '+new Date(r.paidAt).toLocaleString('en-GB',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})+'</div>'+roomNext(r)+'</div></div>'}
   h+='<div class="sec" style="padding-bottom:90px"><h2>Chat</h2><div id="msgs">'+(c?c.msgs.map(function(m){return '<div style="display:flex">'+(m.from==='sys'?'<div class="bub sys">'+esc(m.x)+'</div>':'<div class="bub '+(m.from===DB.me?'me':'th')+'">'+esc(m.x)+'</div>')+'</div>'}).join(''):'')+'</div></div><div class="cin"><input id="cm" placeholder="Message in the deal room" onkeydown="if(event.key===\'Enter\')sendMsg(\''+esc(r.chat)+'\')"><button class="btn" style="padding:0 18px" onclick="sendMsg(\''+esc(r.chat)+'\')">Send</button></div>';
@@ -2660,8 +2749,8 @@ window.api=async function(method,path,body,raw){var h={};if(TOK)h.Authorization=
   if(r.status===401&&TOK&&path!=='/api/pull'){dropSession()}
   if(!r.ok){var er=new Error(j.error||('Something went wrong ('+r.status+')'));er.code=j.code;er.status=r.status;throw er}return j};
 /* ---------- collections: local shape <-> server shape ---------- */
-var COLL={users:'map',listings:'arr',chats:'map',visits:'arr',tours:'arr',dealRooms:'arr',deals:'arr',holds:'arr',reports:'arr',services:'arr',partners:'arr',notifs:'list',saved:'list',queue:'list',asks:'one'};
-function emptyDB(){return {me:null,role:null,users:{},listings:[],chats:{},visits:[],tours:[],deals:[],dealRooms:[],holds:[],reports:[],notifs:{},saved:{},strikes:{},blocked:{},banned:{},queue:{},services:[],asks:{},partners:[],agentApps:[]}}
+var COLL={users:'map',listings:'arr',chats:'map',visits:'arr',tours:'arr',dealRooms:'arr',deals:'arr',holds:'arr',reports:'arr',services:'arr',partners:'arr',notifs:'list',saved:'list',queue:'list',asks:'one',agreements:'arr'};
+function emptyDB(){return {me:null,role:null,users:{},listings:[],chats:{},visits:[],tours:[],deals:[],dealRooms:[],holds:[],reports:[],notifs:{},saved:{},strikes:{},blocked:{},banned:{},queue:{},services:[],asks:{},partners:[],agentApps:[],agreements:[]}}
 function all(c){var k=COLL[c],o=DB[c];if(k==='map')return Object.keys(o||{}).map(function(i){return {id:i,d:o[i]}});if(k==='arr')return (o||[]).map(function(x){return {id:x.id,d:x}});
   if(k==='list')return Object.keys(o||{}).map(function(i){return {id:i,d:{id:i,list:o[i]}}});return [{id:'all',d:{id:'all',map:o||{}}}]}
 function setRec(c,id,d){var k=COLL[c];if(k==='map')DB[c][id]=d;else if(k==='arr'){var a=DB[c],i=a.findIndex(function(x){return x.id===id});if(i<0)a.push(d);else a[i]=d}else if(k==='list')DB[c][id]=d.list||[];else DB.asks=d.map||{}}
@@ -2753,7 +2842,7 @@ opsTap=function(){};
 var _push=push;push=function(u,x){if(u===DB.me)_push(u,x)};
 /* ---------- payments ---------- */
 var _rp=roomPay;roomPay=function(id){window._payCtx={room:id};_rp(id)};
-payUI=function(amt,label,done){window._payDone=done;window._payAmt=amt;window._payLabel=label;sheet('<h2>Pay with Izel</h2><div class="kv"><span>'+esc(label)+'</span><b>'+money(amt)+'</b></div>'+(CFG.paystack?'<div class="note" style="margin:10px 0 12px">You will choose mobile money or card in the secure Paystack window.</div>':'<div class="note" style="margin:10px 0 12px">Test payments are on. No real money moves until Izel’s Paystack account is connected.</div>')+'<button class="btn blk" id="paybtn" onclick="payGo()">Pay '+money(amt)+'</button>')};
+payUI=function(amt,label,done){window._payDone=done;window._payAmt=amt;window._payLabel=label;sheet('<h2>Payment</h2><div class="kv"><span>'+esc(label)+'</span><b>'+money(amt)+'</b></div>'+(CFG.paystack?'<div class="note" style="margin:10px 0 12px">You will choose mobile money or card in the secure Paystack window.</div>':'<div class="note" style="margin:10px 0 12px">Test payments are on. No real money moves until Izel’s Paystack account is connected.</div>')+'<button class="btn blk" id="paybtn" onclick="payGo()">Pay '+money(amt)+'</button>')};
 function loadPaystack(){return new Promise(function(ok,no){if(window.PaystackPop)return ok();var s=document.createElement('script');s.src='https://js.paystack.co/v2/inline.js';s.onload=ok;s.onerror=function(){no(new Error('Could not load the payment window'))};document.head.appendChild(s)})}
 function tagNew(ref){['deals','holds','visits'].forEach(function(c){DB[c].forEach(function(x){if(SNAP[c]&&SNAP[c][x.id])return;if(x.payRef)return;if(c==='visits'&&x.status==='room')return;
   if(c==='visits'&&!x.fee&&x.status==='requested'){x.payRef=ref;x.pledge=PLEDGE;return}if(c==='visits'&&x.fee){x.payRef=ref;return}
@@ -2854,7 +2943,7 @@ function byl(){return '<div class="by">'+BYLINE+'</div>'}
 var _a13=SC.auth;SC.auth=function(){var s=_a13();return s.replace(/<\/div><\/div>$/,'</div>'+byl()+'</div>')};
 var _m13=SC.me;SC.me=function(){return _m13()+'<div class="by in">'+BYLINE+'</div>'};
 /* QR + 3 digits */
-window.vcShow=function(vid,isO,mine,youDone,otherDone){var o=isO?'visitor':'owner',qr=window.izQR?izQR('izel:v:'+vid+':'+mine,168):'';
+window.vcShow=function(vid,isO,mine,youDone,otherDone){var o=isO?'visitor':'owner',qr=window.izQR?izQR(window.izScanUrl(vid,mine),168):'';
   sheet('<h2 class="lx" style="font-size:24px;margin:0 0 6px">'+(isO?'Confirm the viewing':'You are at the property')+'</h2><p class="sm" style="margin:0">Scan each other’s code. If the scanner does not work, read out your 3 digits and type theirs.</p>'+
    '<div class="qrb">'+qr+'</div><div class="sm" style="text-align:center">Your 3 digits</div><div class="vc">'+mine.split('').map(function(c){return '<i>'+c+'</i>'}).join('')+'</div>'+
    (youDone?'<div class="note ok" style="text-align:center;margin-top:12px">You entered the '+o+'’s digits.'+(otherDone?'':' Now the '+o+' enters yours.')+'</div>':
@@ -3325,7 +3414,7 @@ SC.auth=function(){var a=S.au,m=a.mode||'up',v='e',st=a.step||1,up=m==='up';
    (up?'<label class="adult"><input type="checkbox" id="au_a" '+(a.adult?'checked':'')+'><span>I am 18 or older and agree to the Izel terms.</span></label>':'')+
    (up?'<label class="fld"><span>Phone number <i style="font-weight:400;opacity:.7">(optional, kept private)</i></span><input id="au_p" type="tel" value="'+esc(a.au_p||'')+'" placeholder="024 000 0000" autocomplete="tel"></label>':'')+'<div class="sm" style="margin:-4px 0 12px"><a class="why" onclick="mailGuide()">I don\'t have an email</a></div>'+'<div class="note" style="margin:0 0 14px">Your email and phone stay private. Izel never shows it to anyone. <a onclick="whySheet(\'email\')" class="why">Why?</a></div><button class="btn blk" onclick="authNext()">Send code</button>'+
    '<div class="sm" style="text-align:center;margin-top:16px">'+(up?'Already have an account? <a onclick="auMode(\'in\')" style="color:var(--acc);font-weight:700">Sign in</a>':'New to Izel? <a onclick="auMode(\'up\')" style="color:var(--acc);font-weight:700">Create account</a>')+'</div>'}
-  else{h+='<p class="sm">We sent a code to your '+(v==='p'?'phone':'email')+'.</p>'+(a.dev?'<div class="note" style="margin-bottom:12px">Sending is not switched on yet, so your code is <b>'+a.dev+'</b>.</div>':'')+'<label class="fld"><span>Code</span><input id="au_c" inputmode="numeric" maxlength="'+OL()+'" placeholder="'+OL()+'-digit code"></label><button class="btn blk" onclick="authVerify()">Verify</button><button class="btn gh blk" style="margin-top:8px" onclick="S.au.step=1;render()">Change '+(v==='p'?'number':'email')+'</button>'}
+  else{h+='<p class="sm">We sent a code to your '+(v==='p'?'phone':'email')+'.</p>'+(a.dev?'<div class="note" style="margin-bottom:12px">Sending is not switched on yet, so your code is <b>'+a.dev+'</b>.</div>':'')+'<label class="fld"><span>Code</span><input id="au_c" inputmode="numeric" maxlength="'+(a.ov?24:OL())+'" placeholder="'+(a.ov?'Code':OL()+'-digit code')+'"></label><button class="btn blk" onclick="authVerify()">Verify</button><button class="btn gh blk" style="margin-top:8px" onclick="S.au.step=1;render()">Change '+(v==='p'?'number':'email')+'</button>'}
   return h+'</div>'};
 function soc(){return '<button class="btn blk soc2" onclick="socialGo(\'apple\')"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M16.400 12.600c0-2.300 1.900-3.400 2-3.500-1.100-1.600-2.800-1.800-3.400-1.800-1.400-.1-2.800.9-3.500.9s-1.800-.8-3-.8c-1.500 0-3 .9-3.800 2.300-1.600 2.800-.4 7 1.200 9.300.8 1.100 1.700 2.400 2.900 2.300 1.200 0 1.600-.7 3-.7s1.800.7 3 .7c1.200 0 2-1.100 2.800-2.200.9-1.300 1.200-2.500 1.300-2.600-.1 0-2.500-1-2.500-3.900zM14.200 5.800c.6-.8 1.100-1.800.9-2.800-.9 0-2 .6-2.600 1.400-.6.700-1.100 1.700-.9 2.700 1 .1 2-.5 2.600-1.300z"/></svg>Continue with Apple</button><button class="btn blk soc2 g" onclick="socialGo(\'google\')"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="#4285F4" d="M22 12.200c0-.7-.1-1.300-.2-1.900H12v3.700h5.600a4.800 4.800 0 01-2.100 3.100v2.600h3.400c2-1.800 3.100-4.500 3.100-7.500z"/><path fill="#34A853" d="M12 22.500c2.800 0 5.200-.9 6.900-2.500l-3.400-2.600c-.9.600-2.100 1-3.500 1-2.700 0-5-1.800-5.800-4.300H2.700v2.700A10.500 10.500 0 0012 22.500z"/><path fill="#FBBC05" d="M6.200 14.100a6.300 6.300 0 010-4.100V7.300H2.700a10.500 10.500 0 000 9.500z"/><path fill="#EA4335" d="M12 5.900c1.500 0 2.900.5 4 1.600l3-3C17.200 2.800 14.800 1.800 12 1.800c-4.100 0-7.700 2.400-9.300 5.500l3.500 2.700C7 7.700 9.300 5.900 12 5.900z"/></svg>Continue with Google</button><div class="orl"><span>or use your email</span></div>'}
 function lsrc(src,cb){if(document.querySelector('script[data-s="'+src+'"]'))return cb();var s=document.createElement('script');s.src=src;s.dataset.s=src;s.onload=cb;s.onerror=function(){toast('Could not reach the sign-in service. Check your connection.')};document.head.appendChild(s)}
@@ -3338,10 +3427,10 @@ function ident(){var a=S.au;return a.via==='e'?{email:a.au_e}:{phone:a.p}}
 authNext=async function(){auKeep();var a=S.au,v='e',up=a.mode==='up',n=(a.au_n||'').trim(),body={};
   if(up&&n.length<2)return toast('Enter your name');
   if(v==='p'){var p=(a.au_p||'').replace(/\D/g,'');if(p.length<9)return toast('Enter a valid phone number');body.phone=p;a.p=p}
-  else{var e=(a.au_e||'').trim().toLowerCase();if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e))return toast('Enter a valid email');body.email=e;a.em=e}
+  else{var raw=(a.au_e||'').trim();if(raw&&raw.indexOf('@')<0&&/^[A-Za-z0-9]{3,16}$/.test(raw)){body.email=raw;a.em=raw;a.ov=1}else{var e=raw.toLowerCase();if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e))return toast('Enter a valid email');body.email=e;a.em=e;a.ov=0}}
   if(up){if(!a.adult)return toast('You must be 18 or older to join');body.adult=true;body.mode='up'}
   try{var r=await api('POST','/api/auth/otp',body);if(a.mode==='in'&&!r.exists)return toast('No account found. Create one first.');a.n=n;a.dev=r.devCode;a.step=2;render()}catch(x){toast(x.message)}};
-authVerify=async function(){var c=($('au_c').value||'').trim();if(c.length<OL())return toast('Enter the full '+OL()+'-digit code');
+authVerify=async function(){var c=($('au_c').value||'').trim();if(!(S.au&&S.au.ov)&&c.length<OL())return toast('Enter the full '+OL()+'-digit code');
   var a=S.au,body={code:c,name:a.n,mode:a.mode};if(a.via==='e')body.email=a.em;else body.phone=a.p;if(a.mode==='up'){body.adult=true;var pc=(a.au_p||'').replace(/\D/g,'');if(pc.length>=9)body.contact=pc}
   try{var r=await api('POST','/api/auth/verify',body);await window.__login(r)}catch(e){toast(e.message)}};
 
@@ -3543,7 +3632,7 @@ window.scanOk=async function(vid,code){try{await api('POST','/api/visit/verify',
 window.scanStart=async function(){var box=document.getElementById('scanbox');
   if(!('BarcodeDetector' in window)||!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){toast('This phone cannot scan here. Open a viewing below and type the 3 digits.');return}
   try{var st=await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}}),det=new BarcodeDetector({formats:['qr_code']});box.style.display='block';box.innerHTML='<video id="scv" playsinline muted></video>';var v=document.getElementById('scv');v.srcObject=st;await v.play();
-   var stop=function(){st.getTracks().forEach(function(t){t.stop()})},tick=function(){if(!document.body.contains(v)){stop();return}det.detect(v).then(function(r){var m=r.length&&/^izel:v:([^:]+):(\d{3})$/.exec(r[0].rawValue||'');if(m){stop();box.style.display='none';box.innerHTML='';scanDetails(m[1],m[2])}else setTimeout(tick,250)}).catch(function(){setTimeout(tick,400)})};tick()}
+   var stop=function(){st.getTracks().forEach(function(t){t.stop()})},tick=function(){if(!document.body.contains(v)){stop();return}det.detect(v).then(function(r){var m=r.length&&/(?:izel:v:|#iz=v:)([^:]+):(\d{3})$/.exec(r[0].rawValue||'');if(m){stop();box.style.display='none';box.innerHTML='';scanDetails(m[1],m[2])}else setTimeout(tick,250)}).catch(function(){setTimeout(tick,400)})};tick()}
   catch(e){toast('Camera is blocked. Open a viewing below and type the 3 digits.')}};
 })();
 
@@ -3560,7 +3649,7 @@ function passHtml(v,l,who,qr,digits,foot){var s=U(v.seeker),ag=v.agent?U(v.agent
    '<div class="pg">'+tile('Visitor',esc((s.name||'').split(' ')[0]))+tile('Home',esc(facts))+tile('Agent',ag?esc(ag.name.split(' ')[0]):'None')+'</div>'+
    '<div class="pcut"><i></i><i></i></div>'+(qr?'<div class="pq">'+qr+'</div>':'')+(digits?'<div class="vc">'+digits.split('').map(function(c){return '<i>'+c+'</i>'}).join('')+'</div>':'')+(foot||'')+'</div></div>'}
 window.vcShow=function(vid,isO,mine,youDone,otherDone){var v=DB.visits.filter(function(x){return x.id===vid})[0],l=v&&DB.listings.filter(function(x){return x.id===v.listing})[0];
-  var qr=window.izQR?izQR('izel:v:'+vid+':'+mine,190):'',o=isO?'visitor':'owner';
+  var qr=window.izQR?izQR(window.izScanUrl(vid,mine),190):'',o=isO?'visitor':'owner';
   if(!v||!l){sheet('<p class="sm">We could not open this viewing.</p>');return}
   var foot='<div class="pcap">'+(isO?'Show this to the visitor, then scan theirs.':'Show this code at the gate.')+'</div>'+(youDone?'<div class="note ok" style="text-align:center;margin-top:10px">You entered the '+o+'’s digits.'+(otherDone?'':' Now the '+o+' enters yours.')+'</div>':
    '<button class="btn blk" style="margin-top:12px" onclick="vcScan(\''+vid+'\','+(isO?1:0)+')">Scan the '+o+'’s code</button><div id="vcscan" class="vcs"></div><div class="sm" style="text-align:center;margin-top:10px">Or type the '+o+'’s 3 digits</div><div class="vin">'+[0,1,2].map(function(i){return '<input id="vc'+i+'" inputmode="numeric" maxlength="1" oninput="vcIn(this,'+i+')" autocomplete="off">'}).join('')+'</div><button class="btn blk ol" onclick="vcGo(\''+vid+'\','+(isO?1:0)+')">Confirm digits</button>');
@@ -3638,6 +3727,239 @@ var _l=SC.listing;SC.listing=function(){var s=_l();return s.split('The exact pin
 
 /* ======== v28: email guide ======== */
 window.mailGuide=function(){sheet('<h2 class="lx" style="font-size:20px;margin:0 0 6px">No email yet? It takes 2 minutes.</h2><p class="sm" style="margin:0 0 12px">Your email is how you sign in safely. It is free and stays private.</p>'+[['Open Gmail','Go to gmail.com or open the Gmail app and tap Create account.'],['Fill in your details','Pick a name like ama.mensah24@gmail.com and a strong password.'],['Come back to Izel','Use that email here. We send you a code each time you sign in.']].map(function(r,i){return '<div class="pvr" style="padding:10px 0"><span style="width:34px;height:34px;border-radius:12px;font-weight:800">'+(i+1)+'</span><div><b>'+r[0]+'</b><p>'+r[1]+'</p></div></div>'}).join('')+'<button class="btn blk" style="margin-top:14px" onclick="closeSheet()">Got it</button>')};
+
+/* ======== v33: chat button opens the real deal room ======== */
+window.chatRoom=function(cid){var c=DB.chats[cid];if(!c)return;var r=dealRoomOf(c);if(r){go('deal',{id:r.id});return}
+ if(DB.me===listing_(c.listing).owner)return toast('No deal room yet. It opens when the renter makes an offer.');preRoom(c.listing)};
+var _c26=SC.chat;SC.chat=function(){var s=_c26();return s.replace(/onclick="dmToggle\('([^']*)'\)">(Deal room|Chat)</,function(m,id){return 'onclick="chatRoom(\''+id+'\')">Deal room<'})};
+
+/* ======== v33: locked roles, admin view, profile details ======== */
+(function(){
+function isAdm(){var u=me();return !!(u&&u.roles&&u.roles.indexOf('admin')>-1)}
+var _p=pickRole;window.pickRole=pickRole=function(r){var u=me();
+ if(u&&!isAdm()&&u.roles&&u.roles.length&&DB.role){var cur=DB.role,same=(r===cur)||(r==='owner2'&&cur==='owner')||(r==='host'&&cur==='owner');if(!same){var n={seeker:'a Find-a-place account',owner:'a property owner account',agent:'an agent account'}[cur]||'an account';toast('Your account is '+n+'. Make a new account with another email to use Izel differently.');return}}
+ _p(r)};
+window.adminView=function(r){window._admv=1;try{var u=me();if(u.roles.indexOf(r)<0&&r!=='admin')u.roles.push(r);DB.role=r;save();tab(defaultTab())}finally{window._admv=0}};
+function row(l,v,act){return '<button class="prw" '+(act?'onclick="'+act+'"':'')+'><span style="flex:1;text-align:left"><span class="sm" style="display:block;font-size:11px">'+l+'</span><span style="font-size:14px">'+v+'</span></span></button>'}
+var _m=SC.me;SC.me=function(){var s=_m(),u=me()||{};if(!me()||u.guest)return s;
+ s=s.replace(/<div class="sec"><h2>Switch mode<\/h2>[\s\S]*?<\/div><\/div>/,'');
+ var nOn=(function(){try{return localStorage.getItem('iz_notif')==='1'}catch(e){return false}})();
+ var h='<div class="pfc"><h3>Your details</h3>'+row('Email',esc(u.email||'Not added'))+row('Phone (private)',u.phone?esc(u.phone.replace(/(\d{3})(\d{3})(\d+)/,'$1 $2 $3')):'Add a number','editProfile()')+
+  '<button class="prw" onclick="notifToggle()"><span style="flex:1;text-align:left"><span class="sm" style="display:block;font-size:11px">Notifications</span><span style="font-size:14px">'+(nOn?'On':'Off')+'</span></span><span class="pv">'+(nOn?'Turn off':'Turn on')+'</span></button></div>';
+ if(isAdm())h+='<div class="pfc"><h3>Team view</h3><div class="sm" style="margin-bottom:8px">See Izel as each kind of user.</div><div class="two">'+[['seeker','Renter'],['owner','Owner'],['agent','Agent'],['admin','Review']].map(function(x){return '<button class="btn sm2 '+(DB.role===x[0]?'dk':'ol')+'" onclick="adminView(\''+x[0]+'\')">'+x[1]+'</button>'}).join('')+'</div></div>';
+ var i=s.indexOf('<div class="pfc"><h3>Look and feel');return i>-1?s.slice(0,i)+h+s.slice(i):s+h};
+window.notifToggle=function(){var on=false;try{on=localStorage.getItem('iz_notif')==='1'}catch(e){}
+ if(on){try{localStorage.setItem('iz_notif','0')}catch(e){}render();return toast('Notifications off')}
+ if(!window.Notification)return toast('This browser does not support notifications');
+ Notification.requestPermission().then(function(p){if(p==='granted'){try{localStorage.setItem('iz_notif','1')}catch(e){}toast('Notifications on')}else toast('Allow notifications in your browser settings first');render()})};
+window.editProfile=function(){var u=me()||{};sheet('<h2 class="lx" style="font-size:18px;margin:0 0 12px">Edit profile</h2><label class="fld"><span>Your name</span><input id="ep_n" value="'+esc(u.name||'')+'"></label><label class="fld"><span>Phone (private, never shown)</span><input id="ep_p" type="tel" value="'+esc(u.phone||'')+'" placeholder="024 000 0000"></label><label class="fld"><span>Email</span><input value="'+esc(u.email||'')+'" disabled></label><label class="btn blk ol" style="cursor:pointer;margin-bottom:10px">Change photo<input type="file" accept="image/*" hidden onchange="setPhoto(this.files[0]);closeSheet()"></label><button class="btn blk" onclick="saveProfile()">Save</button>')};
+window.saveProfile=function(){var n=($('ep_n').value||'').trim(),p=($('ep_p').value||'').replace(/\D/g,'');if(n.length<2)return toast('Enter your name');if(p&&(p.length<9||p.length>15))return toast('Enter a valid phone number');var u=me();u.name=n;u.phone=p||undefined;save();closeSheet();render();toast('Saved')};
+function hz(){if(!isAdm()||!DB.me)return;if(/review/i.test(location.hash)){adminView('admin');history.replaceState(null,'',location.pathname)}else if(/(dev|ops)/i.test(location.hash)){adminView('admin');setTimeout(function(){go('dev')},200);history.replaceState(null,'',location.pathname)}}
+window.addEventListener('hashchange',hz);setTimeout(hz,2500);
+})();
+
+/* ======== v33: QR works with any camera ======== */
+window.izScanUrl=function(vid,code){return location.origin+'/#iz=v:'+vid+':'+code};
+(function(){
+function run(){var m=/#iz=v:([^:]+):(\d{3})/.exec(location.hash);if(!m)return;
+ if(!DB.me||!window.pullNow){setTimeout(run,1500);return}
+ var vid=m[1],cd=m[2];history.replaceState(null,'',location.pathname);
+ window.pullNow().then(function(){if(!DB.visits.filter(function(v){return v.id===vid})[0])return toast('This pass is not for your account');scanDetails(vid,cd)}).catch(function(){toast('Could not open the pass. Check your connection.')})}
+window.addEventListener('hashchange',run);setTimeout(run,2500);
+})();
+
+/* ======== v34: Deal room for rentals ======== */
+(function(){
+var CL=['Tenant can break the lease after 6 months with 30 days’ notice','Minor repairs under GH₵300 are handled by the tenant','No subletting without the owner’s written consent','Water and power bills are paid by the tenant','Rent can rise once a year, with 60 days’ notice','Security deposit is returned within 30 days of leaving'];
+var DUR=[6,12,18,24,36],FQ=[['monthly','Monthly'],['quarterly','Quarterly'],['upfront','Upfront']];
+function due(rent,dur,fq){var n=fq==='monthly'?1:fq==='quarterly'?3:dur,svc=Math.round(rent*.05);return{n:n,rentDue:rent*n,deposit:rent,service:svc*n,svc:svc,total:rent*n+rent+svc*n}}
+window.dueNow=due;
+function kv(a,b,t){return '<div class="dk'+(t?' t':'')+'"><span>'+a+'</span><b>'+b+'</b></div>'}
+function bk(rent,dur,fq){var d=due(rent,dur,fq),per=fq==='monthly'?'month':'quarter';
+ return kv('Agreed monthly rent',money(rent))+kv('Lease duration',dur+' months')+kv('Payment structure',fq==='upfront'?'Full term upfront':fq==='quarterly'?'Every 3 months':'Every month')+kv('Rent for '+(d.n===1?'the first month':d.n+' months'),money(d.rentDue))+kv('Security deposit (1 month, refundable)',money(d.deposit))+kv('Service charge (5% a month)',money(d.service))+kv('Total due at signing',money(d.total),1)+
+ '<div class="dn">'+(fq==='upfront'?'Nothing more to pay until the lease ends.':'After that: '+money((rent+d.svc)*(fq==='monthly'?1:3))+' every '+per+'.')+'</div>'}
+function mySide(r){return DB.me===r.owner?'owner':'seeker'}
+function draft(r,l){S.dr=S.dr||{};var K=r.id+':'+r.hist.length,d=S.dr[K];if(!d){var last=r.hist[r.hist.length-1],t=last&&last.terms;d=S.dr[K]={rent:last?last.amt:l.price,dur:t?t.dur:12,fq:t?t.freq:'monthly',cl:{},note:t?t.note:''};var on=t?t.clauses:[CL[0],CL[1]];CL.forEach(function(c,i){d.cl[i]=on.indexOf(c)>-1})}return d}
+function left(ms){if(ms<=0)return 'Window closed';var s=Math.floor(ms/1000),h=Math.floor(s/3600),m=Math.floor(s%3600/60),x=s%60;return String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(x).padStart(2,'0')}
+window.drSet=function(id,k,v){var r=R_(id),l=listing_(r.listing),d=draft(r,l);d[k]=k==='rent'?Math.max(0,Math.round(+v||0)):v;if(k==='rent'){var e=document.getElementById('drbk');if(e)e.innerHTML=bk(d.rent,d.dur,d.fq)}else render()};
+window.drCl=function(id,i,on){var r=R_(id),d=draft(r,listing_(r.listing));d.cl[i]=on};
+window.drNote=function(id,v){var r=R_(id),d=draft(r,listing_(r.listing));d.note=v.slice(0,300)};
+window.drSend=function(id){var r=R_(id),l=listing_(r.listing),d=draft(r,l),side=mySide(r);if(!(d.rent>0))return toast('Enter the monthly rent');if(d.rent>l.price*3)return toast('That is far above the listed rent');
+ var cl=CL.filter(function(c,i){return d.cl[i]}),a=d.rent,t={dur:d.dur,freq:d.fq,clauses:cl,note:(d.note||'').trim()};
+ r.hist.push({from:side,amt:a,t:Date.now(),terms:t});r.turn=side==='seeker'?'owner':'seeker';if(side==='seeker')r.n=d.dur;
+ var who=U(DB.me).name,w=side==='seeker'?'proposed':'countered with';roomSys(r,who+' '+w+' '+money(a)+' a month for '+d.dur+' months, paid '+d.fq+'.');push(side==='seeker'?r.owner:r.seeker,who+' '+w+' '+money(a)+' a month for '+l.title+'.');S.dr={};save();render();toast('Proposal sent');
+ if(side==='seeker'&&window.SIM&&SIM(r.owner))setTimeout(function(){if(a>=l.price*.93){drAcceptNow(r,l,r.hist[r.hist.length-1],true)}else{var ca=Math.max(a,Math.round((l.price+a)/2/10)*10);r.hist.push({from:'owner',amt:ca,t:Date.now(),terms:t});r.turn='seeker';roomSys(r,U(r.owner).name+' countered with '+money(ca)+' a month.');save();if(S.scr==='deal')render()}},1800)};
+function drAcceptNow(r,l,last,auto){var t=last.terms||{dur:12,freq:'monthly',clauses:[],note:''};r.terms={rent:last.amt,dur:t.dur,freq:t.freq,clauses:t.clauses,note:t.note};r.n=t.dur;r.agreed=due(last.amt,t.dur,t.freq).total;r.stage='agreed';r.turn='';roomSys(r,'Agreed at '+money(last.amt)+' a month for '+t.dur+' months.');push(DB.me===r.owner?r.seeker:r.owner,'Agreed at '+money(last.amt)+' a month. Next: payment in the deal room.');save();if(S.scr==='deal')render();if(auto)toast('Owner accepted your proposal')}
+window.drAccept=function(id){var r=R_(id),l=listing_(r.listing),last=r.hist[r.hist.length-1];if(!last||last.from===mySide(r))return;drAcceptNow(r,l,last)};
+window.drDocs=function(id,on){var r=R_(id);r.check=r.check||{};r.check.docs=on;if(on)roomSys(r,'Documents reviewed by '+U(DB.me).name+'.');save();render()};
+window.drTerms=function(id,on){var r=R_(id);r.check=r.check||{};r.check.terms=on;save();render()};
+function stepper(r){var s=['Offer','Counter','Documents','Agreed','Pay'],cur=r.stage==='paid'?5:r.stage==='agreed'?((r.check&&r.check.docs)?4:2):r.hist.some(function(h){return h.from==='owner'})?1:0;
+ return '<div class="dst">'+s.map(function(x,i){return '<span class="'+(i<cur?'dn':i===cur?'on':'')+'"><i>'+(i<cur?'✓':i+1)+'</i>'+x+'</span>'}).join('')+'</div>'}
+function card(r,h,i,n){var me=DB.me,mine=(h.from==='seeker'?r.seeker:r.owner)===me,nm=mine?'You':U(h.from==='seeker'?r.seeker:r.owner).name,t=h.terms||{dur:12,freq:'monthly',clauses:[]},acc=r.stage!=='offer'&&i===n-1,open=r.stage==='offer'&&i===n-1;
+ return '<div class="pcd"><div class="pch"><b>'+esc(nm)+' '+(h.from==='seeker'&&i===0?'proposed':'countered')+'</b><span class="bd '+(acc?'ok':open?'op':'')+'">'+(acc?'Accepted':open?(mine?'Awaiting reply':'Your turn'):'Replaced')+'</span></div><div class="sm" style="margin:-2px 0 8px">'+ago(h.t)+' ago</div>'+
+ '<div class="mb">'+kv('Monthly rent',money(h.amt))+kv('Lease',t.dur+' months · '+t.freq)+kv('Due at signing',money(due(h.amt,t.dur,t.freq).total))+'</div>'+(t.clauses&&t.clauses.length?'<div class="cls">'+t.clauses.map(function(c){return '<span>✓ '+esc(c)+'</span>'}).join('')+'</div>':'')+(t.note?'<div class="sm" style="margin-top:6px">“'+esc(t.note)+'”</div>':'')+'</div>'}
+var _d=SC.deal;SC.deal=function(){var r=R_(S.p.id);if(!r)return _d();var l=listing_(r.listing);if(!l||l.type!=='rent'||r.mode==='quick'||r.stay||r.stage==='paid')return _d();
+ var isO=DB.me===r.owner,side=mySide(r),last=r.hist[r.hist.length-1],c=DB.chats[r.chat],myTurn=r.stage==='offer'&&r.turn===side,d=draft(r,l),end=(last?last.t:r.t)+48*36e5;
+ var h=topbar('Deal room')+'<div class="dhd"><img src="'+imgSrc(l.imgs[0])+'" alt=""><div style="flex:1;min-width:0"><b class="dtl">'+esc(l.title)+'</b><div class="sm">'+esc(l.area)+', '+esc(l.city||'')+'</div><div class="dch"><span>'+(l.beds||0)+' bed</span><span>'+(l.baths||0)+' bath</span>'+(l.size?'<span>'+l.size+' m²</span>':'')+(l.furnished?'<span>Furnished</span>':'')+'</div></div><div class="dpr"><small>Listed</small><b>'+money(l.price)+'</b><small>a month</small></div></div>';
+ h+='<div class="pad dr"><div class="dq">'+(r.stage==='offer'?(myTurn?'Your turn':'Waiting for a reply'):'Agreed')+'</div>';
+ if(r.stage==='offer'){
+  if(myTurn){h+='<div class="dcd"><h3>'+(last&&last.from!==side?'Reply to '+esc(U(last.from==='seeker'?r.seeker:r.owner).name):'Your proposal')+'</h3>'+
+   '<label class="fld"><span>Monthly rent (GH₵)</span><input type="number" inputmode="numeric" value="'+d.rent+'" oninput="drSet(\''+r.id+'\',\'rent\',this.value)"></label>'+
+   '<div class="sm lbl">Lease duration</div><div class="chs">'+DUR.map(function(x){return '<button class="'+(d.dur===x?'on':'')+'" onclick="drSet(\''+r.id+'\',\'dur\','+x+')">'+x+' mo</button>'}).join('')+'</div>'+
+   '<div class="sm lbl">Payment structure</div><div class="chs">'+FQ.map(function(x){return '<button class="'+(d.fq===x[0]?'on':'')+'" onclick="drSet(\''+r.id+'\',\'fq\',\''+x[0]+'\')">'+x[1]+'</button>'}).join('')+'</div>'+
+   '<div class="sm lbl">What you will pay</div><div class="mb" id="drbk">'+bk(d.rent,d.dur,d.fq)+'</div>'+
+   '<div class="sm lbl">Deal conditions</div>'+CL.map(function(x,i){return '<label class="cb dcb"><input type="checkbox" '+(d.cl[i]?'checked':'')+' onchange="drCl(\''+r.id+'\','+i+',this.checked)"><span>'+x+'</span></label>'}).join('')+
+   '<label class="fld" style="margin-top:8px"><span>Special agreement (optional)</span><textarea rows="2" maxlength="300" oninput="drNote(\''+r.id+'\',this.value)" placeholder="Anything else you both agree to">'+esc(d.note||'')+'</textarea></label>'+
+   (last&&last.from!==side?'<button class="btn blk" onclick="drAccept(\''+r.id+'\')">Accept '+money(last.amt)+' a month</button><button class="btn blk ol" style="margin-top:8px" onclick="drSend(\''+r.id+'\')">Send counter</button>':'<button class="btn blk" onclick="drSend(\''+r.id+'\')">Send proposal</button>')+'</div>'}
+  else h+='<div class="dcd"><div class="note">'+(isO&&!last?'Waiting for the renter’s first proposal.':'Waiting for '+esc(U(isO?r.seeker:r.owner).name)+' to reply.')+'</div></div>'}
+ else{var t=r.terms||{rent:last.amt,dur:r.n,freq:'monthly',clauses:[]},ck=r.check||{};
+  h+='<div class="dcd"><h3>Agreed terms</h3><div class="mb">'+bk(t.rent,t.dur,t.freq)+'</div>'+(t.clauses&&t.clauses.length?'<div class="cls" style="margin-top:8px">'+t.clauses.map(function(x){return '<span>✓ '+esc(x)+'</span>'}).join('')+'</div>':'')+(t.note?'<div class="sm" style="margin-top:6px">Special agreement: '+esc(t.note)+'</div>':'')+
+  (isO?'<div class="note" style="margin-top:10px">Agreed. Waiting for '+esc(U(r.seeker).name)+' to sign and pay.</div>':window.signBlock('neg_'+r.id,'signPay(\''+r.id+'\')','Sign and pay '+money(r.agreed)))+'</div>'}
+ var ev=[];r.hist.forEach(function(x,i){ev.push({t:x.t,k:'p',x:x,i:i})});if(c)c.msgs.forEach(function(m){if(m.from==='sys')ev.push({t:m.t,k:'e',x:m})});ev.sort(function(a,b){return b.t-a.t});
+ h+='<h3 class="dsh">Negotiation</h3>'+(ev.length?ev.map(function(e){return e.k==='p'?card(r,e.x,e.i,r.hist.length):'<div class="dev"><i></i><span>'+esc(e.x.x)+'</span><small>'+ago(e.t)+'</small></div>'}).join(''):'<div class="sm">Nothing yet. Send the first proposal.</div>')+
+ '<h3 class="dsh">Messages</h3><div id="msgs">'+(c?c.msgs.filter(function(m){return m.from!=='sys'}).map(function(m){return '<div style="display:flex"><div class="bub '+(m.from===DB.me?'me':'th')+'">'+esc(m.x)+'</div></div>'}).join(''):'')+'</div><div style="height:80px"></div></div><div class="cin"><input id="cm" placeholder="Message in the deal room" onkeydown="if(event.key===\'Enter\')sendMsg(\''+esc(r.chat)+'\')"><button class="btn" style="padding:0 18px" onclick="sendMsg(\''+esc(r.chat)+'\')">Send</button></div>';
+ return h};
+setInterval(function(){[].forEach.call(document.querySelectorAll('.dtime'),function(e){e.textContent=left(+e.dataset.end-Date.now())})},1000);
+var _mk=mkRoom;mkRoom=function(vid,mode){var v=DB.visits.filter(function(x){return x.id===vid})[0],l=v&&listing_(v.listing);if(l&&l.type==='rent')window._pre=false;_mk(vid,mode)};
+/* only rentals get a deal room */
+var _c=SC.chat;SC.chat=function(){var s=_c(),c=DB.chats[S.p.id];if(!c||!c.listing)return s;var l=listing_(c.listing);if(l&&(l.type==='stay'||l.type==='hostel'))s=s.replace(/<button class="btn sm2 [^"]*" style="min-height:34px;padding:0 12px" onclick="chatRoom\([^)]*\)">Deal room<\/button>/,'');return s};
+var _l=SC.listing;SC.listing=function(){var s=_l(),l=listing_(S.p.id);if(l&&(l.type==='stay'||l.type==='hostel'))s=s.replace(/<div class="sec"><div class="lux">(?:(?!<div class="sec">)[\s\S])*?Open the deal room<\/button><\/div><\/div>/,'');return s};
+})();
+IC.izsvc='<rect x="3" y="7.5" width="18" height="12.5" rx="3"/><path d="M9 7.500V6a2 2 0 012-2h2a2 2 0 012 2v1.500M3 13h18M11 13v1.500h2V13"/>';
+
+/* ======== v35: signatures, agreements, rental hold, buy plans, stay rules, photo viewer ======== */
+(function(){
+function A(){DB.agreements=DB.agreements||[];return DB.agreements}
+var SG={};
+function esc2(x){return esc(String(x==null?'':x))}
+/* ---------- signature pad ---------- */
+function sigPanel(key){SG[key]=SG[key]||{m:'t',t:'',img:''};var g=SG[key];
+ return '<div class="sgp" id="sgp_'+key+'"><div class="chs"><button id="sgb_'+key+'_t" class="'+(g.m==='t'?'on':'')+'" onclick="sgTab(\''+key+'\',\'t\')">Type</button><button id="sgb_'+key+'_d" class="'+(g.m==='d'?'on':'')+'" onclick="sgTab(\''+key+'\',\'d\')">Draw</button></div>'+
+ '<div id="sgt_'+key+'" style="'+(g.m==='t'?'':'display:none')+'"><input class="sgi" placeholder="Type your full name" value="'+esc2(g.t)+'" oninput="sgType(\''+key+'\',this.value)"><div class="sgv" id="sgv_'+key+'">'+(g.t?esc2(g.t):'<span>Your signature</span>')+'</div></div>'+
+ '<div id="sgd_'+key+'" style="'+(g.m==='d'?'':'display:none')+'"><canvas class="sgc" id="sgc_'+key+'" width="600" height="180"></canvas><button class="btn sm2 ol" style="margin-top:6px" onclick="sgClear(\''+key+'\')">Clear</button></div></div>'}
+window.sgTab=function(k,m){var g=SG[k];g.m=m;['t','d'].forEach(function(x){var b=document.getElementById('sgb_'+k+'_'+x);if(b)b.className=x===m?'on':'';var p=document.getElementById('sg'+x+'_'+k);if(p)p.style.display=x===m?'':'none'});if(m==='d')sgInit(k)};
+window.sgType=function(k,v){SG[k].t=v.slice(0,60);var e=document.getElementById('sgv_'+k);if(e)e.innerHTML=v?esc2(v):'<span>Your signature</span>'};
+window.sgClear=function(k){var c=document.getElementById('sgc_'+k);if(c)c.getContext('2d').clearRect(0,0,c.width,c.height);SG[k].img=''};
+function sgInit(k){var c=document.getElementById('sgc_'+k);if(!c||c._i)return;c._i=1;var x=c.getContext('2d'),dn=false,lx=0,ly=0;x.lineWidth=5;x.lineCap='round';x.lineJoin='round';x.strokeStyle='#111';
+ if(SG[k].img){var im=new Image();im.onload=function(){x.drawImage(im,0,0)};im.src=SG[k].img}
+ function pt(e){var r=c.getBoundingClientRect();return [(e.clientX-r.left)*c.width/r.width,(e.clientY-r.top)*c.height/r.height]}
+ c.addEventListener('pointerdown',function(e){dn=true;var p=pt(e);lx=p[0];ly=p[1];x.beginPath();x.arc(lx,ly,2.5,0,6.3);x.fillStyle='#111';x.fill();try{c.setPointerCapture(e.pointerId)}catch(_){}e.preventDefault()});
+ c.addEventListener('pointermove',function(e){if(!dn)return;var p=pt(e);x.beginPath();x.moveTo(lx,ly);x.lineTo(p[0],p[1]);x.stroke();lx=p[0];ly=p[1];e.preventDefault()});
+ var up=function(){if(!dn)return;dn=false;try{SG[k].img=c.toDataURL('image/png')}catch(_){}};c.addEventListener('pointerup',up);c.addEventListener('pointercancel',up);c.addEventListener('pointerleave',up)}
+window.sgGet=function(k){var g=SG[k];if(!g)return null;if(g.m==='t')return g.t.trim().length>=2?{type:'typed',text:g.t.trim()}:null;var c=document.getElementById('sgc_'+k);if(c&&!g.img){try{g.img=c.toDataURL('image/png')}catch(_){}}
+ if(!g.img)return null;var c2=document.createElement('canvas');c2.width=c.width;c2.height=c.height;var d=c.getContext('2d').getImageData(0,0,c.width,c.height).data,has=false;for(var i=3;i<d.length;i+=4)if(d[i]>20){has=true;break}return has?{type:'drawn',img:g.img}:null};
+function sigHtml(s,nm){if(!s)return '<div class="sgn">Awaiting signature</div>';return (s.type==='typed'?'<div class="sgty">'+esc2(s.text)+'</div>':'<img class="sgim" src="'+s.img+'" alt="">')+'<div class="sgn">'+esc2(nm||'')+(s.t?' · '+new Date(s.t).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}):'')+'</div>'}
+/* ---------- sign block (with agree tick) ---------- */
+window.signBlock=function(key,fn,label){return '<div class="sgb"><div class="sm lbl">Sign to agree</div>'+sigPanel(key)+'<label class="cb dcb" style="margin-top:10px"><input type="checkbox" id="sga_'+key+'"><span>I have read the agreement and I agree to it</span></label><button class="btn blk" style="margin-top:10px" onclick="'+fn+'">'+label+'</button><div class="sm" style="margin-top:8px;text-align:center">You get a copy of the signed agreement automatically.</div></div>'};
+function needSig(key){var s=sgGet(key);if(!s){toast('Add your signature first');return null}var a=document.getElementById('sga_'+key);if(!a||!a.checked){toast('Tick that you agree');return null}return s}
+/* ---------- agreements ---------- */
+function agFor(room){return A().filter(function(a){return a.room===room})[0]}
+function agMake(kind,l,sig,room,title,rows,rules){var a={id:uid('ag'),kind:kind,listing:l.id,seeker:DB.me,owner:l.owner,room:room||'',title:title,rows:rows,rules:rules,sig:Object.assign({},sig,{t:Date.now()}),ref:'AG'+Math.random().toString(36).slice(2,8).toUpperCase(),t:Date.now()};var o=U(l.owner);if(o&&o.sig)a.ownerSig=Object.assign({},o.sig,{t:Date.now(),auto:true});A().push(a);return a}
+window.agView=function(id){var a=A().filter(function(x){return x.id===id})[0];if(!a)return toast('Agreement not found');var l=listing_(a.listing)||{title:''},isO=DB.me===a.owner;
+ var T={rent:['TENANCY AGREEMENT','Tenant','Owner'],stay:['SHORT-STAY HOUSE RULES AGREEMENT','Guest','Host'],hostel:['HOSTEL ACCOMMODATION AGREEMENT','Resident','Hostel owner'],sale:['PROPERTY RESERVATION AGREEMENT','Buyer','Seller'],land:['LAND RESERVATION AGREEMENT','Buyer','Seller']}[a.kind]||[a.title.toUpperCase(),'Party','Owner'];
+ var dt=new Date(a.t).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}),n=0;
+ var d=document.getElementById('agov');if(d)d.remove();d=document.createElement('div');d.id='agov';
+ d.innerHTML='<div class="agb"><button class="ib" onclick="document.getElementById(\'agov\').remove()" aria-label="Close">'+ico('x',20)+'</button><button class="btn sm2" onclick="window.print()">Save as PDF</button></div><div class="agd off"><div class="agh">'+swan(28,'#111')+'<b>IZEL</b><span>Ref '+esc2(a.ref)+'</span></div><h2 class="ago">'+T[0]+'</h2><div class="agm">Made on '+dt+'</div>'+
+ '<h3>Parties</h3><div class="agr">'+kv2(T[2],U(a.owner).name)+kv2(T[1],U(a.seeker).name)+'</div><h3>Property</h3><div class="agr">'+kv2('Description',l.title)+kv2('Location',(l.area||'')+(l.city?', '+l.city:''))+'</div>'+
+ '<h3>Terms</h3><ol class="agt">'+a.rows.map(function(r){return '<li><span>'+esc2(r[0])+'</span><b>'+esc2(r[1])+'</b></li>'}).join('')+'</ol>'+
+ (a.rules&&a.rules.length?'<h3>Conditions and rules</h3><ol class="agcl">'+a.rules.map(function(x){return '<li>'+esc2(x)+'</li>'}).join('')+'</ol>':'')+
+ '<h3>General</h3><ol class="agcl"><li>All payments under this agreement are made through Izel and are recorded with a receipt.</li><li>Both parties confirm that the details they gave Izel are true.</li><li>This agreement is stored in both accounts. Neither party can change it after signing.</li><li>Disputes are first raised with Izel, which may review the messages and records of this agreement.</li></ol>'+
+ '<h3>Signed</h3><div class="sgs"><div><small>'+T[1]+'</small>'+sigHtml(a.sig,U(a.seeker).name)+'</div><div><small>'+T[2]+'</small>'+sigHtml(a.ownerSig,U(a.owner).name)+(isO&&!a.ownerSig?'<button class="btn sm2" style="margin-top:8px" onclick="ownerSign(\''+a.id+'\')">Sign now</button>':'')+'</div></div>'+
+ '<p class="fine">What is agreed here stays between the parties and Izel. Template v1.</p></div>';document.body.appendChild(d)};
+function kv2(a,b){return '<div class="agrow"><span>'+esc2(a)+'</span><b>'+esc2(b)+'</b></div>'}
+window.ownerSign=function(id){var a=A().filter(function(x){return x.id===id})[0],u=me();if(u&&u.sig){a.ownerSig=Object.assign({},u.sig,{t:Date.now()});save();agView(id);toast('Signed');return}
+ sheet('<h2 class="lx" style="font-size:18px;margin:0 0 10px">Your signature</h2>'+sigPanel('own1')+'<button class="btn blk" style="margin-top:10px" onclick="ownerSign2(\''+id+'\')">Sign and save</button><div class="sm" style="margin-top:8px">We keep it on your profile so you do not have to sign again.</div>');setTimeout(function(){sgInit('own1')},50)};
+window.ownerSign2=function(id){var s=sgGet('own1');if(!s)return toast('Add your signature first');var u=me();u.sig=s;var a=A().filter(function(x){return x.id===id})[0];a.ownerSig=Object.assign({},s,{t:Date.now()});save();closeSheet();agView(id);toast('Signed')};
+window.sigSheet=function(){sheet('<h2 class="lx" style="font-size:18px;margin:0 0 10px">My signature</h2><div class="sm" style="margin-bottom:8px">Added automatically to every agreement for your properties.</div>'+sigPanel('own2')+'<button class="btn blk" style="margin-top:10px" onclick="sigSave()">Save signature</button>');setTimeout(function(){sgInit('own2')},50)};
+window.sigSave=function(){var s=sgGet('own2');if(!s)return toast('Add your signature first');me().sig=s;save();closeSheet();render();toast('Signature saved')};
+var CLs=['Tenant can break the lease after 6 months with 30 days’ notice','Minor repairs under GH₵300 are handled by the tenant','No subletting without the owner’s written consent','Water and power bills are paid by the tenant','Rent can rise once a year, with 60 days’ notice','Security deposit is returned within 30 days of leaving'];
+window.rtSheet=function(){var u=me(),t=u.rterms||{freqs:['monthly','quarterly','upfront'],clauses:[CLs[0],CLs[1]]};window._rt2={f:t.freqs.slice(),c:t.clauses.slice()};
+ sheet('<h2 class="lx" style="font-size:18px;margin:0 0 10px">My rental terms</h2><div class="sm lbl">Renters can pay</div><div class="chs">'+[['monthly','Monthly'],['quarterly','Quarterly'],['upfront','Upfront']].map(function(x){return '<button class="'+(window._rt2.f.indexOf(x[0])>-1?'on':'')+'" onclick="rtTog(\'f\',\''+x[0]+'\',this)">'+x[1]+'</button>'}).join('')+'</div><div class="sm lbl">Conditions in every agreement</div>'+CLs.map(function(c){return '<label class="cb dcb"><input type="checkbox" '+(window._rt2.c.indexOf(c)>-1?'checked':'')+' onchange="rtTog(\'c\',this.dataset.c,this)" data-c="'+esc2(c)+'"><span>'+esc2(c)+'</span></label>'}).join('')+'<button class="btn blk" style="margin-top:12px" onclick="rtSave()">Save</button>')};
+window.rtTog=function(k,v,el){var a=window._rt2[k],i=a.indexOf(v);if(i>-1)a.splice(i,1);else a.push(v);if(el.tagName==='BUTTON')el.className=i>-1?'':'on'};
+window.rtSave=function(){var t=window._rt2;if(!t.f.length)return toast('Choose at least one way to pay');me().rterms={freqs:t.f,clauses:t.c,rules:[]};save();closeSheet();toast('Saved')};
+/* ---------- rental reserve screen ---------- */
+var DEPS=[35,40,50,60],DURS=[6,12,18,24,36],FQN={monthly:'Monthly',quarterly:'Quarterly',upfront:'Upfront'};
+function due(rent,dur,fq){return window.dueNow(rent,dur,fq)}
+function money2(n){return money(n)}
+function owTerms(l){var o=U(l.owner),t=o&&o.rterms;return {freqs:(t&&t.freqs&&t.freqs.length)?t.freqs:['monthly','quarterly','upfront'],clauses:(t&&t.clauses)?t.clauses:[CLs[0],CLs[1]]}}
+function RV(r,l){S.rv=S.rv||{};var v=S.rv[r.id];if(!v){var ow=owTerms(l);v=S.rv[r.id]={dur:12,fq:ow.freqs[0],dep:50}}return v}
+function rvBk(r,l){var v=RV(r,l),d=due(l.price,v.dur,v.fq),hold=Math.round(d.total*v.dep/100),per=v.fq==='monthly'?'month':'quarter';
+ return kv2x('Monthly rent',money(l.price))+kv2x('Lease',v.dur+' months')+kv2x('Paying',FQN[v.fq])+kv2x('Rent for '+(d.n===1?'the first month':d.n+' months'),money(d.rentDue))+kv2x('Security deposit (refundable)',money(d.deposit))+kv2x('Service charge',money(d.service))+kv2x('Total at signing',money(d.total),1)+
+ '<div class="dn">'+(v.fq==='upfront'?'Nothing more to pay until the lease ends.':'Then '+money((l.price+d.svc)*(v.fq==='monthly'?1:3))+' every '+per+'.')+'</div>'}
+function kv2x(a,b,t){return '<div class="dk'+(t?' t':'')+'"><span>'+a+'</span><b>'+b+'</b></div>'}
+function holdLine(r,l){var v=RV(r,l),d=due(l.price,v.dur,v.fq),h=Math.round(d.total*v.dep/100);return '<div class="dn" id="rvh">Hold it with <b>'+money(h)+'</b> now. The other '+money(d.total-h)+' is paid when you sign the lease.</div>'}
+window.rvSet=function(id,k,val){var r=R_(id),l=listing_(r.listing),v=RV(r,l);v[k]=val;var q=function(i){return document.getElementById(i)};
+ [['dur',DURS],['fq',Object.keys(FQN)],['dep',DEPS]].forEach(function(p){(p[1]).forEach(function(x){var b=q('rv_'+p[0]+'_'+x);if(b)b.className=v[p[0]]===x?'on':''})});
+ var e=q('rvbk');if(e)e.innerHTML=rvBk(r,l);var h=q('rvh');if(h)h.outerHTML=holdLine(r,l);var ps=q('rvpay');if(ps){var d=due(l.price,v.dur,v.fq);ps.textContent='Sign and hold for '+money(Math.round(d.total*v.dep/100))}};
+window.rvNeg=function(id){S.neg=S.neg||{};S.neg[id]=true;render()};
+window.signPay=function(id){var r=R_(id),l=listing_(r.listing),key=(r.hist.length||(S.neg&&S.neg[id]))?'neg_'+id:'rv_'+id,sig=needSig(key);if(!sig)return;
+ if(l.type==='rent'){
+  if(!r.hist.length&&!(S.neg&&S.neg[id])){var v=RV(r,l),ow=owTerms(l),d=due(l.price,v.dur,v.fq),hold=Math.round(d.total*v.dep/100);
+   r.terms={rent:l.price,dur:v.dur,freq:v.fq,clauses:ow.clauses,note:''};r.holdPct=v.dep;r.n=v.dur;r.agreed=hold;r.stage='agreed';r.turn='';r.check={docs:true,terms:true};
+   var rows=[['Monthly rent',money(l.price)],['Lease duration',v.dur+' months'],['Payment structure',FQN[v.fq]],['Rent for first period',money(d.rentDue)],['Security deposit (refundable)',money(d.deposit)],['Service charge',money(d.service)],['Total due at signing',money(d.total)],['Hold deposit ('+v.dep+'%) paid now',money(hold)],['Balance due when you sign the lease',money(d.total-hold)]];
+   if(!agFor(r.id))agMake('rent',l,sig,r.id,'Rental agreement',rows,ow.clauses)}
+  else{var t=r.terms,d2=due(t.rent,t.dur,t.freq);if(!agFor(r.id))agMake('rent',l,sig,r.id,'Rental agreement',[['Monthly rent',money(t.rent)],['Lease duration',t.dur+' months'],['Payment structure',FQN[t.freq]],['Rent for first period',money(d2.rentDue)],['Security deposit (refundable)',money(d2.deposit)],['Service charge',money(d2.service)],['Total due at signing',money(d2.total)]],(t.clauses||[]).concat(t.note?['Special agreement: '+t.note]:[]))}
+ }else{
+  var plan=(S.buy&&S.buy[id])||'full',P=BUYP.filter(function(p){return p.id===plan})[0],base=roomBase(r);r.stage='agreed';r.agreed=base;r.turn='';r.check={docs:true,terms:true};
+  if(!agFor(r.id))agMake(l.type,l,sig,r.id,l.type==='land'?'Land purchase agreement':'Property purchase agreement',[['Price',money(l.price)],['Payment plan',P.name],['Reservation deposit (10%)',money(base)]].concat(P.steps.map(function(s,i){return ['Payment '+(i+1),s.t+' · '+money(Math.round(l.price*s.p/100))+' ('+s.p+'%)']})),['The property is held for the buyer while the plan is followed.','The deposit is refunded if the property is not as shown at the viewing.','Ownership documents are checked and handed over at the final payment.'])}
+ roomSys(r,U(DB.me).name+' signed the agreement.');save();roomPay(id)};
+/* ---------- screens ---------- */
+function hdr(l){return '<div class="dhd"><img src="'+imgSrc(l.imgs[0])+'" alt=""><div style="flex:1;min-width:0"><b class="dtl">'+esc2(l.title)+'</b><div class="sm">'+esc2(l.area)+', '+esc2(l.city||'')+'</div><div class="dch"><span>'+(l.beds||0)+' bed</span><span>'+(l.baths||0)+' bath</span>'+(l.size?'<span>'+l.size+' m²</span>':'')+'</div></div><div class="dpr"><small>'+(l.type==='rent'?'Rent':'Price')+'</small><b>'+money(l.price)+'</b>'+(l.type==='rent'?'<small>a month</small>':'')+'</div></div>'}
+function paidScreen(r,l){var a=agFor(r.id),isO=DB.me===r.owner;
+ return topbar('Deal room')+hdr(l)+'<div class="pad dr"><div class="dcd" style="text-align:center"><div class="ckc">'+ico('check',28)+'</div><b style="font-size:15px">'+(l.type==='rent'?'Home held':'Reserved')+'</b><div class="sm" style="margin-top:4px">'+money(r.agreed)+' paid · receipt '+r.id.toUpperCase().slice(0,8)+'</div>'+
+ (r.holdPct&&r.terms?'<div class="sm" style="margin-top:6px">The balance of '+money(due(r.terms.rent,r.terms.dur,r.terms.freq).total-r.agreed)+' is paid when you sign the lease.</div>':'')+
+ (a?'<button class="btn blk" style="margin-top:12px" onclick="agView(\''+a.id+'\')">View agreement</button>':'')+(isO&&a&&!a.ownerSig?'<button class="btn blk ol" style="margin-top:8px" onclick="ownerSign(\''+a.id+'\')">Sign the agreement</button>':'')+'</div>'+(typeof roomNext==='function'&&!isO?roomNext(r):'')+'</div>'}
+function reserveScreen(r,l){var isO=DB.me===r.owner,v=RV(r,l),ow=owTerms(l),d=due(l.price,v.dur,v.fq);
+ if(isO)return topbar('Deal room')+hdr(l)+'<div class="pad dr"><div class="dcd"><div class="note">'+esc2(U(r.seeker).name)+' is looking at this home. When they sign and hold it with a deposit, you will be told here and get a copy of the agreement.</div></div></div>';
+ return topbar('Deal room')+hdr(l)+'<div class="pad dr"><div class="dcd"><h3>Choose your terms</h3><div class="sm lbl">Lease duration</div><div class="chs">'+DURS.map(function(x){return '<button id="rv_dur_'+x+'" class="'+(v.dur===x?'on':'')+'" onclick="rvSet(\''+r.id+'\',\'dur\','+x+')">'+x+' mo</button>'}).join('')+'</div>'+
+ '<div class="sm lbl">How you pay</div><div class="chs">'+ow.freqs.map(function(x){return '<button id="rv_fq_'+x+'" class="'+(v.fq===x?'on':'')+'" onclick="rvSet(\''+r.id+'\',\'fq\',\''+x+'\')">'+FQN[x]+'</button>'}).join('')+'</div><div class="sm" style="margin-top:6px">'+esc2(U(l.owner).name)+' accepts '+ow.freqs.map(function(x){return FQN[x].toLowerCase()}).join(', ')+'.</div>'+
+ '<div class="mb" id="rvbk" style="margin-top:12px">'+rvBk(r,l)+'</div></div>'+
+ '<div class="dcd"><h3>Hold it with a deposit</h3><div class="sm" style="margin-bottom:8px">Tells the owner you are interested and keeps the home for you. Refunded if it is not as shown at the viewing.</div><div class="chs">'+DEPS.map(function(x){return '<button id="rv_dep_'+x+'" class="'+(v.dep===x?'on':'')+'" onclick="rvSet(\''+r.id+'\',\'dep\','+x+')">'+x+'%</button>'}).join('')+'</div>'+holdLine(r,l)+'</div>'+
+ '<div class="dcd"><h3>Agreement</h3><div class="cls" style="margin-bottom:10px">'+ow.clauses.map(function(c){return '<span>✓ '+esc2(c)+'</span>'}).join('')+'</div>'+window.signBlock('rv_'+r.id,'signPay(\''+r.id+'\')','<span id="rvpay">Sign and hold for '+money(Math.round(d.total*v.dep/100))+'</span>')+'</div>'+
+ '<button class="lnk" onclick="rvNeg(\''+r.id+'\')">Want a different rent? Make an offer</button><div style="height:30px"></div></div>'}
+/* ---------- buy ---------- */
+var BUYP=[{id:'full',name:'Full payment',steps:[{p:10,t:'Reserve now'},{p:90,t:'At signing'}]},{id:'two',name:'Two payments',steps:[{p:10,t:'Reserve now'},{p:40,t:'At signing'},{p:50,t:'Within 30 days'}]},{id:'i6',name:'6-month plan',steps:[{p:10,t:'Reserve now'},{p:20,t:'At signing'},{p:70,t:'Over 6 months'}]},{id:'i12',name:'12-month plan',steps:[{p:10,t:'Reserve now'},{p:20,t:'At signing'},{p:70,t:'Over 12 months'}]}];
+window.byPlan=function(id,p){S.buy=S.buy||{};S.buy[id]=p;render()};
+function buyScreen(r,l){var isO=DB.me===r.owner,plan=(S.buy&&S.buy[r.id])||'full',P=BUYP.filter(function(x){return x.id===plan})[0];
+ if(isO)return topbar('Deal room')+hdr(l)+'<div class="pad dr"><div class="dcd"><div class="note">'+esc2(U(r.seeker).name)+' is interested in this '+(l.type==='land'?'plot':'property')+'. When they sign and reserve it you will be told here.</div></div></div>';
+ return topbar('Deal room')+hdr(l)+'<div class="pad dr"><div class="dcd"><h3>How you pay</h3><div class="sm" style="margin-bottom:8px">The price is fixed at '+money(l.price)+'. Choose a plan that suits you.</div><div class="chs">'+BUYP.map(function(x){return '<button class="'+(plan===x.id?'on':'')+'" onclick="byPlan(\''+r.id+'\',\''+x.id+'\')">'+x.name+'</button>'}).join('')+'</div>'+
+ '<div class="mb" style="margin-top:12px">'+P.steps.map(function(s,i){return kv2x((i+1)+'. '+s.t,money(Math.round(l.price*s.p/100))+' <small style="opacity:.6">'+s.p+'%</small>')}).join('')+kv2x('Total',money(l.price),1)+'</div><div class="dn">Reserving costs '+money(roomBase(r))+' now (10%). It is refunded if the property is not as shown at the viewing.</div></div>'+
+ '<div class="dcd"><h3>Agreement</h3><div class="cls" style="margin-bottom:10px"><span>✓ The '+(l.type==='land'?'plot':'property')+' is held for you while you follow the plan.</span><span>✓ Ownership documents are checked and handed over at the final payment.</span><span>✓ All payments are made inside Izel.</span></div>'+window.signBlock('rv_'+r.id,'signPay(\''+r.id+'\')','Sign and reserve for '+money(roomBase(r)))+'</div></div>'}
+var _d2=SC.deal;SC.deal=function(){var r=R_(S.p.id);if(!r)return _d2();var l=listing_(r.listing);if(!l||r.stay||r.mode==='quick')return _d2();
+ if((l.type==='rent'||l.type==='sale'||l.type==='land')&&r.stage==='paid')return paidScreen(r,l);
+ if(l.type==='rent'&&r.stage==='offer'&&!r.hist.length&&!(S.neg&&S.neg[r.id]))return reserveScreen(r,l);
+ if(l.type==='rent'&&r.stage==='agreed'&&r.holdPct&&!r.hist.length&&DB.me===r.seeker)return topbar('Deal room')+hdr(l)+'<div class="pad dr"><div class="dcd"><h3>Almost there</h3><div class="sm" style="margin-bottom:10px">Your agreement is signed. Pay the deposit to hold the home.</div><button class="btn blk" onclick="roomPay(\''+r.id+'\')">Pay '+money(r.agreed)+'</button></div></div>';
+ if((l.type==='sale'||l.type==='land')&&r.stage!=='paid'){if(r.stage==='agreed'&&DB.me===r.seeker)return topbar('Deal room')+hdr(l)+'<div class="pad dr"><div class="dcd"><h3>Almost there</h3><div class="sm" style="margin-bottom:10px">Your agreement is signed. Pay the reservation to hold it.</div><button class="btn blk" onclick="roomPay(\''+r.id+'\')">Pay '+money(r.agreed)+'</button></div></div>';return buyScreen(r,l)}
+ return _d2()};
+/* sale/land keep a deal room; stays and hostels do not */
+var _c3=SC.chat;SC.chat=function(){var s=_c3(),c=DB.chats[S.p.id];if(!c||!c.listing)return s;var l=listing_(c.listing);if(l&&(l.type==='stay'||l.type==='hostel'))s=s.replace(/<button class="btn sm2 [^"]*" style="min-height:34px;padding:0 12px" onclick="chatRoom\([^)]*\)">Deal room<\/button>/,'');return s};
+/* ---------- stay and hostel rules ---------- */
+var RULES={stay:['Check-in from 2pm and check-out by 11am.','Be in your room by 9pm, and no later than 12 midnight.','No smoking or open flames inside.','No extra guests unless the host knows first.','Keep noise down after 10pm.','Damage to the property is charged to the guest.'],
+ hostel:['Be in by 10pm. After that the gate is locked.','Visitors leave by 8pm.','No cooking in the rooms.','Keep shared spaces clean after use.','Pay each term on time.','No loud music or parties.']};
+function rulesFor(l){var o=U(l.owner);return (l.rules&&l.rules.length)?l.rules:RULES[l.type]||[]}
+function rulesBox(l,key,fn,label){return '<div class="dcd" style="margin-top:12px"><h3>House rules</h3><div class="cls" style="margin-bottom:8px">'+rulesFor(l).map(function(x){return '<span>✓ '+esc2(x)+'</span>'}).join('')+'</div>'+window.signBlock(key,fn,label)+'</div>'}
+var _sb=window.stayBook;window.stayBook=function(lid){_sb(lid);var l=listing_(lid),box=document.querySelector('.sheet')||document.getElementById('sheet');var btn=[].filter.call(document.querySelectorAll('button'),function(b){return /stayGo\(\)/.test(b.getAttribute('onclick')||'')})[0];if(btn){btn.insertAdjacentHTML('beforebegin',rulesBox(l,'st_'+lid,'stayGoS(\''+lid+'\')','Sign and continue to payment'));btn.remove();setTimeout(function(){sgInit('st_'+lid)},50)}};
+window.stayGoS=function(lid){var key='st_'+lid,sig=needSig(key);if(!sig)return;var n=DB.dealRooms.length;window.stayGo();if(DB.dealRooms.length>n){var r=DB.dealRooms[DB.dealRooms.length-1],l=listing_(lid);agMake('stay',l,sig,r.id,'House rules agreement',[['Check-in',r.in||''],['Check-out',r.out||''],['Nights',String(r.n||1)]],rulesFor(l));save()}};
+var _rb=window.reserveBed;window.reserveBed=reserveBed=function(lid,i){_rb(lid,i);var l=listing_(lid),btn=[].filter.call(document.querySelectorAll('button'),function(b){return /payUI\(.*Bed reservation/.test(b.getAttribute('onclick')||'')})[0];if(btn){var oc=btn.getAttribute('onclick'),label=btn.textContent;btn.insertAdjacentHTML('beforebegin',rulesBox(l,'hb_'+lid,'bedGoS(\''+lid+'\','+i+')',label.replace('and reserve','· sign and reserve')));btn.remove();setTimeout(function(){sgInit('hb_'+lid)},50)}};
+window.bedGoS=function(lid,i){var key='hb_'+lid,sig=needSig(key),l=listing_(lid),t=l.hostel.types[i],dep=Math.round(t.price*.25);if(!sig)return;window._rv={lid:lid,i:i};payUI(dep,'Bed reservation',function(){doReserve();agMake('hostel',l,sig,'','Hostel house rules agreement',[['Room type',t.name],['Price',money(t.price)],['Reservation deposit (25%)',money(dep)]],rulesFor(l));save()})};
+
+var MK='<h2 style="margin:20px 0 6px;font-size:17px">Description';
+var _l4=SC.listing;SC.listing=function(){var s=_l4(),l=listing_(S.p.id);if(s.indexOf('class="slider"')>-1&&s.indexOf('wmw')<0)s=s.replace('<div class="slider"','<div class="wmw"><div class="slider"').replace('</div><div class="dots">','</div><i class="wm"></i></div><div class="dots">');if(l&&l.imgs&&l.imgs.length>1&&s.indexOf('class="dots"')>-1&&s.indexOf('class="phs"')<0){var st='<div class="phs">'+l.imgs.map(function(x,k){return '<button onclick="izView(\''+l.id+'\','+k+')"><img src="'+imgSrc(x)+'" alt=""><span>'+esc2(x.tag||'')+'</span></button>'}).join('')+'</div>';s=s.replace(/(<div class="dots">[\s\S]*?<\/div>)/,'$1'+st)}
+ if(!l||l.owner===DB.me||s.indexOf(MK)<0)return s;var c='';
+ if(l.type==='sale'||l.type==='land')c='<div class="dcd" style="margin-top:14px"><h3>How you pay</h3><div class="sm" style="margin-bottom:10px">The price is fixed. Reserve with 10%, then follow a plan that suits you: in full, two payments, or instalments over 6 or 12 months.</div><button class="btn blk" onclick="preRoom(\''+l.id+'\')">See payment plans</button></div>';
+ else if(l.type==='stay'||l.type==='hostel')c='<div class="dcd" style="margin-top:14px"><h3>House rules</h3><div class="cls">'+rulesFor(l).map(function(x){return '<span>\u2713 '+esc2(x)+'</span>'}).join('')+'</div><div class="sm" style="margin-top:8px">You sign these when you reserve, and get a copy.</div></div>';
+ return c?s.replace(MK,c+MK):s};
+/* ---------- me page ---------- */
+var _m3=SC.me;SC.me=function(){var s=_m3(),u=me();if(!u||u.guest||DB.role!=='owner')return s;var h='<div class="pfc"><h3>Agreements</h3><button class="prw" onclick="sigSheet()"><span style="flex:1;text-align:left"><span class="sm" style="display:block;font-size:11px">My signature</span><span style="font-size:14px">'+(u.sig?'Saved':'Add')+'</span></span><span class="pv">'+(u.sig?'Change':'Add')+'</span></button><button class="prw" onclick="rtSheet()"><span style="flex:1;text-align:left"><span class="sm" style="display:block;font-size:11px">Rental terms</span><span style="font-size:14px">How renters pay and your conditions</span></span><span class="pv">Edit</span></button></div>';var i=s.indexOf('<div class="pfc"><h3>Look and feel');return i>-1?s.slice(0,i)+h+s.slice(i):s+h};
+/* my agreements list in Plan */
+window.agList=function(){return A().filter(function(a){return a.seeker===DB.me||a.owner===DB.me})};
+/* ---------- photo viewer ---------- */
+window.izView=function(lid,i){var l=listing_(lid);if(!l)return;var P=l.imgs||[];window._pv={l:lid,i:i};var d=document.getElementById('pvw');if(d)d.remove();d=document.createElement('div');d.id='pvw';document.body.appendChild(d);pvDraw()};
+function pvDraw(){var d=document.getElementById('pvw');if(!d)return;var l=listing_(_pv.l),P=l.imgs,i=_pv.i;d.innerHTML='<div class="pvt"><span>'+(i+1)+' / '+P.length+'</span><b>'+esc2(P[i].tag||'')+'</b><button class="ib" onclick="document.getElementById(\'pvw\').remove()" aria-label="Close">'+ico('x',22)+'</button></div><div class="pvm"><img src="'+imgSrc(P[i])+'" alt=""></div><div class="pvn"><button class="ib" onclick="pvGo(-1)">‹</button><div class="pvs">'+P.map(function(x,k){return '<img class="'+(k===i?'on':'')+'" src="'+imgSrc(x)+'" onclick="pvTo('+k+')" alt="">'}).join('')+'</div><button class="ib" onclick="pvGo(1)">›</button></div>';var sx=0,m=d.querySelector('.pvm');m.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});m.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)pvGo(dx<0?1:-1)},{passive:true})}
+window.pvGo=function(n){var N=listing_(_pv.l).imgs.length;_pv.i=(_pv.i+n+N)%N;pvDraw()};window.pvTo=function(k){_pv.i=k;pvDraw()};
+document.addEventListener('click',function(e){var t=e.target;if(t&&t.tagName==='IMG'&&t.parentElement&&t.parentElement.classList&&t.parentElement.classList.contains('slider')&&S.scr==='listing'){var k=[].indexOf.call(t.parentElement.children,t);izView(S.p.id,k)}});
+})();
+(function(){var _p=SC.privacy;SC.privacy=function(){var s=_p();var t='<div class="pfc" style="margin:14px 16px"><h3>Terms in short</h3><div class="cls" style="gap:8px"><span>✓ What happens at your end stays at your end. Chats, agreements and payments are only visible to you, the other person and the Izel team if there is a report.</span><span>✓ Your email, phone number and ID are never shown to other people and never sold or passed to third parties.</span><span>✓ Signed agreements are kept in both accounts as proof. Neither side can edit them afterwards.</span><span>✓ All payments are made inside Izel. Anyone who asks you to pay elsewhere can be reported.</span><span>✓ You must be 18 or older to use Izel.</span></div></div>';var i=s.lastIndexOf('</div>');return i>-1?s.slice(0,i)+t+s.slice(i):s+t}})();
 /* ===== boot ===== */
 function start(){if(DB)return;load();if(window.ONLINE){bootOnline();return}if(DB.me&&DB.role&&DB.users[DB.me]){S.scr=defaultTab()}else{DB.me=null;DB.role=null;S.scr='welcome'}render()}
 idbOpen(function(){mLoadAll(function(){start()})});
