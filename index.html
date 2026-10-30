@@ -857,6 +857,21 @@ html[data-theme=dark] .note.ok{background:#241517;border-color:#3a2226}
 .pill:not(.ok):not(.r):not(.g) svg{display:none}
 .row.wrap>.pill:not(.ok):not(.r):not(.g)+.pill:not(.ok):not(.r):not(.g)::before{content:'\00B7';margin:0 8px 0 2px}
 .row.wrap:has(>.pill:not(.ok):not(.r):not(.g)){gap:2px 0}
+/* v40 no scrollbars on strips */
+*{scrollbar-width:none}*::-webkit-scrollbar{display:none;width:0;height:0}
+.av.lg{width:72px;height:72px;font-size:24px;margin:0 auto}
+.av.lg{display:flex;align-items:center;justify-content:center;line-height:1}
+/* v40 calendar in theme colour; bigger deal-room chat */
+.cd{width:38px;height:38px;font-size:15px}
+.cd.free{background:var(--red)!important;border:0!important;color:#fff!important}
+.cd.free.sel{box-shadow:0 0 0 2px var(--bg,#fff),0 0 0 4px var(--red);transform:scale(1.06)}
+.cd.off{opacity:.35}
+.lg.free{background:var(--red)!important;border:0!important}
+.lg.off{background:#8884!important}
+.dch .dcm{min-height:230px;max-height:360px;overflow-y:auto;padding:4px 0;gap:8px}
+.dch .bub{font-size:15px;padding:10px 13px;max-width:88%}
+.dch .sgi,.dch input#cm{height:48px;font-size:15px}
+.dch h2{font-size:16px}
 
 </style></head><body><div id="app"></div><div id="ov"></div><div id="toast"></div>
 <script src="config.js"></script><script type="text/javascript">try{localStorage.removeItem("iz_demo")}catch(e){}</script>
@@ -2286,6 +2301,7 @@ SC.listing=function(){var l=DB.listings.filter(function(x){return x.id===S.p.id}
   h+='<div class="slider" onscroll="var i=Math.round(this.scrollLeft/this.clientWidth);var d=this.nextSibling.children;for(var k=0;k<d.length;k++)d[k].className=k===i?\'on\':\'\'">'+(l.video&&MEDIA[l.video.mid]?'<video src="'+MEDIA[l.video.mid]+'" controls controlsList="nofullscreen nodownload noremoteplayback" disablePictureInPicture playsinline preload="auto" style="flex:0 0 100%;scroll-snap-align:center;height:260px;object-fit:cover;background:#000"></video>':'')+l.imgs.map(function(im){return '<img src="'+imgSrc(im)+'" alt="">'}).join('')+'</div><div class="dots">'+(l.video&&MEDIA[l.video.mid]?[0]:[]).concat(l.imgs).map(function(x,i){return '<i class="'+(i?'':'on')+'"></i>'}).join('')+'</div>';
   h+='<div class="sec"><div class="row wrap" style="margin-bottom:8px">'+(l.verified.owner||l.verified.visited?'<span class="pill ok">'+ico('shield',13)+'Verified</span>':'')+(l.video?'<span class="pill k">'+ico('check',12)+'Video tour'+(l.video.h&&Math.min(l.video.w||0,l.video.h)>=720?' · HD':'')+'</span>':'')+(l.docs?'<span class="pill">'+esc(l.docs)+'</span>':'')+'</div><div class="lx" style="font-size:24px;font-weight:700;line-height:1.2">'+money(l.price)+perTxt(l)+'</div><h2 style="margin:6px 0 2px;font-size:18px">'+esc(l.title)+'</h2><div class="sm">'+esc(l.area)+', '+esc(l.city)+'</div>'+(mine?'':'<div class="row wrap" style="margin-top:10px"><span class="pill g">'+ico('users',12)+interestTxt(l)+'</span><span class="pill">Replies within '+respTxt(l.owner)+'</span></div>')+'</div>';
   h+='<div class="sec" style="padding-top:0">'+factsLine(l)+'</div>';
+  h+='<div class="sec" style="padding-bottom:0"><button class="li" style="padding:6px 0;border:0;width:100%" onclick="ownerPeek(\''+l.owner+'\')">'+avt(l.owner)+'<div style="flex:1;text-align:left"><div class="sm">Listed by</div><b>'+esc(U(l.owner).name)+'</b></div>'+ico('right',16)+'</button></div>';
   h+='<div class="sec"><h2>The place</h2><div class="row wrap" style="gap:6px">'+(l.type==='land'?'':[(l.cars?l.cars+' car'+(l.cars>1?'s':'')+' parking':'Street parking'),(l.gated?'Gated':'Open compound'),(l.pets?'Pets ok':'No pets'),(l.furnished?'Furnished':'Unfurnished')].map(function(a){return '<span class="pill">'+a+'</span>'}).join(''))+'<span class="pill">'+esc(l.water||'Water not stated')+'</span><span class="pill">'+esc(l.power||'Power not stated')+'</span>'+(l.rooms&&!l.hostel?'<span class="pill">'+l.rooms+' left</span>':'')+((l.amen||[]).map(function(a){return '<span class="pill">'+esc(a)+'</span>'}).join(''))+'</div></div>';
   h+=listExtras(l);h+='<div class="sec"><h2>About this place</h2><p style="margin:0">'+esc(l.desc)+'</p>'+(l.type==='hostel'&&!l.hasSystem?'':'')+(l.type==='hostel'&&l.hasSystem?'<div class="note" style="margin-top:10px">This hostel’s own booking system is connected. Rooms update live.</div>':'')+(l.surveyed===false?'<div class="note" style="margin-top:10px">Not surveyed yet. You can ask an Izel partner surveyor to mark and measure it before you pay.<br><button class="btn sm2 gd" style="margin-top:8px" onclick="needAcct(function(){reqService(\'Survey\',\''+l.id+'\')})">Request a surveyor</button></div>':'')+'</div>';
   var vis=v&&['confirmed','arrived','visited','deal'].indexOf(v.status)>-1;
@@ -2846,7 +2862,7 @@ function dropSession(){TOK=null;ls('izel_tok',null);ls('izel_me',null);ls('izel_
 function resetAll(){DB=emptyDB();mem=DB;SNAP={};CUR=0;KY=null}
 load=function(){resetAll();TOK=ls('izel_tok');var m=ls('izel_me');if(TOK&&m){DB.me=m;DB.role=ls('izel_role')||null;DB.users[m]={id:m,name:'You',roles:[]}}};
 window.bootOnline=async function(){
-  try{CFG=await api('GET','/api/config')}catch(e){document.getElementById('app').innerHTML='<div class="pad" style="padding-top:90px;text-align:center"><div class="logo" style="justify-content:center;margin-bottom:18px">'+swan(36)+'IZEL</div><h1 class="lx">Cannot reach Izel</h1><p class="sm">Check your internet connection, then try again.</p><button class="btn blk" onclick="location.reload()">Try again</button></div>';return}
+  try{CFG=await api('GET','/api/config');window.CFG=CFG}catch(e){document.getElementById('app').innerHTML='<div class="pad" style="padding-top:90px;text-align:center"><div class="logo" style="justify-content:center;margin-bottom:18px">'+swan(36)+'IZEL</div><h1 class="lx">Cannot reach Izel</h1><p class="sm">Check your internet connection, then try again.</p><button class="btn blk" onclick="location.reload()">Try again</button></div>';return}
   if(CFG.usdRate)window.USD_RATE=CFG.usdRate;
   if(TOK){try{var m=await api('GET','/api/me');DB.users[m.user.id]=m.user;DB.me=m.user.id;ls('izel_me',DB.me)}catch(e){dropSession();resetAll()}}
   await pull();var u=me();
@@ -2877,7 +2893,7 @@ var _sl=submitListing;submitListing=async function(){var f=S.form;toast('Uploadi
   if(bad.length){var why=REJ[bad[0]];f.imgs=f.imgs.filter(function(i){return bad.indexOf(i.mid)<0});if(f.video&&bad.indexOf(f.video.mid)>-1)f.video=null;render();return toast(why)}return _sl()};
 var _ks=kycSubmit;kycSubmit=async function(){var v=S.kv||{};toast('Uploading…');var bad=await checkUploads([v.id,v.selfie,v.vid].filter(Boolean));if(bad.length){toast(REJ[bad[0]]);return}return _ks()};
 var _kf=kycFile;kycFile=async function(k,f){window._mk='kyc';try{return await _kf(k,f)}finally{window._mk=null}};
-var _sp=setPhoto;setPhoto=function(f){window._mk='profile';try{_sp(f)}finally{window._mk=null}};
+setPhoto=function(f){if(!f)return;var id;window._mk='profile';try{id=mPut(f)}finally{window._mk=null}toast('Uploading photo…');(UPL[id]||Promise.resolve()).then(function(){if(REJ[id]){toast(REJ[id]);return}me().photo=id;save();render();toast('Photo saved')})};
 /* ---------- no pretend behaviour ---------- */
 OPS=false;leaks=function(){return false};
 checkinSheet=function(vid){var v=DB.visits.filter(function(x){return x.id===vid})[0],l=listing_(v.listing);
@@ -3603,7 +3619,11 @@ function I(d,s){return '<svg viewBox="0 0 24 24" width="'+(s||16)+'" height="'+(
 var LLd=0,MAP=null,ME=null,WID=null,TGT=null,MK={},SEL=null,TL=null,CITY={Accra:[5.6037,-0.1870],Kumasi:[6.6885,-1.6244]};
 function load(cb){if(window.L&&L.map)return cb();if(LLd===1)return setTimeout(function(){load(cb)},150);LLd=1;var c=document.createElement('link');c.rel='stylesheet';c.href='leaflet.css';document.head.appendChild(c);var s=document.createElement('script');s.src='leaflet.js';s.onload=function(){LLd=2;cb()};s.onerror=function(){LLd=0;var m=document.getElementById('lmap');if(m)m.innerHTML='<div class="empty">The map could not load. Check your connection.</div>'};document.head.appendChild(s)}
 function mstyle(){try{return localStorage.getItem('iz_mapstyle')||'std'}catch(e){return 'std'}}
-function tiles(){var s=mstyle();if(s==='sat')return L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'Imagery © Esri'});var dk=(document.documentElement.getAttribute('data-theme')==='dark'),ly=L.tileLayer('https://{s}.basemaps.cartocdn.com/'+(dk?'dark_all':'rastertiles/voyager')+'/{z}/{x}/{y}{r}.png',{maxZoom:19,subdomains:'abcd',attribution:'© OpenStreetMap © CARTO'}),fb=0;ly.on('tileerror',function(){if(fb)return;fb=1;ly.setUrl('https://tile.openstreetmap.org/{z}/{x}/{y}.png')});return ly}
+var GMS=0;function gmLd(src,cb){var s=document.createElement('script');s.src=src;s.async=1;s.onload=cb;s.onerror=function(){GMS=-1};document.head.appendChild(s)}
+window.izGmInit=function(){gmLd('https://unpkg.com/leaflet.gridlayer.googlemutant@0.14.1/dist/Leaflet.GoogleMutant.js',function(){GMS=2})};
+function gmTiles(){try{if(GMS===0&&window.CFG&&CFG.maps){GMS=1;gmLd('https://maps.googleapis.com/maps/api/js?key='+encodeURIComponent(CFG.maps)+'&callback=izGmInit',function(){})}if(GMS===2&&window.L&&L.gridLayer&&L.gridLayer.googleMutant)return L.gridLayer.googleMutant({type:mstyle()==='sat'?'hybrid':'roadmap',maxZoom:20})}catch(e){}return null}
+function mtTiles(){try{if(window.CFG&&CFG.maptiler){var s=mstyle(),dk=(document.documentElement.getAttribute('data-theme')==='dark'),k=encodeURIComponent(CFG.maptiler);if(s==='sat')return L.tileLayer('https://api.maptiler.com/maps/hybrid/{z}/{x}/{y}.jpg?key='+k,{maxZoom:20,tileSize:512,zoomOffset:-1,attribution:'\u00A9 MapTiler \u00A9 OpenStreetMap'});var ly=L.tileLayer('https://api.maptiler.com/maps/'+(dk?'streets-v2-dark':'streets-v2')+'/{z}/{x}/{y}.png?key='+k,{maxZoom:20,tileSize:512,zoomOffset:-1,attribution:'\u00A9 MapTiler \u00A9 OpenStreetMap'}),fb=0;ly.on('tileerror',function(){if(fb)return;fb=1;ly.setUrl('https://tile.openstreetmap.org/{z}/{x}/{y}.png');ly.options.tileSize=256;ly.options.zoomOffset=0});return ly}}catch(e){}return null}
+function tiles(){var g=gmTiles();if(g)return g;g=mtTiles();if(g)return g;var s=mstyle();if(s==='sat')return L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'Imagery © Esri'});var dk=(document.documentElement.getAttribute('data-theme')==='dark'),ly=L.tileLayer('https://{s}.basemaps.cartocdn.com/'+(dk?'dark_all':'rastertiles/voyager')+'/{z}/{x}/{y}{r}.png',{maxZoom:19,subdomains:'abcd',attribution:'© OpenStreetMap © CARTO'}),fb=0;ly.on('tileerror',function(){if(fb)return;fb=1;ly.setUrl('https://tile.openstreetmap.org/{z}/{x}/{y}.png')});return ly}
 window.mapStyle=function(s){try{localStorage.setItem('iz_mapstyle',s)}catch(e){}var el=document.getElementById('lmap');if(el)el.setAttribute('data-ms',s);if(MAP&&TL){MAP.removeLayer(TL);TL=tiles();TL.addTo(MAP);TL.bringToBack()}mapSettings()};
 window.mapSettings=function(){var s=mstyle();function c(k,t,d){return '<button class="msc '+(s===k?'on':'')+'" onclick="mapStyle(\''+k+'\')"><i class="msp ms-'+k+'"></i><b>'+t+'</b><span>'+d+'</span></button>'}sheet('<h2 class="lx" style="font-size:20px">Map settings</h2><div class="sm" style="margin:10px 0 8px">Map style</div><div class="msg">'+c('std','Standard','Streets and names')+c('mute','Soft','Calm, fewer colours')+c('sat','Satellite','See the real roofs')+'</div><div class="sm" style="margin:16px 0 8px">How to read it</div><div class="note">Black dots are verified homes. Tap one to see it. The big seal is the home you picked. A home’s exact pin unlocks once your viewing is confirmed.</div><button class="btn blk" style="margin-top:14px" onclick="closeSheet()">Done</button>')};
 function dotI(){return L.divIcon({className:'izd',iconSize:[16,16],iconAnchor:[8,8],html:'<i></i>'})}
@@ -4082,7 +4102,7 @@ window.savePayout=async function(){try{var bank=window._pw==='b',r=await api('PO
 /* ---- chat inside the deal room ---- */
 var _dl=SC.deal;SC.deal=function(){var s=_dl(),r=null;try{r=R_(S.p.id)}catch(e){}if(!r||!r.chat||!DB.chats[r.chat])return s;var c=DB.chats[r.chat],id=DB.me,M=c.msgs.filter(function(m){return m.from!=='sys'}).slice(-6);
  var Q=['Can we adjust the move-in date?','Is the place still available?','Can I come and see it again?'];
- return s+'<div class="sec dch"><h2>Messages</h2><div class="dcm">'+(M.length?M.map(function(m){return '<div class="bub '+(m.from===id?'me':'th')+'">'+esc(m.x)+'</div>'}).join(''):'<div class="sm">Say hello. Ask anything about the place.</div>')+'</div><div class="row wrap" style="gap:6px;margin:8px 0">'+Q.map(function(q){return '<button class="chip" onclick="var i=document.getElementById(\'cm\');i.value=this.textContent;i.focus()">'+q+'</button>'}).join('')+'</div><div class="row" style="gap:8px"><input id="cm" class="sgi" style="flex:1;margin:0" placeholder="Write a message" onkeydown="if(event.key===\'Enter\')sendMsg(\''+esc(c.id)+'\')"><button class="btn sm2" onclick="sendMsg(\''+esc(c.id)+'\')">Send</button></div></div>'};
+ return s+'<div class="sec dch"><h2>Messages</h2><div class="dcm">'+(M.length?M.map(function(m){return '<div class="bub '+(m.from===id?'me':'th')+'">'+esc(m.x)+'</div>'}).join(''):'<div class="sm">Say hello. Ask anything about the place.</div>')+'</div><div class="row wrap" style="gap:6px;margin:8px 0">'+Q.map(function(q){return '<button class="chip" onclick="var i=document.getElementById(\'cm\');i.value=this.textContent;i.focus()">'+q+'</button>'}).join('')+'</div><div class="row" style="gap:8px"><input id="cm" class="sgi" style="flex:1;margin:0" placeholder="Write a message" onkeydown="if(event.key===\'Enter\')sendMsg(\''+esc(c.id)+'\')"><button class="btn sm2" style="height:48px;padding:0 18px" onclick="sendMsg(\''+esc(c.id)+'\')">Send</button></div></div>'};
 
 /* ---- swipe right to go back ---- */
 window.izBack=function(){if(closeLayers2())return;if(S.stack&&S.stack.length)return back();if(S.th&&S.th.length)return tabBack()};
@@ -4095,6 +4115,25 @@ document.addEventListener('touchend',function(e){if(!ok)return;ok=false;var t=e.
 var _avt=avt;avt=function(id,cls){var u=U(id)||{};if(u.photo&&MEDIA[u.photo])return _avt(id,cls);var n=(u.name||'').trim();return '<div class="av '+(cls||'')+'">'+(n?initials(n):ico('user',18))+'</div>'};
 /* keep open sections open when the page refreshes itself */
 var _rn=render;render=function(){var a=document.getElementById('app'),key=S.scr+'|'+(S.p&&S.p.id||''),op=null,sc=window.scrollY;if(a&&render._k===key)op=[].map.call(a.querySelectorAll('details'),function(d){return d.open});_rn();if(op){var ds=a.querySelectorAll('details');if(ds.length===op.length)op.forEach(function(o,i){ds[i].open=o})}if(render._k===key&&sc)window.scrollTo(0,sc);render._k=key};
+/* ---- who owns the place ---- */
+window.ownerPeek=function(id){var u=U(id)||{};sheet('<div style="text-align:center;padding:6px 0 4px">'+avt(id,'lg')+'<h2 class="lx" style="font-size:18px;margin:10px 0 2px">'+esc(u.name||'Owner')+'</h2><div class="sm">Property owner'+(u.org?' \u00B7 Company':'')+'</div><div class="sm" style="margin-top:8px">Usually replies within '+respTxt(id)+'</div><div class="sm" style="margin-top:10px;opacity:.7">Phone numbers and contact details are never shown. Chat with them through Izel.</div></div>')};
+var _sl3=submitListing;submitListing=function(){var u=me()||{};if(!u.photo){toast('Add a profile photo first so renters know who owns the place');setTimeout(editProfile,400);return}return _sl3.apply(this,arguments)};
+/* ---- viewing booking: a real calendar, available days in the theme colour ---- */
+calSum=function(){var b=window._bk,e=document.getElementById('cal_sum');if(!e)return;e.innerHTML=b.date?'<div class="note"><b>'+dlabel(b.date)+'</b> \u00B7 '+esc(b.slot.split(' (')[0])+(b.sug?' \u00B7 your suggestion, the owner will confirm':'')+'</div>':'<div class="sm">Tap a coloured date.</div>'};
+var _cp=calPick;calPick=function(k){window._bk.sug=0;var q=document.getElementById('cal_sg');if(q)q.value='';_cp(k)};
+window.calSuggest=function(){var w=document.getElementById('cal_sgw');w.style.display=w.style.display==='none'?'':'none'};
+window.calSuggestSet=function(v){var b=window._bk;if(!v)return;b.date=v;b.sug=1;document.getElementById('cal_w').innerHTML=calGrid();calSum()};
+calSheet=function(lid,vid){var l=listing_(lid),g=l.group||{ok:false,max:1},d=new Date(),fee=vid?0:(l.viewFee||PLEDGE),mn=isoD(new Date(Date.now()+864e5));
+ window._bk={lid:lid,vid:vid||'',date:'',slot:SLOTS[0],party:1,agent:'',ag:false,sug:0,y:d.getFullYear(),m:d.getMonth()};
+ sheet('<h2 class="lx" style="font-size:18px;margin:0 0 2px">Book a viewing</h2><div class="sm" style="margin-bottom:8px">'+esc(l.title)+'</div><div id="cal_w"></div>'+
+ '<div class="row sm" style="gap:14px;margin:8px 0"><span class="row" style="gap:6px"><i class="lg free"></i>Open</span><span class="row" style="gap:6px"><i class="lg off"></i>Not open</span></div>'+
+ '<div id="cal_sum" style="margin-bottom:10px"></div><div class="row wrap" id="cal_t" style="margin-bottom:10px"></div>'+
+ '<button class="btn gh" style="padding:0;min-height:0;font-size:13px;margin-bottom:6px" onclick="calSuggest()">Need a different day? Suggest one</button><div id="cal_sgw" style="display:none;margin-bottom:10px"><label class="fld"><span>Your suggested date (the owner confirms)</span><input id="cal_sg" type="date" min="'+mn+'" onchange="calSuggestSet(this.value)"></label></div>'+
+ (g.ok&&g.max>1?'<div class="row sp" style="margin-bottom:8px"><span class="sm">People coming (max '+g.max+')</span><span class="row"><button class="ib" onclick="calParty(-1)">\u2212</button><b id="cal_p" style="min-width:22px;text-align:center">1</b><button class="ib" onclick="calParty(1)">+</button></span></div>':'')+
+ '<div id="cal_ag" style="margin-bottom:10px"></div>'+(fee?'<div class="note" style="margin-bottom:10px;font-size:13px">'+(l.viewFee?'Viewing fee '+money(fee)+', set by the owner.':'<b>Refundable pledge '+money(fee)+'.</b> Returned once the owner confirms you came.')+'</div>':'')+
+ '<button class="btn blk" onclick="calGo()">'+(fee?'Pay '+money(fee)+' and request':'Request this date')+'</button>');
+ document.getElementById('cal_w').innerHTML=calGrid();calSlots();calSum();calAgents()};
+var _cg=calGo;calGo=function(){var b=window._bk;if(b.sug&&b.date){var l=listing_(b.lid);push(l.owner,U(DB.me).name+' suggested '+dlabel(b.date)+' for viewing '+l.title+'. It is outside your open days. Please confirm or decline.')}return _cg()};
 })();
 /* ===== boot ===== */
 function start(){if(DB)return;load();if(window.ONLINE){bootOnline();return}if(DB.me&&DB.role&&DB.users[DB.me]){S.scr=defaultTab()}else{DB.me=null;DB.role=null;S.scr='welcome'}render()}

@@ -1,7 +1,8 @@
-IZEL v40 - flat upload. Create api/index.js on GitHub from api-code.txt.
+IZEL v38 - flat upload. Create api/index.js on GitHub from api-code.txt.
 Env vars: AUTH_SECRET, SUPABASE_URL, SUPABASE_SERVICE_KEY, ADMIN_EMAILS, RESEND_API_KEY, CRON_SECRET,
 PAYSTACK_SECRET_KEY, PAYSTACK_PUBLIC_KEY, GOOGLE_CLIENT_ID, APPLE_CLIENT_ID,
 SMS (one of): ARKESEL_API_KEY | HUBTEL_SMS_CLIENT_ID + HUBTEL_SMS_CLIENT_SECRET | MNOTIFY_API_KEY, plus SMS_SENDER.
 Optional: MAIL_FROM (needs verified domain).
 TESTING ONLY (remove before launch): OTP_DEV=1, OVERRIDE_CODE=JAY
 Check /api/health after deploy.
+Optional: MAPTILER_KEY, GOOGLE_MAPS_KEY, GOOGLE_CLIENT_ID

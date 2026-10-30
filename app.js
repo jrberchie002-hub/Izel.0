@@ -571,7 +571,7 @@ module.exports = function makeApp(E, store, smsImpl, fetchImpl) {
     let body = {}; if (req.body && !/^\/api\/(_up|pay\/webhook)/.test(p)) { try { body = JSON.parse(Buffer.isBuffer(req.body) ? req.body.toString() : req.body); } catch (e) { return err(400, 'Bad JSON'); } }
     try {
       if (p === '/api/health') return out(200, { ok: true, store: store.kind, sms: sms.ready() || DEV, otpDev: DEV, paystack: !!E.PAYSTACK_SECRET_KEY, admins: ADMINS.length });
-      if (p === '/api/config') return out(200, { ok: true, otpLen: OTPN, ownerPct: R.OWNER_PCT, google: E.GOOGLE_CLIENT_ID || undefined, apple: E.APPLE_CLIENT_ID || undefined, paystack: !!E.PAYSTACK_SECRET_KEY, test: !E.PAYSTACK_SECRET_KEY, usdRate: +E.USD_RATE || undefined });
+      if (p === '/api/config') return out(200, { ok: true, otpLen: OTPN, ownerPct: R.OWNER_PCT, google: E.GOOGLE_CLIENT_ID || undefined, maps: E.GOOGLE_MAPS_KEY || undefined, maptiler: E.MAPTILER_KEY || undefined, apple: E.APPLE_CLIENT_ID || undefined, paystack: !!E.PAYSTACK_SECRET_KEY, test: !E.PAYSTACK_SECRET_KEY, usdRate: +E.USD_RATE || undefined });
       if (p === '/api/auth/otp' && m === 'POST') return await sendOtp(body);
       if (p === '/api/auth/google' && m === 'POST') return await socialLogin('google', body);
       if (p === '/api/auth/apple' && m === 'POST') return await socialLogin('apple', body);
