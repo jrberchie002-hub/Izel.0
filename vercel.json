@@ -7,6 +7,10 @@
   },
   "rewrites": [
     {
+      "source": "/web",
+      "destination": "/web.html"
+    },
+    {
       "source": "/api/(.*)",
       "destination": "/api/index.js"
     }

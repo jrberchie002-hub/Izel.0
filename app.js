@@ -118,7 +118,7 @@ module.exports = function makeApp(E, store, smsImpl, fetchImpl) {
   function pubUser(u) { return { id: u.id, name: u.name, org: u.org, caretaker: u.caretaker, photo: u.photo, guest: false, respH: u.respH, rtMs: u.rtMs, rterms: u.rterms, roles: (u.roles || []).includes('admin') ? ['admin'] : [], kyc: u.kyc ? { status: u.kyc.status } : undefined, agent: u.agent ? { status: u.agent.status, areas: u.agent.areas, rating: u.agent.rating, jobs: u.agent.jobs, bio: u.agent.bio, on: u.agent.on, reviews: u.agent.reviews } : undefined }; }
   const PUBLIC = new Set(['listings', 'partners', 'asks']);
   const PRIV_COLLS = new Set(['phones', 'otps', 'pays', 'payouts', 'flags', 'media', 'vw', 'meta', 'vearn', 'vtries']);
-  const PULL = ['users', 'listings', 'chats', 'visits', 'tours', 'dealRooms', 'deals', 'holds', 'reports', 'services', 'partners', 'notifs', 'saved', 'queue', 'asks', 'agreements'];
+  const PULL = ['users', 'listings', 'chats', 'visits', 'tours', 'dealRooms', 'deals', 'holds', 'reports', 'services', 'partners', 'notifs', 'saved', 'queue', 'asks', 'agreements', 'ratings'];
 
   async function pull(me, since) {
     try { await settleOverdue(); } catch (e) {}
@@ -138,6 +138,7 @@ module.exports = function makeApp(E, store, smsImpl, fetchImpl) {
       if (c === 'visits') { const l = L.get(d.listing); if (admin || d.seeker === me.id || d.agent === me.id || (l && l.owner === me.id)) { add(c, id, d); needU.add(d.seeker); if (d.agent) needU.add(d.agent); needL.add(d.listing); } continue; }
       if (c === 'tours') { if (admin || d.seeker === me.id || d.agent === me.id) { add(c, id, d); needU.add(d.seeker); if (d.agent) needU.add(d.agent); (d.listings || []).forEach(x => needL.add(x)); } continue; }
       if (c === 'dealRooms' || c === 'deals') { if (admin || d.seeker === me.id || d.owner === me.id) { add(c, id, d); needU.add(d.seeker); needU.add(d.owner); needL.add(d.listing); } continue; }
+      if (c === 'ratings') { add(c, id, d); continue; }
       if (c === 'agreements') { if (admin || d.seeker === me.id || d.owner === me.id) { add(c, id, d); needU.add(d.seeker); needU.add(d.owner); needL.add(d.listing); } continue; }
       if (c === 'holds') { const l = L.get(d.listing); if (admin || d.seeker === me.id || (l && l.owner === me.id)) { add(c, id, d); needU.add(d.seeker); needL.add(d.listing); } continue; }
       if (c === 'reports') { if (admin || d.by === me.id) add(c, id, d); continue; }
@@ -186,7 +187,7 @@ module.exports = function makeApp(E, store, smsImpl, fetchImpl) {
       if (d.respH) u.respH = Math.min(99, Math.max(1, +d.respH || 3));
       if (d.agent && typeof d.agent === 'object') {
         const a = u.agent || { status: 'pending', rating: 0, jobs: 0, reviews: [] };
-        if (Array.isArray(d.agent.areas)) a.areas = d.agent.areas.map(x => str(x, 40)).slice(0, 10); if (d.agent.bio !== undefined) a.bio = str(d.agent.bio, 600); if (d.agent.on !== undefined) a.on = !!d.agent.on; u.agent = a;
+        if (Array.isArray(d.agent.areas)) a.areas = d.agent.areas.map(x => str(x, 40)).slice(0, 10); if (d.agent.quiz !== undefined) a.quiz = Math.min(5, Math.max(0, +d.agent.quiz || 0)); if (d.agent.refs !== undefined) a.refs = str(d.agent.refs, 160); if (d.agent.years !== undefined) a.years = str(d.agent.years, 20); if (d.agent.bio !== undefined) a.bio = str(d.agent.bio, 600); if (d.agent.on !== undefined) a.on = !!d.agent.on; u.agent = a;
         if (admin && d.agent.status) { a.status = d.agent.status; if (d.agent.rating) a.rating = +d.agent.rating; }
       }
       if (d.kyc && typeof d.kyc === 'object' && (!u.kyc || u.kyc.status === 'redo')) {
@@ -362,7 +363,7 @@ module.exports = function makeApp(E, store, smsImpl, fetchImpl) {
   };
 
   W.reports = async (me, id, d, ex) => { if (ex) { if (isAdmin(me) && d.status) { ex.status = str(d.status, 20); await store.put('reports', id, ex); } return { ok: true, d: ex }; } if (d.by !== me.id) return { ok: false, reason: 'not allowed' }; const r = { id, by: me.id, target: str(d.target, 40), listing: d.listing || null, reason: str(d.reason, 300), t: now(), status: 'open' }; await store.put('reports', id, r); await notify('u_admin', 'New report: ' + r.reason); return { ok: true, d: r }; };
-  W.services = async (me, id, d, ex) => { if (ex) { if (isAdmin(me)) { Object.assign(ex, { status: str(d.status, 40) }); await store.put('services', id, ex); } return { ok: true, d: ex }; } if (d.by !== me.id) return { ok: false, reason: 'not allowed' }; const s = { id, by: me.id, kind: str(d.kind, 40), listing: d.listing || null, partner: d.partner || null, t: now(), status: 'quote in 24h' }; await store.put('services', id, s); return { ok: true, d: s }; };
+  W.services = async (me, id, d, ex) => { if (ex) { if (isAdmin(me)) { Object.assign(ex, { status: str(d.status, 40) }); await store.put('services', id, ex); } return { ok: true, d: ex }; } if (d.by !== me.id) return { ok: false, reason: 'not allowed' }; const s = { id, by: me.id, kind: str(d.kind, 40), listing: d.listing || null, partner: d.partner || null, note: str(d.note, 300), date: str(d.date, 12), t: now(), status: 'quote in 24h' }; await store.put('services', id, s); return { ok: true, d: s }; };
   W.tours = async (me, id, d, ex) => {
     if (!ex) { if (d.seeker !== me.id) return { ok: false, reason: 'not allowed' }; let a = null; if (d.agent) { a = await store.get('users', d.agent); if (!a || !a.agent || a.agent.status !== 'approved') return { ok: false, reason: 'agent not available' }; } const t = { id, seeker: me.id, agent: d.agent || null, listings: (d.listings || []).slice(0, 3), date: str(d.date, 10), slot: str(d.slot, 40), status: d.agent ? 'new' : 'solo' }; await store.put('tours', id, t, me.id); if (a) await notify(a.id, U_(me) + ' wants you to guide a viewing on ' + t.date + '.'); return { ok: true, d: t }; }
     const t = clone(ex);
@@ -374,6 +375,16 @@ module.exports = function makeApp(E, store, smsImpl, fetchImpl) {
   W.saved = async (me, id, d) => { if (id !== me.id) return { ok: true, ignored: true }; const s = { id, list: (d.list || []).slice(0, 200).map(x => str(x, 40)) }; await store.put('saved', id, s, id); return { ok: true, d: s }; };
   W.queue = async (me, id, d, ex) => { const q = ex ? clone(ex) : { id, list: [] }; if ((d.list || []).includes(me.id) && !q.list.includes(me.id)) q.list.push(me.id); await store.put('queue', id, q); return { ok: true, d: q }; };
   W.asks = async (me, id, d, ex) => { const a = ex ? clone(ex) : { id, map: {} }; Object.keys(d.map || {}).forEach(k => { const v = Math.floor(+d.map[k] || 0), cur = a.map[k] || 0; if (v > cur && v <= cur + 1) a.map[k] = v; else if (cur === 0 && v === 1) a.map[k] = 1; }); await store.put('asks', id, a); return { ok: true, d: a }; };
+  W.ratings = async (me, id, d, ex) => {
+    if (ex) return { ok: true, d: ex, ignored: true };
+    const to = String(d.to || ''), listing = String(d.listing || ''); if (!to || to === me.id) return { ok: false, reason: 'Pick someone to rate' };
+    const stars = Math.min(5, Math.max(1, Math.round(+d.stars || 0))), txt = str(d.text, 300); if (R.leaks(txt)) return { ok: false, reason: 'Remove phone numbers or contact details from your review.' };
+    const deals = (await store.list('deals')).map(r => r.data), mine = deals.filter(x => x.listing === listing && ((x.seeker === me.id && x.owner === to) || (x.owner === me.id && x.seeker === to)));
+    if (!mine.length) return { ok: false, reason: 'You can only rate someone you have completed a payment with.' };
+    if ((await store.list('ratings')).some(r => r.data.from === me.id && r.data.to === to && r.data.listing === listing)) return { ok: false, reason: 'You already rated this.' };
+    const rec = { id, from: me.id, name: str(String(me.name || 'Guest').split(' ').map((x, i) => i ? x.charAt(0) + '.' : x).join(' '), 40), to, listing, role: mine[0].owner === to ? 'owner' : 'renter', stars, text: txt, tags: (Array.isArray(d.tags) ? d.tags : []).slice(0, 4).map(x => str(x, 30)), t: now() };
+    await store.put('ratings', id, rec, me.id); await notify(to, 'You got a ' + stars + '-star rating' + (txt ? ': "' + txt.slice(0, 60) + '"' : '.')); return { ok: true, d: rec };
+  };
   W.agreements = async (me, id, d, ex) => {
     if (ex) { if (ex.owner !== me.id) return { ok: false, reason: 'not allowed' }; const sg = cleanSig(d.ownerSig); if (!sg) return { ok: false, reason: 'Add your signature' }; const a = clone(ex); a.ownerSig = Object.assign(sg, { t: now() }); await store.put('agreements', id, a, ex.seeker); return { ok: true, d: a }; }
     const l = await store.get('listings', String(d.listing || '')); if (!l || l.owner === me.id) return { ok: false, reason: 'not allowed' };
@@ -385,7 +396,7 @@ module.exports = function makeApp(E, store, smsImpl, fetchImpl) {
   W.partners = async (me, id, d, ex) => { if (!isAdmin(me)) return { ok: true, d: ex, ignored: true }; const p = { id, name: str(d.name, 80), kind: str(d.kind, 20), city: str(d.city, 40), licence: str(d.licence, 40), jobs: +d.jobs || 0, active: !!d.active }; await store.put('partners', id, p); return { ok: true, d: p }; };
 
   async function push(me, body) {
-    const order = ['users', 'listings', 'partners', 'chats', 'visits', 'tours', 'dealRooms', 'deals', 'holds', 'reports', 'services', 'notifs', 'saved', 'queue', 'asks', 'agreements'];
+    const order = ['users', 'listings', 'partners', 'chats', 'visits', 'tours', 'dealRooms', 'deals', 'holds', 'reports', 'services', 'notifs', 'saved', 'queue', 'asks', 'agreements', 'ratings'];
     const ch = (body.changes || []).slice(0, 200).sort((a, b) => order.indexOf(a.c) - order.indexOf(b.c)), results = [];
     for (const x of ch) {
       const h = W[x.c]; if (!h || !x.id || typeof x.d !== 'object' || !x.d) { results.push({ c: x.c, id: x.id, ok: false, reason: 'unknown record' }); continue; }
@@ -537,13 +548,23 @@ module.exports = function makeApp(E, store, smsImpl, fetchImpl) {
 
   /* ---------- router ---------- */
   let showP = null;
+  const seedRatings = async () => {
+      if (!(await store.get('flags', 'showcase_r1'))) {
+        const RS = [['u_adjei', 's_esi', 'Esi O.', 5, 'Exactly as in the photos. Easy to deal with.'], ['u_adjei', 's_kwame', 'Kwame B.', 5, 'Quick replies and a fair price.'], ['u_adjei', 's_abena', 'Abena S.', 4, 'Clean place. Handover was a little late.'], ['u_kojo', 's_esi', 'Esi O.', 5, 'Check-in took two minutes. Spotless.'], ['u_kojo', 's_kwame', 'Kwame B.', 5, 'Great host, great location.'], ['u_legon', 's_abena', 'Abena S.', 4, 'Safe hostel, kind manager.'], ['u_legon', 's_kwame', 'Kwame B.', 5, 'Rooms match the listing.'], ['u_beach', 's_esi', 'Esi O.', 5, 'Beautiful villa, very smooth stay.'], ['u_nana', 's_abena', 'Abena S.', 4, 'Honest about the land and the papers.']];
+        let n = 0; for (const x of RS) { if (!(await store.get('users', x[0]))) continue; await store.put('ratings', 'rt_seed' + (n++), { id: 'rt_seed' + (n - 1), from: x[1], name: x[2], to: x[0], listing: '', role: 'owner', stars: x[3], text: x[4], tags: [], t: now() - n * 864e5 * 2 }, x[1]); }
+        for (const x of [['s_esi', 'u_adjei', 'Kofi A.', 5, 'Paid on time and looked after the place.'], ['s_kwame', 'u_kojo', 'Ama K.', 5, 'Respectful guest. Welcome back.'], ['s_abena', 'u_legon', 'Mr. Tetteh', 4, 'Followed the house rules.']]) { await store.put('ratings', 'rt_seed' + (n++), { id: 'rt_seed' + (n - 1), from: x[1], name: x[2], to: x[0], listing: '', role: 'renter', stars: x[3], text: x[4], tags: [], t: now() - n * 864e5 }, x[1]); }
+        await store.put('flags', 'showcase_r1', { id: 'showcase_r1', done: 1 });
+      }
+  };
   function ensureShowcase() {
     if (!showP) showP = (async () => {
-      if (await store.get('flags', 'showcase_v1')) return; const t = now();
+      const t = now(); if (await store.get('flags', 'showcase_v1')) { await seedRatings(); if (!(await store.get('flags', 'showcase_p1'))) { for (const l of SHOW.listings) { const ex = await store.get('listings', l.id); if (ex) await store.put('listings', l.id, Object.assign({}, ex, { imgs: l.imgs }), ex.owner); } await store.put('flags', 'showcase_p1', { id: 'showcase_p1', done: 1 }); } return; }
       for (const u of SHOW.users) if (!(await store.get('users', u.id))) await store.put('users', u.id, Object.assign({}, u, { kyc: { status: 'verified', seeded: true } }), u.id);
       let i = 0; for (const l of SHOW.listings) { await store.put('listings', l.id, Object.assign({}, l, { t: t - (i++) * 5 * 36e5 }), l.owner); }
       for (const x of SHOW.partners) await store.put('partners', x.id, x);
       await store.put('flags', 'showcase_v1', { id: 'showcase_v1', done: 1 });
+      await seedRatings();
+      if (!(await store.get('flags', 'showcase_p1'))) { for (const l of SHOW.listings) { const ex = await store.get('listings', l.id); if (ex && !ex.owner_edited) await store.put('listings', l.id, Object.assign({}, ex, { imgs: l.imgs }), ex.owner); } await store.put('flags', 'showcase_p1', { id: 'showcase_p1', done: 1 }); }
     })().catch(() => { showP = null; });
     return showP;
   }
@@ -572,7 +593,9 @@ module.exports = function makeApp(E, store, smsImpl, fetchImpl) {
     if (m === 'OPTIONS') return { status: 204, headers: cors(), body: '' };
     let body = {}; if (req.body && !/^\/api\/(_up|pay\/webhook)/.test(p)) { try { body = JSON.parse(Buffer.isBuffer(req.body) ? req.body.toString() : req.body); } catch (e) { return err(400, 'Bad JSON'); } }
     try {
-      if (p === '/api/health') return out(200, { ok: true, v: '50', store: store.kind, sms: sms.ready() || DEV, otpDev: DEV, paystack: !!E.PAYSTACK_SECRET_KEY, admins: ADMINS.length });
+      if (p === '/api/health') return out(200, { ok: true, v: '58', store: store.kind, sms: sms.ready() || DEV, otpDev: DEV, paystack: !!E.PAYSTACK_SECRET_KEY, admins: ADMINS.length });
+      if (p === '/api/stats') { const Ls = (await store.list('listings')).map(r => r.data).filter(l => l.status === 'live' || l.status === 'taken'), Rm = (await store.list('dealRooms')).map(r => r.data).filter(r => r.stage === 'paid'), Us = await store.list('users'); const areas = new Set(Ls.map(l => l.area).filter(Boolean)); return out(200, { ok: true, places: Ls.length, areas: areas.size, owners: new Set(Ls.map(l => l.owner)).size, agents: Us.filter(u => u.data.agent && u.data.agent.status === 'approved').length, completed: Rm.length + Ls.filter(l => l.status === 'taken').length }); }
+      if (p === '/api/browse') { const Ls = (await store.list('listings')).map(r => r.data).filter(l => l.status === 'live').sort((a, b) => (b.t || 0) - (a.t || 0)).slice(0, 60); return { status: 200, headers: Object.assign({ 'Content-Type': 'application/json', 'Cache-Control': 'public, max-age=60' }, cors()), body: JSON.stringify({ ok: true, d: Ls.map(l => ({ id: l.id, type: l.type, sub: l.sub, title: l.title, area: l.area, city: l.city, price: l.price, per: l.per, beds: l.beds, baths: l.baths, size: l.size, desc: String(l.desc || '').slice(0, 400), amen: (l.amen || []).slice(0, 8), imgs: (l.imgs || []).slice(0, 10).map(i => i && (i.mid ? '/api/media/' + i.mid : i.src)).filter(Boolean) })) }) }; }
       if (p === '/api/config') return out(200, { ok: true, otpLen: OTPN, ownerPct: R.OWNER_PCT, google: E.GOOGLE_CLIENT_ID || undefined, maps: E.GOOGLE_MAPS_KEY || undefined, maptiler: E.MAPTILER_KEY || undefined, apple: E.APPLE_CLIENT_ID || undefined, paystack: !!E.PAYSTACK_SECRET_KEY, test: !E.PAYSTACK_SECRET_KEY, usdRate: +E.USD_RATE || undefined });
       if (p === '/api/auth/otp' && m === 'POST') return await sendOtp(body);
       if (p === '/api/auth/google' && m === 'POST') return await socialLogin('google', body);

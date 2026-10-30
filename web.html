@@ -1,0 +1,77 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Izel. Find your place.</title><meta name="theme-color" content="#0a0a09"><link rel="icon" href="icon-192.png">
+<style>
+:root{--red:#b3122a;--bg:#0a0a09;--card:#161514;--tx:#f4f1ee;--mut:#a39d97}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--tx);font:15px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+nav{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:14px 5vw;transition:background .5s}nav.sc{background:#0a0a09ee}
+.lg{display:flex;align-items:center;gap:10px;letter-spacing:.35em;font-weight:600;font-size:15px}.lg img{height:30px;filter:brightness(0) invert(1)}
+nav .l{display:flex;gap:26px;align-items:center;font-size:13px;color:#ddd}nav .l a:hover{color:#fff}
+.btn{display:inline-block;background:var(--red);color:#fff;padding:11px 22px;border-radius:999px;font-size:14px;font-weight:600}.btn.o{background:none;border:1px solid #ffffff55}
+.hero{position:relative;height:100vh;min-height:560px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
+.hero .s{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 2.6s ease}
+.hero .s.on{opacity:1;animation:kb 14s ease-out both}@keyframes kb{from{transform:scale(1.03)}to{transform:scale(1.12)}}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0a0a0955,#0a0a0900 35%,#0a0a09 100%)}
+.hc{position:relative;z-index:2;padding:0 5vw 4vh;max-width:900px}
+.hc h1{font-size:clamp(32px,6vw,60px);line-height:1.08;font-weight:700;letter-spacing:-.02em}.hc p{margin:12px 0 0;color:#d6d1cc;font-size:17px;max-width:520px}
+.sb{position:relative;z-index:3;margin:0 5vw 6vh;display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:#161514cc;backdrop-filter:blur(14px);border:1px solid #ffffff1f;border-radius:20px;padding:10px;max-width:880px}
+.seg{display:flex;gap:2px;background:#0a0a0988;border-radius:14px;padding:3px}.seg button{padding:9px 16px;border-radius:11px;font-size:13px;color:#cfc9c4}.seg button.on{background:var(--red);color:#fff}
+.sb input,.sb select{flex:1;min-width:130px;background:#0a0a0988;border:1px solid #ffffff14;border-radius:12px;color:var(--tx);padding:11px 14px;font:inherit;font-size:14px;outline:0}.sb select option{background:#161514}
+.sb .btn{padding:12px 28px}
+.dots{position:absolute;z-index:3;right:5vw;top:50%;display:flex;flex-direction:column;gap:9px}.dots i{width:6px;height:6px;border-radius:50%;background:#fff5;cursor:pointer}.dots i.on{background:#fff;height:18px;border-radius:4px}
+section{padding:70px 5vw;max-width:1320px;margin:auto}
+h2{font-size:clamp(24px,3.4vw,36px);letter-spacing:-.01em;margin-bottom:8px}.sub{color:var(--mut);max-width:600px;margin-bottom:28px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
+.pc{position:relative;aspect-ratio:4/5;border-radius:18px;overflow:hidden;background:var(--card);cursor:pointer}
+.pc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.4s ease}.pc:hover img{transform:scale(1.07)}
+.pc:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0000 45%,#0a0a09ee)}
+.pc div{position:absolute;left:18px;right:18px;bottom:16px;z-index:2}.pc b{display:block;font-size:17px;line-height:1.25}.pc span{display:block;font-size:13px;color:#d6d1cc;margin-top:2px}.pc em{font-style:normal;font-weight:600;font-size:15px;margin-top:6px;display:block}
+.pc.in{animation:up .9s ease both}@keyframes up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.empty{color:var(--mut);padding:40px 0}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}.two div{background:var(--card);border-radius:18px;padding:26px}.two h3{font-size:17px;margin-bottom:6px}.two p{color:var(--mut);font-size:14px}
+.cta{text-align:center;background:linear-gradient(135deg,#6e0a19,#b3122a);border-radius:24px;padding:60px 20px}.cta p{max-width:460px;margin:8px auto 24px;color:#ffe3e6}
+footer{padding:30px 5vw 60px;text-align:center;color:var(--mut);font-size:13px}
+.v{position:fixed;inset:0;z-index:50;background:#0a0a09;display:none;grid-template-columns:1fr 360px;grid-template-rows:1fr}.v.open{display:grid;animation:fi .5s ease}@keyframes fi{from{opacity:0}to{opacity:1}}
+.vm{position:relative;overflow:hidden;background:#000}.vm img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s}.vm img.on{opacity:1}
+.vm:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0000 55%,#0a0a09cc);pointer-events:none}
+.vt{position:absolute;left:4vw;bottom:5vh;z-index:2;max-width:70%}.vt h2{font-size:clamp(24px,3.6vw,42px);margin:0}.vt span{color:#ddd}
+.vr{overflow:auto;padding:70px 18px 24px;background:var(--bg);display:flex;flex-direction:column;gap:10px}
+.vr .th{display:grid;grid-template-columns:1fr 1fr;gap:8px}.vr .th img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;cursor:pointer;opacity:.6;transition:.4s}.vr .th img.on,.vr .th img:hover{opacity:1}
+.vr .pr{font-size:24px;font-weight:700}.vr .fx{color:var(--mut);font-size:14px}.vr p{color:#cfc9c4;font-size:14px}.vr .am{display:flex;flex-wrap:wrap;gap:6px}.vr .am span{font-size:12px;color:var(--mut);border:1px solid #ffffff22;border-radius:8px;padding:3px 9px}
+.vx{position:absolute;top:14px;right:16px;z-index:5;width:42px;height:42px;border-radius:50%;background:#0a0a09bb;font-size:22px}
+@media(max-width:800px){nav .l a:not(.btn){display:none}section{padding:50px 5vw}.v{grid-template-columns:1fr;grid-template-rows:46vh 1fr}.vr{padding-top:18px}.vt{max-width:90%}.dots{display:none}.sb .seg{width:100%;overflow:auto}}
+</style></head><body>
+<nav id="nv"><a class="lg" href="#top"><img src="swan.png" alt="">IZEL</a><div class="l"><a href="#places">Places</a><a href="#partner">Partners</a><a class="btn" href="/">Open the app</a></div></nav>
+<header class="hero" id="top">
+<div class="s on" style="background-image:url(hotel.jpg)"></div><div class="s" style="background-image:url(apt.jpg)"></div><div class="s" style="background-image:url(ph_ext_a.jpg)"></div><div class="s" style="background-image:url(home2.jpg)"></div><div class="s" style="background-image:url(hostel1.jpg)"></div>
+<div class="dots" id="dots"></div>
+<div class="hc"><h1 id="ht"></h1><p id="hp"></p></div>
+<form class="sb" id="sf" onsubmit="return find(event)"><div class="seg" id="seg"><button type="button" data-t="" class="on">All</button><button type="button" data-t="rent">Rent</button><button type="button" data-t="sale">Buy</button><button type="button" data-t="stay">Stay</button><button type="button" data-t="hostel">Hostels</button><button type="button" data-t="land">Land</button></div><input id="q" placeholder="Area or place"><select id="mx"><option value="">Any budget</option><option value="1500">Up to 1,500</option><option value="5000">Up to 5,000</option><option value="20000">Up to 20,000</option><option value="500000">Up to 500,000</option></select><button class="btn" type="submit">Search</button></form>
+</header>
+<section id="places"><h2>Places</h2><p class="sub">Browse what is on Izel right now. Tap a place to look around.</p><div class="grid" id="gr"></div></section>
+<section id="partner"><h2>Become a partner</h2><p class="sub">Owners, agents, hostels, hotels and movers. We bring you serious, verified people so you never chase leads.</p><div class="two"><div><h3>Owners</h3><p>List a home, shop, office or land. You keep control of price, rules and calendar.</p></div><div><h3>Agents</h3><p>Approved agents are matched with interested people. Better ratings bring more clients.</p></div><div><h3>Hostels and hotels</h3><p>Fill rooms with guests who have already paid. Check them in with a simple code.</p></div><div><h3>Movers</h3><p>Meet people at the moment they move into a new place.</p></div></div></section>
+<section><div class="cta"><h2>Take your time</h2><p>See it, visit it, sign and pay, all inside Izel.</p><a class="btn" style="background:#fff;color:#7a0a1b" href="/">Open the app</a></div></section>
+<footer>Powered by Berchy &middot; Everyone on Izel is 18 or over &middot; Payments stay inside Izel</footer>
+<div class="v" id="v"><button class="vx" onclick="cl()">&times;</button><div class="vm" id="vm"><div class="vt"><h2 id="vh"></h2><span id="va"></span></div></div><div class="vr" id="vr"></div></div>
+<script>
+var T=[['Find your place, without the rush.','Homes, stays, hostels, offices and land from verified owners.'],['A home that feels right.','Real photos, clear rules, visits on a day that suits you.'],['Move in with peace of mind.','Sign on your phone. Pay inside Izel.'],['Spaces to live in.','Take a look around at your own pace.'],['Hostels, made simple.','Reserve a bed. No cash at the door.']],S=document.querySelectorAll('.hero .s'),D=document.getElementById('dots'),k=0,tm,ALL=[],tp='';
+var $=function(i){return document.getElementById(i)},E=function(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+S.forEach(function(_,i){var d=document.createElement('i');d.onclick=function(){go(i)};D.appendChild(d)});
+function go(i){k=i;S.forEach(function(s,j){s.classList.toggle('on',j===i)});[].forEach.call(D.children,function(d,j){d.classList.toggle('on',j===i)});$('ht').textContent=T[i][0];$('hp').textContent=T[i][1];clearInterval(tm);tm=setInterval(function(){go((k+1)%S.length)},7000)}go(0);
+onscroll=function(){$('nv').classList.toggle('sc',scrollY>60)};
+$('seg').onclick=function(e){var b=e.target.closest('button');if(!b)return;tp=b.dataset.t;[].forEach.call($('seg').children,function(x){x.classList.toggle('on',x===b)});draw()};
+function find(e){e.preventDefault();draw();$('places').scrollIntoView({behavior:'smooth'});return false}
+var LB={rent:'Rent',sale:'For sale',stay:'Stay',hostel:'Hostel',land:'Land'},PER={month:'/ month',year:'/ year',night:'/ night',sale:'',bed:'/ bed',sem:'/ semester',semester:'/ semester'};
+function money(n){return '₵'+Number(n||0).toLocaleString('en-GB',{maximumFractionDigits:0})}
+function draw(){var q=$('q').value.trim().toLowerCase(),mx=+$('mx').value||0,L=ALL.filter(function(l){return(!tp||l.type===tp)&&(!q||(l.title+' '+l.area+' '+l.city+' '+l.sub).toLowerCase().indexOf(q)>-1)&&(!mx||l.price<=mx)});
+ $('gr').innerHTML=L.length?L.map(function(l,i){return '<div class="pc in" style="animation-delay:'+Math.min(i,8)*70+'ms" onclick="op(\''+l.id+'\')"><img loading="lazy" src="'+E(l.imgs[0]||'home1.jpg')+'" alt=""><div><b>'+E(l.title)+'</b><span>'+E(l.area)+(l.city?', '+E(l.city):'')+' · '+(LB[l.type]||'')+'</span><em>'+money(l.price)+' '+(PER[l.per]||(l.per&&l.per!=='sale'?'/ '+E(l.per):''))+'</em></div></div>'}).join(''):'<div class="empty">Nothing matches yet. Try another area or budget.</div>'}
+$('q').oninput=draw;$('mx').onchange=draw;
+var VT;function op(id){var l=ALL.filter(function(x){return x.id===id})[0];if(!l)return;var im=l.imgs.length?l.imgs:['home1.jpg'];
+ $('vm').innerHTML='<div class="vt"><h2>'+E(l.title)+'</h2><span>'+E(l.area)+(l.city?', '+E(l.city):'')+'</span></div>'+im.map(function(s,i){return '<img src="'+E(s)+'" class="'+(i?'':'on')+'" alt="">'}).join('');
+ var f=[l.beds&&!/Office|Shop|Warehouse|Commercial|Event/.test(l.sub||'')&&l.type!=='land'?l.beds+' bed':'',l.baths&&!/Office|Shop|Warehouse|Commercial|Event/.test(l.sub||'')&&l.type!=='land'?l.baths+' bath':'',l.size?l.size+' m²':'',l.sub].filter(Boolean).join(' · ');
+ $('vr').innerHTML='<div class="pr">'+money(l.price)+' <small style="font-size:13px;font-weight:400;color:var(--mut)">'+(PER[l.per]||'')+'</small></div><div class="fx">'+E(f)+'</div><div class="th">'+im.map(function(s,i){return '<img src="'+E(s)+'" class="'+(i?'':'on')+'" onclick="sh('+i+')" alt="">'}).join('')+'</div><p>'+E(l.desc)+'</p><div class="am">'+l.amen.map(function(a){return '<span>'+E(a)+'</span>'}).join('')+'</div><a class="btn" style="text-align:center;margin-top:6px" href="/">Visit or reserve in the app</a><div class="fx" style="text-align:center">Contact details stay private until you book.</div>';
+ $('v').classList.add('open');document.body.style.overflow='hidden';var n=0;clearInterval(VT);if(im.length>1)VT=setInterval(function(){sh((n=(n+1)%im.length))},5000);window._n=function(i){n=i}}
+function sh(i){[].forEach.call($('vm').querySelectorAll('img'),function(m,j){m.classList.toggle('on',j===i)});[].forEach.call($('vr').querySelectorAll('.th img'),function(m,j){m.classList.toggle('on',j===i)});if(window._n)_n(i)}
+function cl(){$('v').classList.remove('open');document.body.style.overflow='';clearInterval(VT)}
+onkeydown=function(e){if(e.key==='Escape')cl()};
+fetch('/api/browse').then(function(r){return r.json()}).then(function(r){ALL=(r.d||[]);if(ALL.length>2){var im=[];ALL.forEach(function(l){if(l.imgs[0]&&im.length<5)im.push(l.imgs[0])});}draw()}).catch(function(){draw()});
+</script></body></html>
