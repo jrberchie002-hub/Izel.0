@@ -1,6 +1,7 @@
 'use strict';
 const crypto = require('crypto');
 const R = require('./rules');
+  const SHOW = require('./showcase');
 
 module.exports = function makeApp(E, store, smsImpl, fetchImpl) {
   const sms = smsImpl || require('./sms')(E);
@@ -58,6 +59,9 @@ module.exports = function makeApp(E, store, smsImpl, fetchImpl) {
     if (rec.tries >= 5) return err(429, 'Too many tries. Ask for a new code.');
     if (sha(code + SECRET + phone) !== rec.h) { rec.tries++; await store.put('otps', phone, rec); return err(400, 'That code is not right. Try again.'); }
     await store.del('otps', phone);
+    return loginAs(phone, body);
+  }
+  async function loginAs(phone, body) {
     let ph = await store.get('phones', phone), u = ph ? await store.get('users', ph.uid) : null, isNew = false;
     if (!u) {
       if (body.mode === 'in') return err(404, 'No account for that ' + (phone.startsWith('e:') ? 'email' : 'number') + '. Create one first.', { code: 'no_account' });
@@ -65,10 +69,38 @@ module.exports = function makeApp(E, store, smsImpl, fetchImpl) {
       const isAd = ADMINS.includes(phone), id = isAd && !(await store.get('users', 'u_admin')) ? 'u_admin' : 'u_' + sha(phone).slice(0, 10);
       u = { id, name: isAd ? 'Izel Team' : name, roles: isAd ? ['admin'] : [], createdAt: now(), adult: true };
       if (phone.startsWith('e:')) u.email = phone.slice(2);
+      { const c = String(body.contact || '').replace(/\D/g, ''); if (c.length >= 9 && c.length <= 15) u.phone = c; }
       await store.put('users', id, u, id); await store.put('phones', phone, { uid: id });
+      if (!isAd) await starterChats(u);
     } else if (ADMINS.includes(phone) && !isAdmin(u)) { u.roles = (u.roles || []).concat('admin'); await store.put('users', u.id, u, u.id); }
     const f = (await store.get('flags', u.id)) || {}; if (f.banned) return err(403, 'This account was removed for breaking Izel’s rules.');
     return out(200, { ok: true, isNew, token: sign({ uid: u.id, exp: now() + 30 * 864e5 }), user: u });
+  }
+
+  /* ---------- Google and Apple sign-in ---------- */
+  function b64d(x) { return Buffer.from(x.replace(/-/g, '+').replace(/_/g, '/'), 'base64'); }
+  async function socialIdentity(provider, body) {
+    const tok = String(body.credential || '');
+    if (provider === 'google') {
+      if (!E.GOOGLE_CLIENT_ID) return { error: 'Google sign-in is not switched on yet.' };
+      const r = await fetch('https://oauth2.googleapis.com/tokeninfo?id_token=' + encodeURIComponent(tok)); const j = await r.json().catch(() => ({}));
+      if (!r.ok || j.aud !== E.GOOGLE_CLIENT_ID || !(j.email_verified === 'true' || j.email_verified === true) || !j.email) return { error: 'Google sign-in failed. Try again.' };
+      return { email: String(j.email).toLowerCase(), name: j.name };
+    }
+    if (!E.APPLE_CLIENT_ID) return { error: 'Apple sign-in is not switched on yet.' };
+    const p = tok.split('.'); if (p.length !== 3) return { error: 'Apple sign-in failed. Try again.' };
+    let head, pay; try { head = JSON.parse(b64d(p[0]).toString()); pay = JSON.parse(b64d(p[1]).toString()); } catch (e) { return { error: 'Apple sign-in failed. Try again.' }; }
+    const keys = await (await fetch('https://appleid.apple.com/auth/keys')).json().catch(() => ({ keys: [] })), jwk = (keys.keys || []).find(k => k.kid === head.kid);
+    if (!jwk) return { error: 'Apple sign-in failed. Try again.' };
+    const ok = crypto.verify('RSA-SHA256', Buffer.from(p[0] + '.' + p[1]), crypto.createPublicKey({ key: jwk, format: 'jwk' }), b64d(p[2]));
+    if (!ok || pay.iss !== 'https://appleid.apple.com' || pay.aud !== E.APPLE_CLIENT_ID || pay.exp * 1000 < now() || !pay.email) return { error: 'Apple sign-in failed. Try again.' };
+    return { email: String(pay.email).toLowerCase(), name: str(body.name, 60) };
+  }
+  async function socialLogin(provider, body) {
+    const id = await socialIdentity(provider, body); if (id.error) return err(400, id.error);
+    const phone = 'e:' + id.email, ph = await store.get('phones', phone);
+    if (!ph && body.mode === 'up' && body.adult !== true) return err(400, 'You must be 18 or older to use Izel.');
+    return loginAs(phone, Object.assign({}, body, { name: body.name || id.name }));
   }
 
   /* ---------- views of records ---------- */
@@ -209,6 +241,8 @@ module.exports = function makeApp(E, store, smsImpl, fetchImpl) {
       base.msgs.push({ from: me.id, t: +m.t || now(), x: m.x }); mine.push(m.x); have.add(sigOf(m));
     }
     base.msgs.sort((a, b) => a.t - b.t); base.msgs = base.msgs.slice(-500);
+    if (!rejected && (base.kind === 'enq' || base.kind === 'agent')) { const oth = base.a === me.id ? base.b : base.a, ou = await store.get('users', oth); const last = base.msgs[base.msgs.length - 1];
+      if (ou && ou.showcase && last && last.from === me.id && (!ex || base.msgs.length > ex.msgs.length)) { const pool = base.kind === 'agent' ? ['Great, what time can we meet at the first stop?', 'Thank you. Please confirm each owner before we move, and tell me if anything looks different from the photos.', 'Perfect. I will bring a friend along. Payment stays inside Izel, right?'] : SHOW.bot[BOTK(String(last.x).toLowerCase())], n = base.msgs.filter(m => m.from === oth).length; base.msgs.push({ from: oth, t: now() + 1, x: pool[n % pool.length] }); } }
     if (d.seen && d.seen[me.id]) { base.seen = base.seen || {}; base.seen[me.id] = +d.seen[me.id] || now(); }
     if (d.closed) base.closed = true; if (d.dmNote) base.dmNote = 1;
     await store.put('chats', id, base, base.a);
@@ -453,14 +487,47 @@ module.exports = function makeApp(E, store, smsImpl, fetchImpl) {
   }
 
   /* ---------- router ---------- */
+  let showP = null;
+  function ensureShowcase() {
+    if (!showP) showP = (async () => {
+      if (await store.get('flags', 'showcase_v1')) return; const t = now();
+      for (const u of SHOW.users) if (!(await store.get('users', u.id))) await store.put('users', u.id, Object.assign({}, u, { kyc: { status: 'verified', seeded: true } }), u.id);
+      let i = 0; for (const l of SHOW.listings) { await store.put('listings', l.id, Object.assign({}, l, { t: t - (i++) * 5 * 36e5 }), l.owner); }
+      for (const x of SHOW.partners) await store.put('partners', x.id, x);
+      await store.put('flags', 'showcase_v1', { id: 'showcase_v1', done: 1 });
+    })().catch(() => { showP = null; });
+    return showP;
+  }
+  const SEEKERS = [{ id: 's_esi', name: 'Esi Owusu', roles: ['seeker'], showcase: true }, { id: 's_kwame', name: 'Kwame Boateng', roles: ['seeker'], showcase: true }, { id: 's_abena', name: 'Abena Larbi', roles: ['seeker'], showcase: true }];
+  const ASK = ['Hello, I am looking at three places around Madina and Legon this Saturday. Can you walk me through them? I would like to start at 10am.', 'Good day. I am moving to Accra for work and need a 2-bedroom near the airport. Could you show me a few options this week?', 'Hi, are you free for a viewing day on Sunday? I have two hostels saved around Ayeduase and want someone to check the rooms with me.'];
+  async function agentStarters(me) {
+    try { await ensureShowcase(); for (let i = 0; i < SEEKERS.length; i++) { const s = SEEKERS[i]; if (!(await store.get('users', s.id))) await store.put('users', s.id, Object.assign({ kyc: { status: 'verified', seeded: true } }, s), s.id);
+        const id = [s.id, me.id, '', 'agent'].join('|'); if (await store.get('chats', id)) continue;
+        await store.put('chats', id, { id, a: s.id, b: me.id, listing: null, kind: 'agent', seen: {}, msgs: [{ from: 'sys', t: now() - 3000, x: 'You are chatting with a verified Izel agent. Never pay an agent directly. Izel handles payment.' }, { from: s.id, t: now() - 1000 * (i + 1), x: ASK[i] }] }, s.id); } } catch (e) {}
+  }
+  const STARTERS = ['l4q3n6d1', 'l63jwkf6', 'l49h1qew', 'l1dqfz9l'];
+  async function starterChats(u) {
+    try { await ensureShowcase(); const first = (u.name || 'there').split(' ')[0];
+      for (const lid of STARTERS) { const l = await store.get('listings', lid); if (!l) continue; const o = await store.get('users', l.owner); const id = [u.id, l.owner, lid, 'enq'].join('|');
+        const facts = l.type === 'land' ? (l.plot || 'a plot') : l.type === 'hostel' ? 'a room in my hostel' : (l.beds + ' bed, ' + l.baths + ' bath');
+        const per = l.per && l.per !== 'sale' ? ' per ' + l.per : '';
+        const msgs = [{ from: 'sys', t: now() - 3000, x: 'Chat is private. Phone numbers are hidden on Izel. If anyone asks you to move the conversation outside, report them.' },
+          { from: l.owner, t: now() - 1000, x: 'Hello ' + first + ', this is my property: ' + l.title + ' in ' + l.area + ', ' + l.city + '. ' + facts + ', GH₵' + Number(l.price).toLocaleString('en-US') + per + '. Are you interested? You can book a viewing right here in Izel.' }];
+        await store.put('chats', id, { id, a: u.id, b: l.owner, listing: lid, kind: 'enq', msgs, seen: {} }, u.id); }
+    } catch (e) {}
+  }
+  const BOTK = (t) => /price|cost|how much|negotia|cheap|reduce/.test(t) ? 'price' : /availab|still|taken/.test(t) ? 'avail' : /pet|dog|cat/.test(t) ? 'pet' : /car|park/.test(t) ? 'car' : /view|visit|see|come/.test(t) ? 'view' : /^(hi|hello|hey|good)/.test(t) ? 'hi' : 'other';
   async function handle(req) {
+    await ensureShowcase();
     const m = req.method, p = String(req.path || '').replace(/\/+$/, '') || '/', q = req.query || {};
     if (m === 'OPTIONS') return { status: 204, headers: cors(), body: '' };
     let body = {}; if (req.body && !/^\/api\/(_up|pay\/webhook)/.test(p)) { try { body = JSON.parse(Buffer.isBuffer(req.body) ? req.body.toString() : req.body); } catch (e) { return err(400, 'Bad JSON'); } }
     try {
       if (p === '/api/health') return out(200, { ok: true, store: store.kind, sms: sms.ready() || DEV, otpDev: DEV, paystack: !!E.PAYSTACK_SECRET_KEY, admins: ADMINS.length });
-      if (p === '/api/config') return out(200, { ok: true, otpLen: OTPN, ownerPct: R.OWNER_PCT, paystack: !!E.PAYSTACK_SECRET_KEY, test: !E.PAYSTACK_SECRET_KEY, usdRate: +E.USD_RATE || undefined });
+      if (p === '/api/config') return out(200, { ok: true, otpLen: OTPN, ownerPct: R.OWNER_PCT, google: E.GOOGLE_CLIENT_ID || undefined, apple: E.APPLE_CLIENT_ID || undefined, paystack: !!E.PAYSTACK_SECRET_KEY, test: !E.PAYSTACK_SECRET_KEY, usdRate: +E.USD_RATE || undefined });
       if (p === '/api/auth/otp' && m === 'POST') return await sendOtp(body);
+      if (p === '/api/auth/google' && m === 'POST') return await socialLogin('google', body);
+      if (p === '/api/auth/apple' && m === 'POST') return await socialLogin('apple', body);
       if (p === '/api/auth/verify' && m === 'POST') return await verifyOtp(body);
       if (p === '/api/pay/webhook' && m === 'POST') return await payWebhook(req);
       if (p === '/api/cron/payouts') { if ((req.headers || {}).authorization !== 'Bearer ' + (E.CRON_SECRET || '\u0000')) return err(401, 'no'); return out(200, { ok: true, results: await runPayouts() }); }
@@ -481,6 +548,7 @@ module.exports = function makeApp(E, store, smsImpl, fetchImpl) {
         return out(200, await pull(me, +q.since || 0));
       }
       if (!me) return err(401, 'Please sign in', { code: 'auth' });
+      if (p === '/api/starter' && m === 'POST') { if (body.role === 'agent') await agentStarters(me); return out(200, { ok: true }); }
       if (p === '/api/me') return out(200, { ok: true, user: me });
       if (p === '/api/push' && m === 'POST') return out(200, await push(me, body));
       if (p === '/api/media/new' && m === 'POST') return await mediaNew(me, body);
